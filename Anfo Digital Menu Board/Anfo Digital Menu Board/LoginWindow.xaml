@@ -20,9 +20,9 @@
                    Title="Login" Height="720" Width="1280" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Resource/anfobg.jpg"/>
+            <ImageBrush ImageSource="Resource/Restaurant-1-12.jpg"/>
         </Grid.Background>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.8">
             <StackPanel.Background>
                 <SolidColorBrush Color="{DynamicResource Primary500Foreground}"/>
             </StackPanel.Background>
