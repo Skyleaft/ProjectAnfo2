@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,21 @@ namespace Anfo_Digital_Menu_Board
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : MetroWindow
     {
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_cancel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

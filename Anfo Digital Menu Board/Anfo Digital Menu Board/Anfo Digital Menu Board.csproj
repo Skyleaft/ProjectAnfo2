@@ -173,7 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Page\" />
-    <Folder Include="Resource\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\anfobg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
