@@ -79,7 +79,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,50,10,10">
                     <Button x:Name="btn_batal" Width="100"
 	                    Style="{StaticResource MaterialDesignFlatButton}"
-	                    ToolTip="Resource name: MaterialDesignRaisedButton">
+	                    ToolTip="Resource name: MaterialDesignRaisedButton" Click="btn_batal_Click">
                         Batal
                     </Button>
                     <Button x:Name="btn_simpan" Width="100"
