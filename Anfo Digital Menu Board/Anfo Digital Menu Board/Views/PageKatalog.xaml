@@ -1,4 +1,4 @@
-﻿<Page x:Class="Anfo_Digital_Menu_Board.Views.PageMakanan"
+﻿<Page x:Class="Anfo_Digital_Menu_Board.Views.PageKatalog"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1100"
-      Title="PageMakanan">
+      Title="PageKatalog">
 
     <Grid>
         

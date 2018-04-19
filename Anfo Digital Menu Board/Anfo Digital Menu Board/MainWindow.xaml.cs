@@ -29,6 +29,9 @@ namespace Anfo_Digital_Menu_Board
 
             Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
+
+            // Navigate to the home page.
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/MenuPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)

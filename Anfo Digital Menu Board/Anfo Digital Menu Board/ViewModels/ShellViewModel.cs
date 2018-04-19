@@ -11,7 +11,9 @@ namespace Anfo_Digital_Menu_Board.ViewModels
             // Build the menus
             this.Menu.Add(new MenuItem() {Icon = new PackIconEntypo() {Kind = PackIconEntypoKind.Home}, Text = "Menu", NavigationDestination = new Uri("Views/MenuPage.xaml", UriKind.RelativeOrAbsolute)});
             this.Menu.Add(new MenuItem() {Icon = new PackIconMaterial() {Kind = PackIconMaterialKind.Food}, Text = "Data Makanan", NavigationDestination = new Uri("Views/PageMakanan.xaml", UriKind.RelativeOrAbsolute)});
+            this.Menu.Add(new MenuItem() { Icon = new PackIconMaterial() { Kind = PackIconMaterialKind.Presentation }, Text = "Data Katalog", NavigationDestination = new Uri("Views/PageKatalog.xaml", UriKind.RelativeOrAbsolute) });
 
+            //menu opsi
             this.OptionsMenu.Add(new MenuItem() {Icon = new PackIconFontAwesome() {Kind = PackIconFontAwesomeKind.CogsSolid}, Text = "Pengaturan", NavigationDestination = new Uri("Views/SettingsPage.xaml", UriKind.RelativeOrAbsolute)});
             this.OptionsMenu.Add(new MenuItem() {Icon = new PackIconFontAwesome() {Kind = PackIconFontAwesomeKind.InfoCircleSolid}, Text = "Tentang Aplikasi", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute)});
         }

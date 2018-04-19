@@ -79,6 +79,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Domain\AnotherCommandImplementation.cs" />
+    <Compile Include="Domain\DemoItem.cs" />
+    <Compile Include="Domain\DialogsViewModel.cs" />
+    <Compile Include="Domain\DocumentationLink.cs" />
+    <Compile Include="Domain\DocumentationLinks.xaml.cs" />
+    <Compile Include="Domain\DocumentationLinkType.cs" />
+    <Compile Include="Domain\FutureDateValidationRule.cs" />
+    <Compile Include="Domain\IsCheckedValidationRule.cs" />
+    <Compile Include="Domain\ListsAndGridsViewModel.cs" />
+    <Compile Include="Domain\NotEmptyValidationRule.cs" />
+    <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="Domain\PaletteSelectorViewModel.cs" />
+    <Compile Include="Domain\Sample4Dialog.xaml.cs" />
+    <Compile Include="Domain\SampleDialog.xaml.cs" />
+    <Compile Include="Domain\SampleDialogViewModel.cs" />
+    <Compile Include="Domain\SampleMessageDialog.xaml.cs" />
+    <Compile Include="Domain\SampleMessageYesNo.xaml.cs" />
+    <Compile Include="Domain\SampleProgressDialog.xaml.cs" />
+    <Compile Include="Domain\SelectableViewModel.cs" />
+    <Compile Include="Domain\SimpleDataTemplateSelector.cs" />
+    <Compile Include="Domain\SimpleDateValidationRule.cs" />
+    <Compile Include="Domain\TextFieldsViewModel.cs" />
+    <Compile Include="Domain\TreesViewModel.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
@@ -87,6 +110,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageKatalog.xaml.cs">
+      <DependentUpon>PageKatalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageMakanan.xaml.cs">
       <DependentUpon>PageMakanan.xaml</DependentUpon>
@@ -115,10 +141,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Form_Menu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,32 +152,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Domain\AnotherCommandImplementation.cs" />
-    <Compile Include="Domain\DemoItem.cs" />
-    <Compile Include="Domain\DialogsViewModel.cs" />
-    <Compile Include="Domain\DocumentationLink.cs" />
-    <Compile Include="Domain\DocumentationLinks.xaml.cs" />
-    <Compile Include="Domain\DocumentationLinkType.cs" />
-    <Compile Include="Domain\FutureDateValidationRule.cs" />
-    <Compile Include="Domain\IsCheckedValidationRule.cs" />
-    <Compile Include="Domain\ListsAndGridsViewModel.cs" />
-    <Compile Include="Domain\NotEmptyValidationRule.cs" />
-    <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
-    <Compile Include="Domain\PaletteSelectorViewModel.cs" />
-    <Compile Include="Domain\Sample4Dialog.xaml.cs" />
-    <Compile Include="Domain\SampleDialog.xaml.cs" />
-    <Compile Include="Domain\SampleDialogViewModel.cs" />
-    <Compile Include="Domain\SampleMessageDialog.xaml.cs" />
-    <Compile Include="Domain\SampleMessageYesNo.xaml.cs" />
-    <Compile Include="Domain\SampleProgressDialog.xaml.cs" />
-    <Compile Include="Domain\SelectableViewModel.cs" />
-    <Compile Include="Domain\SimpleDataTemplateSelector.cs" />
-    <Compile Include="Domain\SimpleDateValidationRule.cs" />
-    <Compile Include="Domain\TextFieldsViewModel.cs" />
-    <Compile Include="Domain\TreesViewModel.cs" />
-    <Compile Include="Form_Menu.xaml.cs">
-      <DependentUpon>Form_Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Koneksi\koneksi.cs" />
     <Compile Include="LoginWindow.xaml.cs">
@@ -170,6 +166,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PageKatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,7 +207,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Page\" />
