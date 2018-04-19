@@ -1,6 +1,5 @@
 ﻿using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,55 +15,39 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board
+namespace Anfo_Digital_Menu_Board.Resource
 {
     /// <summary>
-    /// Interaction logic for Form_Menu.xaml
+    /// Interaction logic for Form_Message.xaml
     /// </summary>
-    public partial class Form_Menu : UserControl
+    public partial class Form_Message : UserControl
     {
-        public Form_Menu()
+        public Form_Message()
         {
             InitializeComponent();
             showdata();
         }
 
         koneksi k = new koneksi();
-        private String alamat_foto;
-
+        
         public void showdata()
         {
-            k.sql = "select foto,id_produk,nama,harga from tb_produk";
+            k.sql = "select * from tb_message";
             k.setdt();
-            dg_menu.ItemsSource = k.dt.DefaultView;
+            dg_message.ItemsSource = k.dt.DefaultView;
 
         }
 
         public void bersih()
         {
-            txt_harga.Text = "";
+            txt_alert.Text = "";
             txt_kdmenu.Text = "";
-            txt_namamenu.Text = "";
-            img_foto.Source = null;
-        }
-
-        private void btn_ambil_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Masukan Foto";
-            op.Filter = "Semua Gambar|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                alamat_foto = op.FileName;
-                img_foto.Source = new BitmapImage(new Uri(op.FileName));
-            }
+            txt_msg.Text = "";
         }
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
-            if (txt_kdmenu.Text=="" || txt_namamenu.Text == "" || txt_harga.Text == "" || img_foto.Source ==null)
+            if (txt_kdmenu.Text == "" || txt_msg.Text == "" || txt_alert.Text == "")
             {
                 var sampleMessageDialog = new SampleMessageDialog
                 {
@@ -76,7 +59,7 @@ namespace Anfo_Digital_Menu_Board
             {
                 try
                 {
-                    k.sql = "insert into tb_produk select '" + txt_kdmenu.Text + "','" + txt_namamenu.Text + "','" + txt_harga.Text + "',bulkcolumn from openrowset(bulk'" + alamat_foto + "',single_blob) as gambar";
+                    k.sql = "insert into tb_message select '" + txt_kdmenu.Text + "','" + txt_msg.Text + "','" + txt_alert.Text + "'";
                     k.setdt();
 
                     var sampleMessageDialog = new SampleMessageDialog

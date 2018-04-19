@@ -25,6 +25,11 @@ namespace Anfo_Digital_Menu_Board
             InitializeComponent();
         }
 
+        public void bersih() {
+            txt_username.Text = "";
+            txt_password.Password = "";
+        }
+
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
 
@@ -32,7 +37,7 @@ namespace Anfo_Digital_Menu_Board
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            bersih();
         }
     }
 }
