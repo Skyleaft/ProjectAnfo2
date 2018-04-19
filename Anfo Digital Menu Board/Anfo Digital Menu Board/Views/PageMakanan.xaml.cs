@@ -13,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board
+namespace Anfo_Digital_Menu_Board.Views
 {
     /// <summary>
-    /// Interaction logic for Form_Menu.xaml
+    /// Interaction logic for PageMakanan.xaml
     /// </summary>
-    public partial class Form_Menu : UserControl
+    public partial class PageMakanan : Page
     {
-        public Form_Menu()
+        public PageMakanan()
         {
             InitializeComponent();
-        }
-
-        private void btn_simpan_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_ambil_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
