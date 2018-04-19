@@ -23,6 +23,9 @@
             <ImageBrush ImageSource="Resource/Restaurant-1-12.jpg"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.8">
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="50" Color="White"/>
+            </StackPanel.Effect>
             <StackPanel.Background>
                 <SolidColorBrush Color="{DynamicResource Primary500Foreground}"/>
             </StackPanel.Background>

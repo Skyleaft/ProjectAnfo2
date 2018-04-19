@@ -98,5 +98,15 @@ namespace Anfo_Digital_Menu_Board
             bersih();
             showdata();
         }
+
+        private void btn_simpan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_ambil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
