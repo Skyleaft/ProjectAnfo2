@@ -32,6 +32,7 @@ namespace Anfo_Digital_Menu_Board.Views
             InitializeComponent();
 
             showdata();
+            kodeotomatis();
 
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("id-ID");
@@ -46,6 +47,36 @@ namespace Anfo_Digital_Menu_Board.Views
             k.setdt();
             dg_produk.ItemsSource = k.dt.DefaultView;
 
+        }
+
+        private void kodeotomatis()
+        {
+            k.sql = "select *from tb_produk order by id_produk asc";
+            k.setdt();
+            int cekbaris = k.dt.Rows.Count;
+            String baru;
+            int tambah;
+            if (cekbaris == 0)
+            {
+                baru = "MN-001";
+            }
+            else
+            {
+                tambah = Convert.ToInt32(k.dt.Rows[cekbaris - 1][0].ToString().Split('-')[1]) + 1;
+                if (tambah < 10)
+                {
+                    baru = "MN-00" + tambah;
+                }
+                else if (tambah < 100)
+                {
+                    baru = "MN-0" + tambah;
+                }
+                else
+                {
+                    baru = "NL-" + tambah;
+                }
+            }
+            txt_id.Text = baru;
         }
 
         public void bersih()
@@ -107,6 +138,8 @@ namespace Anfo_Digital_Menu_Board.Views
                     };
                     DialogHost.Show(sampleMessageDialog, "MainDialog");
                     showdata();
+                    bersih();
+                    kodeotomatis();
                 }
                 catch (Exception ex)
                 {
