@@ -4,11 +4,131 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1100"
       Title="PageMakanan">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Panel kiri-->
+        <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+            <StackPanel Margin="30,30,30,0">
+
+                <StackPanel Margin="0,0,0,15">
+                    <materialDesign:Card
+	                materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,10,0,5" Padding="0">
+                        <Image x:Name="img_foto" Width="180" Height="180" Margin="0"/>
+                    </materialDesign:Card>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock
+	                Margin="0,8,0,8"
+	                Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+	                Foto Produk
+                        </TextBlock>
+                        <Button x:Name="btn_ambil"
+	                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+	                    ToolTip="Ambil Foto" Margin="5,0,0,0" Click="btn_ambil_Click">
+                            <materialDesign:PackIcon
+		                    Width="24"
+		                    Height="24"
+		                    Kind="Camera" />
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="15,0,15,15" VerticalAlignment="Top">
+                    <materialDesign:PackIcon
+                                    Margin="4,0"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{Binding BorderBrush, ElementName=txt_id}"
+                                    Kind="Food" Width="25" Height="25" VerticalAlignment="Stretch" />
+                    <TextBox x:Name="txt_id"
+	                         materialDesign:HintAssist.Hint="ID Produk"
+	                         FontSize="16" Margin="5,0,0,0" MaxLength="16" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="15,0,15,15" VerticalAlignment="Top">
+                    <materialDesign:PackIcon
+                                    Margin="4,0"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                                    Kind="Food" Width="25" Height="25" VerticalAlignment="Stretch" />
+                    <TextBox x:Name="txt_nama"
+	                         materialDesign:HintAssist.Hint="Nama Produk"
+	                         FontSize="16" Margin="5,0,0,0" MaxLength="16" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="15,0,15,15" VerticalAlignment="Top">
+                    <materialDesign:PackIcon
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    Kind="Food" Width="25" Height="25" VerticalAlignment="Stretch" Foreground="#FF747474" />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton 
+                            x:Name="rb_makanan"
+	                        Style="{StaticResource MaterialDesignRadioButton}"
+	                        Tag="True" Margin="5,5,0,5" FontSize="14">
+                            Makanan
+                        </RadioButton>
+                        <RadioButton
+                            x:Name="rb_minuman"
+	                        Style="{StaticResource MaterialDesignRadioButton}"
+	                        Tag="True" Margin="10,5,0,5" FontSize="14">
+                            Minuman
+                        </RadioButton>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="15,0,15,15" VerticalAlignment="Top">
+                    <materialDesign:PackIcon
+                                    Margin="4,0"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{Binding BorderBrush, ElementName=txt_harga}"
+                                    Kind="CurrencyUsd" Width="25" Height="25" VerticalAlignment="Stretch" />
+                    <TextBox x:Name="txt_harga"
+	                         materialDesign:HintAssist.Hint="Harga"
+	                         FontSize="16" Margin="5,0,0,0" MaxLength="16" Width="150"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,10">
+                    <Button x:Name="btn_batal" Width="100"
+	                    Style="{StaticResource MaterialDesignFlatButton}"
+	                    ToolTip="Resource name: MaterialDesignRaisedButton" Click="btn_batal_Click">
+                        Batal
+                    </Button>
+                    <Button x:Name="btn_simpan" Width="100"
+	                    Style="{StaticResource MaterialDesignRaisedButton}"
+	                    ToolTip="Resource name: MaterialDesignRaisedButton" Click="btn_simpan_Click">
+                        Simpan
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+
+
+        </StackPanel>
+
+
+        <!--Panel Kanan-->
+        <StackPanel Grid.Column="1">
+
+        </StackPanel>
+
     </Grid>
 </Page>

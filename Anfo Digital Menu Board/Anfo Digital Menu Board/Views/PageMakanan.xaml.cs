@@ -24,5 +24,20 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             InitializeComponent();
         }
+
+        private void btn_ambil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_simpan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_batal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
