@@ -118,6 +118,9 @@
     <Compile Include="Views\PageKatalog.xaml.cs">
       <DependentUpon>PageKatalog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PageMessage.xaml.cs">
+      <DependentUpon>PageMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageProduk.xaml.cs">
       <DependentUpon>PageProduk.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PageKatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PageMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

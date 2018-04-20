@@ -15,39 +15,38 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board.Resource
+namespace Anfo_Digital_Menu_Board.Views
 {
     /// <summary>
-    /// Interaction logic for Form_Message.xaml
+    /// Interaction logic for PageMessage.xaml
     /// </summary>
-    public partial class Form_Message : UserControl
+    public partial class PageMessage : UserControl
     {
-        public Form_Message()
+        koneksi k = new koneksi();
+
+        public PageMessage()
         {
             InitializeComponent();
             showdata();
         }
 
-        koneksi k = new koneksi();
-        
         public void showdata()
         {
-            k.sql = "select * from tb_message";
+            k.sql = "select id_message,message,alert from tb_message";
             k.setdt();
             dg_message.ItemsSource = k.dt.DefaultView;
 
         }
 
-        public void bersih()
-        {
+        public void bersih() {
             txt_alert.Text = "";
-            txt_kdmenu.Text = "";
+            txt_id.Text = "";
             txt_msg.Text = "";
         }
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
-            if (txt_kdmenu.Text == "" || txt_msg.Text == "" || txt_alert.Text == "")
+            if (txt_id.Text == "" || txt_msg.Text == "" || txt_alert.Text == "")
             {
                 var sampleMessageDialog = new SampleMessageDialog
                 {
@@ -59,7 +58,7 @@ namespace Anfo_Digital_Menu_Board.Resource
             {
                 try
                 {
-                    k.sql = "insert into tb_message select '" + txt_kdmenu.Text + "','" + txt_msg.Text + "','" + txt_alert.Text + "'";
+                    k.sql = "insert into tb_message select '" + txt_id.Text + "','" + txt_msg.Text + "','" + txt_alert.Text + "'";
                     k.setdt();
 
                     var sampleMessageDialog = new SampleMessageDialog
@@ -79,7 +78,6 @@ namespace Anfo_Digital_Menu_Board.Resource
         private void btn_batal_Click(object sender, RoutedEventArgs e)
         {
             bersih();
-            showdata();
         }
     }
 }
