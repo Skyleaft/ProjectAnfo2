@@ -43,6 +43,8 @@ namespace Anfo_Digital_Menu_Board
             return returnImage;
         }
 
+
+
         //public static string ImageToByte(FileStream fs)
         //{
 
