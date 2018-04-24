@@ -28,11 +28,12 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             InitializeComponent();
             showdata();
+            kodeotomatis();
         }
 
         public void showdata()
         {
-            k.sql = "select id_message,message,alert from tb_message";
+            k.sql = "select * from tb_message";
             k.setdt();
             dg_message.ItemsSource = k.dt.DefaultView;
 
@@ -42,6 +43,36 @@ namespace Anfo_Digital_Menu_Board.Views
             txt_alert.Text = "";
             txt_id.Text = "";
             txt_msg.Text = "";
+        }
+
+        private void kodeotomatis()
+        {
+            k.sql = "select *from tb_message order by id_message asc";
+            k.setdt();
+            int cekbaris = k.dt.Rows.Count;
+            String baru;
+            int tambah;
+            if (cekbaris == 0)
+            {
+                baru = "MS-001";
+            }
+            else
+            {
+                tambah = Convert.ToInt32(k.dt.Rows[cekbaris - 1][0].ToString().Split('-')[1]) + 1;
+                if (tambah < 10)
+                {
+                    baru = "MS-00" + tambah;
+                }
+                else if (tambah < 100)
+                {
+                    baru = "MS-0" + tambah;
+                }
+                else
+                {
+                    baru = "MS-" + tambah;
+                }
+            }
+            txt_id.Text = baru;
         }
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
@@ -67,6 +98,8 @@ namespace Anfo_Digital_Menu_Board.Views
                     };
                     DialogHost.Show(sampleMessageDialog, "MainDialog");
                     showdata();
+                    bersih();
+                    kodeotomatis();
                 }
                 catch (Exception ex)
                 {
@@ -78,6 +111,7 @@ namespace Anfo_Digital_Menu_Board.Views
         private void btn_batal_Click(object sender, RoutedEventArgs e)
         {
             bersih();
-        }
+            kodeotomatis();
+            showdata();        }
     }
 }

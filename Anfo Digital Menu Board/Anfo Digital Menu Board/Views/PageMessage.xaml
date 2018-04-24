@@ -38,7 +38,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Stretch"
                         Foreground="{Binding BorderBrush, ElementName=txt_id}"
-                        Kind="Message" />
+                        Kind="MessageText" />
                     <TextBox
                         x:Name="txt_id"
                         Width="300"
@@ -135,9 +135,9 @@
                 CanUserSortColumns="True"
                 IsReadOnly="True">
              <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding nama}" Header="Id Message" Width="150"/>
-                    <DataGridTextColumn Binding="{Binding jenis}" Header="Message" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding harga}" Header="Alert" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding id_message}" Header="Id Message" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding message}" Header="Message" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding alert}" Header="Alert" Width="200"/>
             </DataGrid.Columns>
 
         </DataGrid>
