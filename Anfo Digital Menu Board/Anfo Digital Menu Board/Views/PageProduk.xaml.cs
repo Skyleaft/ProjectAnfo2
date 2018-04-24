@@ -3,6 +3,7 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,9 @@ namespace Anfo_Digital_Menu_Board.Views
     {
 
         koneksi k = new koneksi();
+
         private String alamat_foto;
+        FileStream file;
 
         public PageProduk()
         {
@@ -101,6 +104,8 @@ namespace Anfo_Digital_Menu_Board.Views
             {
                 alamat_foto = op.FileName;
                 img_foto.Source = new BitmapImage(new Uri(op.FileName));
+                file = new FileStream(alamat_foto, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                
             }
         }
 
@@ -129,8 +134,19 @@ namespace Anfo_Digital_Menu_Board.Views
                     {
                         jenis = "Minuman";
                     }
-                    k.sql = "insert into tb_produk select '" + txt_id.Text + "','" + txt_nama.Text + "','" + jenis + "',"+harga+",bulkcolumn from openrowset(bulk'" + alamat_foto + "',single_blob) as gambar";
-                    k.setdt();
+
+                    var img = ByteImageConverter.ConvertBitmapSourceToByteArray(alamat_foto);
+
+                    k.sql = "insert into tb_produk values(@id,@nama,@jenis,@harga,@foto)";
+                    k.setparam();
+                    k.perintah.Parameters.AddWithValue("@id",txt_id.Text);
+                    k.perintah.Parameters.AddWithValue("@nama", txt_nama.Text);
+                    k.perintah.Parameters.AddWithValue("@jenis", jenis);
+                    k.perintah.Parameters.AddWithValue("@harga", harga);
+                    k.perintah.Parameters.AddWithValue("@foto", img);
+                    
+                    k.perintah.ExecuteNonQuery();
+                    k.close();
 
                     var sampleMessageDialog = new SampleMessageDialog
                     {
@@ -174,6 +190,12 @@ namespace Anfo_Digital_Menu_Board.Views
 
                 txt_harga.SelectionStart = txt_harga.Text.Length; // menetapkan titik awal dari teks yang dipilih pada textbox
             }
+        }
+
+        private void btn_test_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
         }
     }
 }

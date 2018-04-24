@@ -50,6 +50,13 @@ namespace Anfo_Digital_Menu_Board
             dbkoneksi = new SqlConnection(db);
             dbkoneksi.Close();
         }
+
+        public void setparam()
+        {
+            dbkoneksi = new SqlConnection(db);
+            dbkoneksi.Open();
+            perintah = new SqlCommand(sql, dbkoneksi);
+        }
     }
 }
 
