@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -241,6 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Page\" />
+    <Folder Include="System\Drawing\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\anfobg.jpg" />
