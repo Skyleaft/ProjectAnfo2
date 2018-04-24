@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace POS_Application
+namespace Anfo_Digital_Menu_Board
 {
     public class ByteImageConverter
     {
@@ -28,13 +29,28 @@ namespace POS_Application
             return imgSrc;
         }
 
-        public static string ImageToByte(FileStream fs)
+        public byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
-            byte[] imgBytes = new byte[fs.Length];
-            fs.Read(imgBytes, 0, Convert.ToInt32(fs.Length));
-            string encodeData = Convert.ToBase64String(imgBytes, Base64FormattingOptions.InsertLineBreaks);
-
-            return encodeData;
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
         }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+        //public static string ImageToByte(FileStream fs)
+        //{
+
+        //    byte[] imgBytes = new byte[fs.Length];
+        //    fs.Read(imgBytes, 0, Convert.ToInt32(fs.Length));
+        //    string encodeData = Convert.ToBase64String(imgBytes, Base64FormattingOptions.InsertLineBreaks);
+
+        //    return encodeData;
+        //}
     }
 }
