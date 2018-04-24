@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Views"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -45,9 +46,7 @@
                     </materialDesign:Card>
 
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock Margin="0,8,0,8" Style="{StaticResource MaterialDesignSubheadingTextBlock}">
-                            Foto Produk
-                        </TextBlock>
+                        <TextBlock Margin="0,8,0,8" Style="{StaticResource MaterialDesignSubheadingTextBlock}"><Run Text="Foto Produk" /></TextBlock>
                         <Button
                             x:Name="btn_ambil"
                             Margin="5,0,0,0"
@@ -121,19 +120,17 @@
                         <RadioButton
                             x:Name="rb_makanan"
                             Margin="5,5,0,5"
+                            Content="Makanan"
                             FontSize="14"
                             Style="{StaticResource MaterialDesignRadioButton}"
-                            Tag="True">
-                            Makanan
-                        </RadioButton>
+                            Tag="True" />
                         <RadioButton
                             x:Name="rb_minuman"
                             Margin="10,5,0,5"
+                            Content="Minuman"
                             FontSize="14"
                             Style="{StaticResource MaterialDesignRadioButton}"
-                            Tag="True">
-                            Minuman
-                        </RadioButton>
+                            Tag="True" />
                     </StackPanel>
                 </StackPanel>
 
@@ -168,18 +165,16 @@
                         x:Name="btn_batal"
                         Width="100"
                         Click="btn_batal_Click"
+                        Content="Batal"
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        ToolTip="Resource name: MaterialDesignRaisedButton">
-                        Batal
-                    </Button>
+                        ToolTip="Resource name: MaterialDesignRaisedButton" />
                     <Button
                         x:Name="btn_simpan"
                         Width="100"
                         Click="btn_simpan_Click"
+                        Content="Simpan"
                         Style="{StaticResource MaterialDesignRaisedButton}"
-                        ToolTip="Resource name: MaterialDesignRaisedButton">
-                        Simpan
-                    </Button>
+                        ToolTip="Resource name: MaterialDesignRaisedButton" />
                 </StackPanel>
 
             </StackPanel>
@@ -190,8 +185,10 @@
 
         <!--  Panel Kanan  -->
         <StackPanel Grid.Column="1">
+
             <DataGrid
                 x:Name="dg_produk"
+                MaxHeight="720"
                 Margin="0"
                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
@@ -199,7 +196,19 @@
                 CanUserAddRows="False"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
-                IsReadOnly="True">
+                IsReadOnly="True"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <DataGrid.Resources>
+                    <Style x:Key="dataGridStyle" TargetType="DataGrid">
+                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+
                 <DataGrid.Columns>
                     <DataGridTemplateColumn
                         Width="200"
@@ -215,6 +224,7 @@
                     <DataGridTextColumn Binding="{Binding jenis}" Header="Jenis" />
                     <DataGridTextColumn Binding="{Binding harga}" Header="Harga" />
                 </DataGrid.Columns>
+
 
             </DataGrid>
 
