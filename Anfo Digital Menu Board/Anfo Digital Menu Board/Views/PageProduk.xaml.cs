@@ -151,6 +151,7 @@ namespace Anfo_Digital_Menu_Board.Views
         private void btn_batal_Click(object sender, RoutedEventArgs e)
         {
             bersih();
+            kodeotomatis();
         }
 
         private void txt_harga_PreviewTextInput(object sender, TextCompositionEventArgs e)
