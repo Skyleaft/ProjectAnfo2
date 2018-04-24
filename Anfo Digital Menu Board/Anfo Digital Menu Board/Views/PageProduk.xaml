@@ -175,6 +175,13 @@
                         Content="Simpan"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         ToolTip="Resource name: MaterialDesignRaisedButton" />
+                    <Button
+                        x:Name="btn_test"
+                        Width="100"
+                        Click="btn_test_Click"
+                        Content="test"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" />
                 </StackPanel>
 
             </StackPanel>
