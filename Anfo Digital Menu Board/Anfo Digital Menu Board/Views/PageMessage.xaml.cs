@@ -1,7 +1,9 @@
-﻿using MaterialDesignColors.WpfExample.Domain;
+﻿using Anfo_Digital_Menu_Board.Dialog;
+using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,6 +114,31 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             bersih();
             kodeotomatis();
-            showdata();        }
+            showdata();
+        }
+
+        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            bersih();
+            showdata();
+        }
+
+        private void dg_message_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dg_message.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)dg_message.SelectedItem;
+                string index = dataRow.Row[0].ToString();
+
+                k.sql = "select *from tb_message  where id_message = '" + index + "'";
+                k.setdt();
+
+                String idprod = k.dt.Rows[0][0].ToString();
+
+                var showdialog = new DialogMessage();
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+
+            }
+        }
     }
 }
