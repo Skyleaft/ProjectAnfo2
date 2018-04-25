@@ -80,7 +80,8 @@
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="ID Produk"
                         FontSize="16"
-                        MaxLength="15" IsReadOnly="True" />
+                        IsReadOnly="True"
+                        MaxLength="15" />
                 </StackPanel>
 
                 <StackPanel

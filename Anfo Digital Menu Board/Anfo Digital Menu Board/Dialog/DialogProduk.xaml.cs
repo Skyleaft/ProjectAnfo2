@@ -102,7 +102,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
             }
             else
             {
-                jenis = "Min";
+                jenis = "Minuman";
             }
 
             int harga = int.Parse(txt_harga.Text, System.Globalization.NumberStyles.Currency);
