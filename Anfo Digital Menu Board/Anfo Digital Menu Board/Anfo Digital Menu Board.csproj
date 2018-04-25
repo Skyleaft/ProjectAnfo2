@@ -84,6 +84,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ByteImageConverter.cs" />
+    <Compile Include="Dialog\DialogProduk.xaml.cs">
+      <DependentUpon>DialogProduk.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Domain\AnotherCommandImplementation.cs" />
     <Compile Include="Domain\DemoItem.cs" />
     <Compile Include="Domain\DialogsViewModel.cs" />
@@ -110,15 +113,9 @@
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
-    <Compile Include="testwindow.xaml.cs">
-      <DependentUpon>testwindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\MenuItem.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\DialogMessage.xaml.cs">
-      <DependentUpon>DialogMessage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
@@ -131,6 +128,10 @@
     <Compile Include="Views\PageProduk.xaml.cs">
       <DependentUpon>PageProduk.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialog\DialogProduk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Domain\DocumentationLinks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,17 +176,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="testwindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\DialogMessage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuPage.xaml">
       <SubType>Designer</SubType>

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Anfo_Digital_Menu_Board.ViewModels;
 using MenuItem = Anfo_Digital_Menu_Board.ViewModels.MenuItem;
+using System.Windows.Media.Animation;
 
 namespace Anfo_Digital_Menu_Board
 {
@@ -26,6 +27,8 @@ namespace Anfo_Digital_Menu_Board
         public MainWindow()
         {
             InitializeComponent();
+
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 30 });
 
             Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;

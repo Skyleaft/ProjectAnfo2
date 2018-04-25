@@ -1,8 +1,10 @@
-﻿using MaterialDesignColors.WpfExample.Domain;
+﻿using Anfo_Digital_Menu_Board.Dialog;
+using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -46,7 +49,7 @@ namespace Anfo_Digital_Menu_Board.Views
        
         public void showdata()
         {
-            k.sql = "select foto,nama,jenis,harga from tb_produk";
+            k.sql = "select foto,nama,jenis,harga,id_produk from tb_produk";
             k.setdt();
             dg_produk.ItemsSource = k.dt.DefaultView;
 
@@ -192,10 +195,29 @@ namespace Anfo_Digital_Menu_Board.Views
             }
         }
 
-        private void btn_test_Click(object sender, RoutedEventArgs e)
+
+        private void dg_produk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
+            if (dg_produk.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)dg_produk.SelectedItem;
+                string index = dataRow.Row[4].ToString();
+
+                k.sql = "select *from tb_produk  where id_produk = '" + index + "'";
+                k.setdt();
+
+                String idprod = k.dt.Rows[0][0].ToString();
+
+                var showdialog = new DialogProduk();
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+
+            }
+        }
+
+        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            bersih();
+            showdata();
         }
     }
 }
