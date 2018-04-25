@@ -31,7 +31,6 @@ namespace Anfo_Digital_Menu_Board.Views
         koneksi k = new koneksi();
 
         private String alamat_foto;
-        FileStream file;
 
         public PageProduk()
         {
@@ -107,7 +106,6 @@ namespace Anfo_Digital_Menu_Board.Views
             {
                 alamat_foto = op.FileName;
                 img_foto.Source = new BitmapImage(new Uri(op.FileName));
-                file = new FileStream(alamat_foto, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 
             }
         }
@@ -138,7 +136,7 @@ namespace Anfo_Digital_Menu_Board.Views
                         jenis = "Minuman";
                     }
 
-                    var img = ByteImageConverter.ConvertBitmapSourceToByteArray(alamat_foto);
+                    var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
                     k.sql = "insert into tb_produk values(@id,@nama,@jenis,@harga,@foto)";
                     k.setparam();
@@ -208,7 +206,7 @@ namespace Anfo_Digital_Menu_Board.Views
 
                 String idprod = k.dt.Rows[0][0].ToString();
 
-                var showdialog = new DialogProduk();
+                var showdialog = new DialogProduk(idprod);
                 DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
 
             }
@@ -216,7 +214,6 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            bersih();
             showdata();
         }
     }
