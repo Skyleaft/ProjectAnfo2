@@ -84,7 +84,7 @@
                         Margin="4,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Stretch"
-                        Foreground="{Binding BorderBrush, ElementName=txt_msg}"
+                        Foreground="{Binding BorderBrush, ElementName=txt_alert}"
                         Kind="AlertCircle" />
                     <TextBox
                         x:Name="txt_alert"
@@ -133,7 +133,7 @@
                 CanUserAddRows="False"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
-                IsReadOnly="True">
+                IsReadOnly="True" SelectionChanged="dg_message_SelectionChanged">
              <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id_message}" Header="Id Message" Width="200"/>
                     <DataGridTextColumn Binding="{Binding message}" Header="Message" Width="*"/>

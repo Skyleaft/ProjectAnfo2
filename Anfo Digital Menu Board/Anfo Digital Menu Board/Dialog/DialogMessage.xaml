@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="Anfo_Digital_Menu_Board.Dialog.DialogMessage"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+            xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Dialog"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:system="clr-namespace:System;assembly=mscorlib"
+             
+            Width="500"
+            Height="400"
+            d:DesignHeight="450"
+            d:DesignWidth="800"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            TextElement.FontSize="13"
+            TextElement.FontWeight="Regular"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            mc:Ignorable="d">
+    <Grid>
+        <Label Margin="10,15,0,0" FontSize="36">
+            <Label.Effect>
+                <DropShadowEffect
+                    BlurRadius="10"
+                    ShadowDepth="2"
+                    Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" />
+            </Label.Effect>
+            Detail Message
+        </Label>
+
+        <StackPanel VerticalAlignment="Top" Margin="460,10,0,0">
+            <materialDesign:PackIcon
+                    Width="25"
+                    Height="25"
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Foreground="{Binding BorderBrush, ElementName=txt_id}"
+                    Kind="Close" />    
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Top" Margin="0,120,0,0">
+            <StackPanel
+                Margin="15,0,15,15"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Width="25"
+                    Height="25"
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Foreground="{Binding BorderBrush, ElementName=txt_id}"
+                    Kind="MessageText" />
+                <TextBox
+                    x:Name="txt_id"
+                    Width="300"
+                    Margin="5,0,0,0"
+                    materialDesign:HintAssist.Hint="ID Message"
+                    FontSize="16"
+                    MaxLength="15" />
+            </StackPanel>
+
+            <StackPanel
+                Margin="15,0,15,15"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Width="25"
+                    Height="25"
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Foreground="{Binding BorderBrush, ElementName=txt_msg}"
+                    Kind="MessageText" />
+                    <TextBox
+                        x:Name="txt_msg"
+	                    Height="60"
+	                    MaxWidth="300"
+                        Width="300"
+	                    VerticalAlignment="Stretch"
+	                    materialDesign:HintAssist.Hint="Message Text"
+	                    AcceptsReturn="True"
+	                    SpellCheck.IsEnabled="True"
+	                    TextWrapping="Wrap"
+	                    VerticalScrollBarVisibility="Auto">
+                    </TextBox>
+            </StackPanel>
+
+            <StackPanel
+                Margin="15,0,15,15"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Width="25"
+                    Height="25"
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Foreground="{Binding BorderBrush, ElementName=txt_alert}"
+                    Kind="AlertCircle" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox
+                        x:Name="txt_alert"
+                        Width="300"
+                        Margin="5,0,0,0"
+                        materialDesign:HintAssist.Hint="Alert"
+                        FontSize="16"
+                        MaxLength="15" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                <StackPanel
+                Margin="0,10,10,10"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                    <Button
+                    x:Name="btn_batal"
+                    Width="100"
+                    Margin="0,0,5,0"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    Content="Batal"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    ToolTip="Batal" />
+                    <Button
+                    x:Name="btn_hapus"
+                    Width="100"
+                    Margin="0,0,5,0"
+                    Content="Hapus"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    ToolTip="Hapus Data" />
+                    <Button
+                    x:Name="btn_ubah"
+                    Width="100"
+                    Content="Ubah"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    ToolTip="Ubah Data" />
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
