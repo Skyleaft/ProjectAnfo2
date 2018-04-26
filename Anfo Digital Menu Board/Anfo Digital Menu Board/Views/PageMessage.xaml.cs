@@ -49,7 +49,7 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void kodeotomatis()
         {
-            k.sql = "select *from tb_message order by id_message asc";
+            k.sql = "select * from tb_message order by id_message asc";
             k.setdt();
             int cekbaris = k.dt.Rows.Count;
             String baru;
@@ -119,7 +119,6 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            bersih();
             showdata();
         }
 
@@ -133,12 +132,16 @@ namespace Anfo_Digital_Menu_Board.Views
                 k.sql = "select *from tb_message  where id_message = '" + index + "'";
                 k.setdt();
 
-                String idprod = k.dt.Rows[0][0].ToString();
+                String idmessage = k.dt.Rows[0][0].ToString();
 
-                var showdialog = new DialogMessage();
+                var showdialog = new DialogMessage(idmessage);
+
                 DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
 
             }
         }
     }
+
+   
+
 }

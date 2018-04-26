@@ -107,7 +107,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
 
             int harga = int.Parse(txt_harga.Text, System.Globalization.NumberStyles.Currency);
             var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
-
+            
             try
             {
                 

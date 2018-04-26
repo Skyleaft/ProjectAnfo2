@@ -78,7 +78,7 @@ namespace Anfo_Digital_Menu_Board.Views
                 }
                 else
                 {
-                    baru = "NL-" + tambah;
+                    baru = "MN-" + tambah;
                 }
             }
             txt_id.Text = baru;

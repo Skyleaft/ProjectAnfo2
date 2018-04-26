@@ -19,34 +19,67 @@
             TextOptions.TextFormattingMode="Ideal"
             TextOptions.TextRenderingMode="Auto"
             mc:Ignorable="d">
-    <Grid>
-        <Label Margin="10,15,0,0" FontSize="36">
-            <Label.Effect>
-                <DropShadowEffect
+
+    <materialDesign:DialogHost Identifier="MessageDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <materialDesign:DialogHost>
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        x:Name="Message"
+                        Grid.Row="0"
+                        Margin="0,6,0,0"
+                        FontSize="18">
+                        Yakin Hapus Data : ?
+                    </TextBlock>
+                    <Button
+                        x:Name="btn_yes"
+                        Grid.Row="1"
+                        Margin="16,16,16,0"
+                        HorizontalAlignment="Right"
+                        Click="btn_yes_Click"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Ya
+                    </Button>
+                    <Button
+                        Grid.Row="1"
+                        Margin="16,16,70,0"
+                        HorizontalAlignment="Right"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Tidak
+                    </Button>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10,15,0,0" FontSize="36">
+                    <Label.Effect>
+                        <DropShadowEffect
                     BlurRadius="10"
                     ShadowDepth="2"
                     Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" />
-            </Label.Effect>
-            Detail Message
-        </Label>
+                    </Label.Effect>
+                    Detail Message
+                </Label>
 
-        <StackPanel VerticalAlignment="Top" Margin="460,10,0,0">
-            <materialDesign:PackIcon
-                    Width="25"
-                    Height="25"
-                    Margin="4,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_id}"
-                    Kind="Close" />    
-        </StackPanel>
-        
-        <StackPanel VerticalAlignment="Top" Margin="0,120,0,0">
-            <StackPanel
+                <StackPanel VerticalAlignment="Top" Margin="0,120,0,0">
+                    <StackPanel
                 Margin="15,0,15,15"
                 VerticalAlignment="Top"
                 Orientation="Horizontal">
-                <materialDesign:PackIcon
+                        <materialDesign:PackIcon
                     Width="25"
                     Height="25"
                     Margin="4,0"
@@ -54,20 +87,20 @@
                     VerticalAlignment="Stretch"
                     Foreground="{Binding BorderBrush, ElementName=txt_id}"
                     Kind="MessageText" />
-                <TextBox
+                        <TextBox
                     x:Name="txt_id"
                     Width="300"
                     Margin="5,0,0,0"
                     materialDesign:HintAssist.Hint="ID Message"
                     FontSize="16"
                     MaxLength="15" />
-            </StackPanel>
+                    </StackPanel>
 
-            <StackPanel
+                    <StackPanel
                 Margin="15,0,15,15"
                 VerticalAlignment="Top"
                 Orientation="Horizontal">
-                <materialDesign:PackIcon
+                        <materialDesign:PackIcon
                     Width="25"
                     Height="25"
                     Margin="4,0"
@@ -75,7 +108,7 @@
                     VerticalAlignment="Stretch"
                     Foreground="{Binding BorderBrush, ElementName=txt_msg}"
                     Kind="MessageText" />
-                    <TextBox
+                        <TextBox
                         x:Name="txt_msg"
 	                    Height="60"
 	                    MaxWidth="300"
@@ -86,14 +119,14 @@
 	                    SpellCheck.IsEnabled="True"
 	                    TextWrapping="Wrap"
 	                    VerticalScrollBarVisibility="Auto">
-                    </TextBox>
-            </StackPanel>
+                        </TextBox>
+                    </StackPanel>
 
-            <StackPanel
+                    <StackPanel
                 Margin="15,0,15,15"
                 VerticalAlignment="Top"
                 Orientation="Horizontal">
-                <materialDesign:PackIcon
+                        <materialDesign:PackIcon
                     Width="25"
                     Height="25"
                     Margin="4,0"
@@ -101,47 +134,92 @@
                     VerticalAlignment="Stretch"
                     Foreground="{Binding BorderBrush, ElementName=txt_alert}"
                     Kind="AlertCircle" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBox
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox
                         x:Name="txt_alert"
                         Width="300"
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Alert"
                         FontSize="16"
                         MaxLength="15" />
-                </StackPanel>
-            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
 
-            <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
-                <StackPanel
-                Margin="0,10,10,10"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                    <Button
-                    x:Name="btn_batal"
-                    Width="100"
-                    Margin="0,0,5,0"
-                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                    Content="Batal"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    ToolTip="Batal" />
-                    <Button
-                    x:Name="btn_hapus"
-                    Width="100"
-                    Margin="0,0,5,0"
-                    Content="Hapus"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    ToolTip="Hapus Data" />
-                    <Button
-                    x:Name="btn_ubah"
-                    Width="100"
-                    Content="Ubah"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    ToolTip="Ubah Data" />
-                </StackPanel>
-            </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                        <StackPanel
+                        Margin="0,10,10,10"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
 
-        </StackPanel>
-        
-    </Grid>
+                            <Button
+                            x:Name="btn_hapus"
+                            Height="Auto"
+                            Margin="0,0,10,0"
+                            Click="btn_hapus_Click"
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Ubah Data">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial
+                                    Width="26"
+                                    Height="25"
+                                    Margin="-10,5,5,5"
+                                    Kind="Delete" />
+                                    <Label
+                                    Margin="0,0,-5,0"
+                                    Padding="5,5,5,0"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Bottom"
+                                    Foreground="{DynamicResource AccentSelectedColorBrush}">
+                                        Hapus
+                                    </Label>
+                                </StackPanel>
+
+                            </Button>
+                            <Button
+                            x:Name="btn_ubah"
+                            Height="Auto"
+                            Click="btn_ubah_Click"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Ubah Data">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconModern
+                                    Width="26"
+                                    Height="25"
+                                    Margin="-10,5,5,5"
+                                    Kind="EditBox" />
+                                    <Label
+                                    Margin="0,0,-5,0"
+                                    Padding="5,5,5,0"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Bottom"
+                                    Foreground="{DynamicResource AccentSelectedColorBrush}">
+                                        Ubah
+                                    </Label>
+                                </StackPanel>
+
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Top" Margin="0,10,10,0">
+                    <Button
+                        x:Name="btn_KELUAR"
+                        Height="Auto"
+                        Margin="0"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="Batal" HorizontalAlignment="Right" Width="60">
+                        <iconPacks:Material
+                            Width="27"
+                            Height="27"
+                            Kind="Close" />
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:DialogHost>
 </UserControl>
