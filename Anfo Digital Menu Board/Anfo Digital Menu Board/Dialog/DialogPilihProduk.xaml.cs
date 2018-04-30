@@ -20,9 +20,23 @@ namespace Anfo_Digital_Menu_Board.Dialog
     /// </summary>
     public partial class DialogPilihProduk : UserControl
     {
+        koneksi k = new koneksi();
+
+        private String alamat_foto;
+
         public DialogPilihProduk()
         {
             InitializeComponent();
+
+            showdata();
+        }
+
+        public void showdata()
+        {
+            k.sql = "select foto,nama,jenis,harga,id_produk from tb_produk";
+            k.setdt();
+            dg_produk.ItemsSource = k.dt.DefaultView;
+
         }
 
         private void dg_produk_SelectionChanged(object sender, SelectionChangedEventArgs e)

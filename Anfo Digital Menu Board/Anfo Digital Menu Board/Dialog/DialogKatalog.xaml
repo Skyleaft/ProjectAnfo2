@@ -96,8 +96,7 @@
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Nama Produk"
                         FontSize="16"
-                        MaxLength="50"
-                        TextChanged="txt_nama_TextChanged" />
+                        MaxLength="50" />
                 </StackPanel>
 
                 <StackPanel
