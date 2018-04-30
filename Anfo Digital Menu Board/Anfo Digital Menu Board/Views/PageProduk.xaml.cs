@@ -216,5 +216,10 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             showdata();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

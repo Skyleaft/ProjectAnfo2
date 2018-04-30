@@ -188,8 +188,8 @@
                         Style="{StaticResource MaterialDesignFlatButton}"
                         ToolTip="Batal">
                         <iconPacks:Material
-                            Width="27"
-                            Height="27"
+                            Width="24"
+                            Height="24"
                             Kind="Close" />
                     </Button>
                 </DockPanel>

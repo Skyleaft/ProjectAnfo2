@@ -187,63 +187,73 @@
 
         <!--  Panel Kanan  -->
         <StackPanel Grid.Column="1">
-
-            <StackPanel
-                Margin="0,10,0,0"
-                materialDesign:RippleAssist.IsCentered="True"
-                Orientation="Horizontal">
-                <materialDesign:ColorZone
-                    Margin="10,5,0,10"
-                    Padding="8,4,8,4"
-                    Panel.ZIndex="1"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                    CornerRadius="2"
-                    Mode="Standard">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource MaterialDesignToolButton}">
-                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
-                        </Button>
-                        <TextBox
-                            Grid.Column="1"
-                            MinWidth="200"
-                            Margin="8,0,0,0"
-                            VerticalAlignment="Center"
-                            materialDesign:HintAssist.Hint="Cari data"
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0" />
-                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
-                            <materialDesign:PackIcon
-                                Margin="8,0,0,0"
-                                Kind="Microphone"
-                                Opacity=".56" />
-                        </Button>
-                    </Grid>
-                </materialDesign:ColorZone>
+            <DockPanel>
                 <StackPanel
-                    Margin="200,0,0,0"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    materialDesign:RippleAssist.IsCentered="True"
+                    Orientation="Horizontal">
+                    <materialDesign:ColorZone
+                        Margin="10,5,0,10"
+                        Padding="8,4,8,4"
+                        Panel.ZIndex="1"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                        CornerRadius="2"
+                        Mode="Standard">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                            </Button>
+                            <TextBox
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Cari data"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0"
+                                TextChanged="TextBox_TextChanged" />
+                            <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                    Margin="8,0,0,0"
+                                    Kind="Microphone"
+                                    Opacity=".56" />
+                            </Button>
+                        </Grid>
+                    </materialDesign:ColorZone>
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,0,10,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
+                    materialDesign:RippleAssist.IsCentered="True"
                     Orientation="Horizontal">
-                    <!--<TextBlock Margin="0,0,8,0" VerticalAlignment="Center">OS</TextBlock>-->
                     <materialDesign:PackIcon
                         Width="25"
                         Height="25"
                         Margin="4,0"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Stretch"
-                        Foreground="{Binding BorderBrush, ElementName=ganti}"
-                        Kind="Food" />
-                    <ComboBox Width="120" materialDesign:HintAssist.Hint="Jenis Produk">
+                        Foreground="{Binding BorderBrush, ElementName=cmb_kategori}"
+                        Kind="FoodVariant" />
+                    <ComboBox
+                        x:Name="cmb_kategori"
+                        Width="200"
+                        HorizontalAlignment="Right"
+                        materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding IsChecked, ElementName=DisplaySelectedItemCheckBox}"
+                        materialDesign:HintAssist.Hint="Kategori">
                         <ComboBoxItem Content="Makanan" />
                         <ComboBoxItem Content="Minuman" />
                     </ComboBox>
                 </StackPanel>
 
-            </StackPanel>
+            </DockPanel>
+
 
             <DataGrid
                 x:Name="dg_produk"
