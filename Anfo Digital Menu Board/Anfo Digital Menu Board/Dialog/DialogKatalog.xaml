@@ -42,8 +42,7 @@
                             materialDesign:HintAssist.Hint="ID Produk"
                             FontSize="16"
                             IsReadOnly="True"
-                            MaxLength="15"
-                            TextChanged="txt_idprod_TextChanged" />
+                            MaxLength="15" />
                     </StackPanel>
 
                     <StackPanel
@@ -96,8 +95,7 @@
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Nama Produk"
                         FontSize="16"
-                        MaxLength="50"
-                        TextChanged="txt_nama_TextChanged" />
+                        MaxLength="50" />
                 </StackPanel>
 
                 <StackPanel
@@ -118,9 +116,7 @@
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Harga"
                         FontSize="16"
-                        MaxLength="13"
-                        PreviewTextInput="txt_harga_PreviewTextInput"
-                        TextChanged="txt_harga_TextChanged" />
+                        MaxLength="13" />
                 </StackPanel>
 
                 <StackPanel
