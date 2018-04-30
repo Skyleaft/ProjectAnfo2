@@ -187,7 +187,6 @@
 
         <!--  Panel Kanan  -->
         <StackPanel Grid.Column="1">
-
             <DataGrid
                 x:Name="dg_produk"
                 MaxHeight="720"
