@@ -210,13 +210,14 @@
                                 <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
                             </Button>
                             <TextBox
+                                x:Name="txt_cari"
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Cari data"
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
-                                TextChanged="TextBox_TextChanged" />
+                                TextChanged="txt_cari_TextChanged" />
                             <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                                 <materialDesign:PackIcon
                                     Margin="8,0,0,0"
@@ -227,6 +228,15 @@
                     </materialDesign:ColorZone>
                 </StackPanel>
 
+                <Button
+                    x:Name="btn_refresh"
+                    Margin="0,0,10,0"
+                    Click="btn_refresh_Click"
+                    DockPanel.Dock="Right"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <iconPacks:Material Kind="Refresh" />
+
+                </Button>
                 <StackPanel
                     Margin="0,0,10,0"
                     HorizontalAlignment="Right"
@@ -246,7 +256,8 @@
                         Width="200"
                         HorizontalAlignment="Right"
                         materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding IsChecked, ElementName=DisplaySelectedItemCheckBox}"
-                        materialDesign:HintAssist.Hint="Kategori">
+                        materialDesign:HintAssist.Hint="Kategori"
+                        SelectionChanged="cmb_kategori_SelectionChanged">
                         <ComboBoxItem Content="Makanan" />
                         <ComboBoxItem Content="Minuman" />
                     </ComboBox>

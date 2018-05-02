@@ -48,7 +48,7 @@ namespace Anfo_Digital_Menu_Board.Views
        
         public void showdata()
         {
-            k.sql = "select foto,nama,jenis,harga,id_produk from tb_produk";
+            k.sql = "select * from tb_produk";
             k.setdt();
             dg_produk.ItemsSource = k.dt.DefaultView;
 
@@ -199,7 +199,7 @@ namespace Anfo_Digital_Menu_Board.Views
             if (dg_produk.SelectedIndex >= 0)
             {
                 DataRowView dataRow = (DataRowView)dg_produk.SelectedItem;
-                string index = dataRow.Row[4].ToString();
+                string index = dataRow.Row[0].ToString();
 
                 k.sql = "select *from tb_produk  where id_produk = '" + index + "'";
                 k.setdt();
@@ -215,11 +215,33 @@ namespace Anfo_Digital_Menu_Board.Views
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             showdata();
+            cmb_kategori.SelectedIndex = -1;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            k.sql = "select * from tb_produk where nama like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            dg_produk.ItemsSource = k.dt.DefaultView;
+        }
+
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            cmb_kategori.SelectedIndex = -1;
+            txt_cari.Text = "";
+            showdata();
+        }
+
+        private void cmb_kategori_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_kategori.SelectedIndex != -1)
+            {
+                ComboBoxItem typeItem = (ComboBoxItem)cmb_kategori.SelectedItem;
+                k.sql = "select * from tb_produk where jenis='" + typeItem.Content.ToString() + "'";
+                k.setdt();
+                dg_produk.ItemsSource = k.dt.DefaultView;
+            }
         }
     }
 }
