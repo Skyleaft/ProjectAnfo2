@@ -46,10 +46,5 @@ namespace Anfo_Digital_Menu_Board.Dialog
         {
             
         }
-
-        private void txt_idprod_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

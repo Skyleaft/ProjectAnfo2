@@ -140,6 +140,13 @@ namespace Anfo_Digital_Menu_Board.Views
 
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            k.sql = "select * from tb_message where id_message like'%" + txt_cari.Text + "%' or message like'%" + txt_cari.Text + "%' or alert like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            dg_message.ItemsSource = k.dt.DefaultView;
+        }
     }
 
    
