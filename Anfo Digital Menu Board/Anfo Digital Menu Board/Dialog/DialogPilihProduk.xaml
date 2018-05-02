@@ -81,11 +81,11 @@
                     Style="{StaticResource MaterialDesignFlatButton}"
                     ToolTip="Resource name: MaterialDesignRaisedButton" />
                 <Button
-                    x:Name="btn_simpan"
+                    x:Name="btn_pilih"
                     Width="100"
-                    Content="Tambah"
+                    Content="Pilih"
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" />
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Click="btn_pilih_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>

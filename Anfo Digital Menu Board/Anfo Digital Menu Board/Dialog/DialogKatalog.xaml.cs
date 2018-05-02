@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace Anfo_Digital_Menu_Board.Dialog
         {
             InitializeComponent();
         }
+        koneksi k = new koneksi();
+        string _idprod;
 
         private void txt_harga_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -39,12 +42,20 @@ namespace Anfo_Digital_Menu_Board.Dialog
         private void btn_pilih_Click(object sender, RoutedEventArgs e)
         {
             var showdialog = new DialogPilihProduk();
+            showdialog.Check += value => _idprod = value;
             DialogHost.Show(showdialog, "KatalogDialog", ClosingEventHandler);
         }
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            
+            k.sql = "select *from tb_produk where id_produk = '" + _idprod + "'";
+            k.setdt();
+            foreach (DataRow baris in k.dt.Rows)
+            {
+                txt_idprod.Text = baris[0].ToString();
+                txt_nama.Text = baris[1].ToString();
+                txt_harga.Text = baris[3].ToString();
+            }
         }
 
         private void txt_idprod_TextChanged(object sender, TextChangedEventArgs e)
