@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,10 @@ namespace Anfo_Digital_Menu_Board.Dialog
         public DialogKatalog()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+
         koneksi k = new koneksi();
         string _idprod;
 
@@ -54,13 +58,56 @@ namespace Anfo_Digital_Menu_Board.Dialog
             {
                 txt_idprod.Text = baris[0].ToString();
                 txt_nama.Text = baris[1].ToString();
-                txt_harga.Text = baris[3].ToString();
+
+                txt_harga.Text = Convert.ToDecimal(baris[3].ToString()).ToString("c");
             }
         }
 
         private void txt_idprod_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void txt_diskon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txt_diskon.Text != "")
+            {
+                int val = 0;
+                bool res = Int32.TryParse(txt_diskon.Text, out val);
+                if (res == true && val > -1 && val < 101)
+                {
+                    // add record
+                    double hdiskon;
+                    int harga = int.Parse(txt_harga.Text, NumberStyles.Currency);
+                    double diskon = double.Parse(txt_diskon.Text);
+
+                    hdiskon = harga * (diskon / 100);
+                    double hargasetelah = harga - hdiskon;
+                    lb_diskon.Content = Convert.ToDecimal(hargasetelah.ToString()).ToString("c");
+                }
+                else
+                {
+                    txt_diskon.Text = "";
+                    lb_diskon.Content = "Rp.0";
+                }
+
+                
+            }
+            else
+            {
+                lb_diskon.Content = "Rp.0";
+
+            }
+        }
+
+        private void txt_diskon_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1)) e.Handled = true;
+        }
+
+        private void btn_simpan_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Dialog"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sysglb="clr-namespace:System.Globalization;assembly=mscorlib"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     d:DesignHeight="400"
     d:DesignWidth="600"
@@ -18,6 +19,8 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
+
+
     <materialDesign:DialogHost Identifier="KatalogDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
 
         <Grid>
@@ -119,31 +122,40 @@
                         MaxLength="13" />
                 </StackPanel>
 
-                <StackPanel
-                    Margin="15,0,15,15"
-                    VerticalAlignment="Top"
-                    Orientation="Horizontal">
-                    <iconPacks:PackIconModern
-                        Width="25"
-                        Height="25"
-                        Margin="4,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Stretch"
-                        Foreground="{Binding BorderBrush, ElementName=txt_harga}"
-                        Kind="Money" />
-                    <TextBox
-                        x:Name="txt_diskon"
-                        MinWidth="50"
-                        Margin="5,0,0,0"
-                        materialDesign:HintAssist.Hint="Diskon"
-                        FontSize="16"
-                        MaxLength="13" />
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconModern
+                            Width="25"
+                            Height="25"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_harga}"
+                            Kind="Money" />
+                        <TextBox
+                            x:Name="txt_diskon"
+                            MinWidth="50"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Diskon"
+                            FontSize="16"
+                            MaxLength="3"
+                            PreviewTextInput="txt_diskon_PreviewTextInput"
+                            TextChanged="txt_diskon_TextChanged" />
+                    </StackPanel>
+                    <Label Margin="30,0,0,0" FontSize="16">Harga Diskon :</Label>
+                    <Label x:Name="lb_diskon" FontSize="36">Rp.0</Label>
                 </StackPanel>
+
                 <Button
                     x:Name="btn_simpan"
                     Width="100"
                     Margin="100,10,0,10"
                     HorizontalAlignment="Left"
+                    Click="btn_simpan_Click"
                     Content="Simpan"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="Tambah Produk" />
