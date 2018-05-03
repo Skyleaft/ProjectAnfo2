@@ -24,7 +24,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
     {
         koneksi k = new koneksi();
 
-        private String alamat_foto;
+        //private String alamat_foto;
 
         public DialogPilihProduk()
         {

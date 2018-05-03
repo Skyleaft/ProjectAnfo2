@@ -146,13 +146,15 @@
                             <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
                         </Button>
                         <TextBox
+                            x:Name="txt_cari"
                             Grid.Column="1"
                             MinWidth="200"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
                             materialDesign:HintAssist.Hint="Cari data"
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0" />
+                            BorderThickness="0"
+                            TextChanged="TextBox_TextChanged" />
                         <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                             <materialDesign:PackIcon
                                 Margin="8,0,0,0"
