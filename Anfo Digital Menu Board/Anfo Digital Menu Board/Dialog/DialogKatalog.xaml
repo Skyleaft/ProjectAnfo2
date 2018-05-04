@@ -136,7 +136,8 @@
                         Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="Diskon"
                         FontSize="16"
-                        MaxLength="13" />
+                        MaxLength="13"
+                        TextChanged="txt_diskon_TextChanged" />
                 </StackPanel>
                 <Button
                     x:Name="btn_simpan"

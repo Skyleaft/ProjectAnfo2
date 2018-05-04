@@ -57,5 +57,9 @@ namespace Anfo_Digital_Menu_Board.Dialog
                 txt_harga.Text = baris[3].ToString();
             }
         }
+
+        private void txt_diskon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
     }
 }
