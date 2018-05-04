@@ -107,7 +107,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
