@@ -73,7 +73,6 @@
                     Margin="5,0,0,0"
                     materialDesign:HintAssist.Hint="Deskripsi Katalog"
                     FontSize="16"
-                    IsReadOnly="True"
                     MaxLength="15" />
             </StackPanel>
 
@@ -99,10 +98,13 @@
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="Simpan" />
 
+
+
             </StackPanel>
+
         </StackPanel>
 
-        <StackPanel Grid.Column="1">
+        <DockPanel Grid.Column="1">
             <Button
                 x:Name="btn_tambah"
                 Width="100"
@@ -110,56 +112,60 @@
                 HorizontalAlignment="Left"
                 Click="btn_tambah_Click"
                 Content="Tambah"
+                DockPanel.Dock="Top"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 ToolTip="Tambah Produk" />
-            <DataGrid
-                x:Name="dg_produk"
-                MaxHeight="720"
-                Margin="0"
-                materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
-                AutoGenerateColumns="False"
-                CanUserAddRows="False"
-                CanUserResizeRows="False"
-                CanUserSortColumns="True"
-                IsReadOnly="True"
-                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                SelectionChanged="dg_produk_SelectionChanged">
-                <DataGrid.Resources>
-                    <Style x:Key="dataGridStyle" TargetType="DataGrid">
-                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.Resources>
+            <DockPanel DockPanel.Dock="Top">
+                <DataGrid
+                    x:Name="dg_produk"
+                    MinHeight="310"
+                    Margin="0"
+                    materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                    materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    CanUserResizeRows="False"
+                    CanUserSortColumns="True"
+                    IsReadOnly="True"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    SelectionChanged="dg_produk_SelectionChanged">
+                    <DataGrid.Resources>
+                        <Style x:Key="dataGridStyle" TargetType="DataGrid">
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Resources>
 
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn
-                        Width="150"
-                        Header="Foto"
-                        IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding foto}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding nama}" Header="Nama Produk" />
-                    <DataGridTextColumn Binding="{Binding harga}" Header="Harga normal" />
-                    <DataGridTextColumn Binding="{Binding harga}" Header="Harga Diskon" />
-                </DataGrid.Columns>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            Width="150"
+                            Header="Foto"
+                            IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding foto}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Binding="{Binding nama}" Header="Nama Produk" />
+                        <DataGridTextColumn Binding="{Binding harga}" Header="Harga normal" />
+                        <DataGridTextColumn Binding="{Binding harga_diskon}" Header="Harga Diskon" />
+                    </DataGrid.Columns>
 
 
-            </DataGrid>
+                </DataGrid>
+            </DockPanel>
 
-        </StackPanel>
+
+        </DockPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
             <DataGrid
-                x:Name="dg_message"
+                x:Name="dg_katalog"
                 Margin="0"
                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"

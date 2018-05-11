@@ -31,18 +31,27 @@ namespace Anfo_Digital_Menu_Board.Views
             kodeotomatis();
         }
 
-        public void showdataprod()
+        private void showdataprod()
         {
-            //k.sql = "select foto,nama,jenis,harga,id_produk from tb_produk";
-            //k.setdt();
-            //dg_produk.ItemsSource = k.dt.DefaultView;
+            k.sql = "select * from tb_detail_katalog inner join tb_produk on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_detail_katalog.id_katalog = '"+txt_id.Text+"'";
+            k.setdt();
+            dg_produk.ItemsSource = k.dt.DefaultView;
 
         }
 
-        public void bersih()
+        private void showdataktlog()
+        {
+            k.sql = "select * from tb_katalog";
+            k.setdt();
+            dg_katalog.ItemsSource = k.dt.DefaultView;
+
+        }
+
+        private void bersih()
         {
             txt_deskripsi.Text = "";
             txt_id.Text = "";
+            dg_produk.Items.Clear();
         }
 
         private void kodeotomatis()
@@ -54,22 +63,22 @@ namespace Anfo_Digital_Menu_Board.Views
             int tambah;
             if (cekbaris == 0)
             {
-                baru = "KT-001";
+                baru = "KL-001";
             }
             else
             {
                 tambah = Convert.ToInt32(k.dt.Rows[cekbaris - 1][0].ToString().Split('-')[1]) + 1;
                 if (tambah < 10)
                 {
-                    baru = "KT-00" + tambah;
+                    baru = "KL-00" + tambah;
                 }
                 else if (tambah < 100)
                 {
-                    baru = "KT-0" + tambah;
+                    baru = "KL-0" + tambah;
                 }
                 else
                 {
-                    baru = "KT-" + tambah;
+                    baru = "KL-" + tambah;
                 }
             }
             txt_id.Text = baru;
@@ -103,7 +112,9 @@ namespace Anfo_Digital_Menu_Board.Views
                         Message = { Text = "Data Berhasil Tersimpan" }
                     };
                     DialogHost.Show(sampleMessageDialog, "MainDialog");
+                    showdataktlog();
                     bersih();
+
                     kodeotomatis();
                 }
                 catch (Exception ex)
@@ -115,7 +126,7 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void btn_tambah_Click(object sender, RoutedEventArgs e)
         {
-            var showdialog = new DialogKatalog();
+            var showdialog = new DialogKatalog(txt_id.Text);
             DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
         }
 

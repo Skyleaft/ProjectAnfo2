@@ -24,10 +24,14 @@ namespace Anfo_Digital_Menu_Board.Dialog
     /// </summary>
     public partial class DialogKatalog : UserControl
     {
-        public DialogKatalog()
+        public string idktlog;
+
+        public DialogKatalog(string _idktlog)
         {
             InitializeComponent();
             DataContext = this;
+
+            idktlog = _idktlog;
 
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("id-ID");
@@ -35,6 +39,8 @@ namespace Anfo_Digital_Menu_Board.Dialog
             txt_diskon.Text = Convert.ToDecimal(0).ToString("c");
             
         }
+
+        
 
 
         koneksi k = new koneksi();
@@ -140,7 +146,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
                 {
                     k.sql = "insert into tb_detail_katalog values(@id_katalog,@id_produk,@diskon,@harga_diskon)";
                     k.setparam();
-                    k.perintah.Parameters.AddWithValue("@id_katalog", txt_idprod.Text);
+                    k.perintah.Parameters.AddWithValue("@id_katalog", idktlog);
                     k.perintah.Parameters.AddWithValue("@id_produk", txt_idprod.Text);
                     k.perintah.Parameters.AddWithValue("@diskon", txt_diskon.Text);
                     k.perintah.Parameters.AddWithValue("@harga_diskon", harga);
@@ -148,13 +154,9 @@ namespace Anfo_Digital_Menu_Board.Dialog
                     k.perintah.ExecuteNonQuery();
                     k.close();
 
-                    var sampleMessageDialog = new SampleMessageDialog
-                    {
-                        Message = { Text = "Data Berhasil Tersimpan" }
-                    };
-                    DialogHost.Show(sampleMessageDialog, "MainDialog");
-                    bersih();
-                }
+                DialogHost.CloseDialogCommand.Execute(null, this);
+
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Data Gagal Didaftarkan " + ex);
