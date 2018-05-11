@@ -40,6 +40,14 @@ namespace Anfo_Digital_Menu_Board.Dialog
         koneksi k = new koneksi();
         string _idprod;
 
+        public void bersih() {
+            txt_diskon.Text = "";
+            txt_harga.Text = "";
+            txt_idprod.Text = "";
+            txt_nama.Text = "";
+            lb_diskon.Content = "Rp.0";
+        }
+
         private void txt_harga_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
 
@@ -139,12 +147,14 @@ namespace Anfo_Digital_Menu_Board.Dialog
 
                     k.perintah.ExecuteNonQuery();
                     k.close();
+
                     var sampleMessageDialog = new SampleMessageDialog
                     {
                         Message = { Text = "Data Berhasil Tersimpan" }
                     };
                     DialogHost.Show(sampleMessageDialog, "MainDialog");
-            }
+                    bersih();
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Data Gagal Didaftarkan " + ex);
