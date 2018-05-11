@@ -40,6 +40,14 @@ namespace Anfo_Digital_Menu_Board.Dialog
         koneksi k = new koneksi();
         string _idprod;
 
+        public void bersih() {
+            txt_diskon.Text = "";
+            txt_harga.Text = "";
+            txt_idprod.Text = "";
+            txt_nama.Text = "";
+            lb_diskon.Content = "Rp.0";
+        }
+
         private void txt_harga_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
 
@@ -114,7 +122,44 @@ namespace Anfo_Digital_Menu_Board.Dialog
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
-            
+            //if (txt_idprod.Text == "" || txt_nama.Text == "" || txt_harga.Text == "" || txt_diskon.Text == "")
+            //{
+            //var sampleMessageDialog = new SampleMessageDialog
+            //{
+            //    Message = { Text = "Lengkapi Dulu Data" }
+            //};
+            //DialogHost.Show(sampleMessageDialog, "MainDialog");
+            //}
+            //else
+            //{
+
+            String kont = lb_diskon.Content.ToString();
+            int harga = int.Parse(lb_diskon.Content.ToString(), System.Globalization.NumberStyles.Currency);
+
+            try
+                {
+                    k.sql = "insert into tb_detail_katalog values(@id_katalog,@id_produk,@diskon,@harga_diskon)";
+                    k.setparam();
+                    k.perintah.Parameters.AddWithValue("@id_katalog", txt_idprod.Text);
+                    k.perintah.Parameters.AddWithValue("@id_produk", txt_idprod.Text);
+                    k.perintah.Parameters.AddWithValue("@diskon", txt_diskon.Text);
+                    k.perintah.Parameters.AddWithValue("@harga_diskon", harga);
+
+                    k.perintah.ExecuteNonQuery();
+                    k.close();
+
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Data Berhasil Tersimpan" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
+                    bersih();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data Gagal Didaftarkan " + ex);
+                }
+            //}
         }
     }
 }
