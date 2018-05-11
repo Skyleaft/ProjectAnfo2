@@ -134,7 +134,7 @@
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
-                            Foreground="{Binding BorderBrush, ElementName=txt_harga}"
+                            Foreground="{Binding BorderBrush, ElementName=txt_diskon}"
                             Kind="Money" />
                         <TextBox
                             x:Name="txt_diskon"

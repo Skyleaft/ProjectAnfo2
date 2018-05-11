@@ -70,5 +70,12 @@ namespace Anfo_Digital_Menu_Board.Dialog
             }
             
         }
+
+        private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            k.sql = "select * from tb_produk where nama like'%" + txt_cari.Text + "%'";
+            k.setdt();
+            dg_produk.ItemsSource = k.dt.DefaultView;
+        }
     }
 }
