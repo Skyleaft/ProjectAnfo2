@@ -16,9 +16,10 @@ namespace Anfo_Digital_Menu_Board
         public DataTable dt;
         public DataSet ds;
         //192.168.1.112
-        public String db = @"Data Source=192.168.1.114,1433;
-                            Network Library=DBMSSOCN;Initial Catalog=db_dmb;
-                            User ID=subhan;Password=12345678";
+        //public String db = @"Data Source=192.168.1.109,1433;
+        //                    Network Library=DBMSSOCN;Initial Catalog=db_dmb;
+        //                    User ID=Subhan;Password=12345678";
+        public String db = @"server=SUBHAN\SQLEXPRESS; database=db_dmb; Trusted_Connection=true";
         public String sql;
 
         public void setdt()

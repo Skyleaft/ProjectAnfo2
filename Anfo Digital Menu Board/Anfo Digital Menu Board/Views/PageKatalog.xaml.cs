@@ -1,4 +1,5 @@
 ﻿using Anfo_Digital_Menu_Board.Dialog;
+using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace Anfo_Digital_Menu_Board.Views
         public PageKatalog()
         {
             InitializeComponent();
+            kodeotomatis();
         }
 
         public void showdataprod()
@@ -37,14 +39,78 @@ namespace Anfo_Digital_Menu_Board.Views
 
         }
 
+        public void bersih()
+        {
+            txt_deskripsi.Text = "";
+            txt_id.Text = "";
+        }
+
+        private void kodeotomatis()
+        {
+            k.sql = "select * from tb_katalog order by id_katalog asc";
+            k.setdt();
+            int cekbaris = k.dt.Rows.Count;
+            String baru;
+            int tambah;
+            if (cekbaris == 0)
+            {
+                baru = "KT-001";
+            }
+            else
+            {
+                tambah = Convert.ToInt32(k.dt.Rows[cekbaris - 1][0].ToString().Split('-')[1]) + 1;
+                if (tambah < 10)
+                {
+                    baru = "KT-00" + tambah;
+                }
+                else if (tambah < 100)
+                {
+                    baru = "KT-0" + tambah;
+                }
+                else
+                {
+                    baru = "KT-" + tambah;
+                }
+            }
+            txt_id.Text = baru;
+        }
+
         private void btn_batal_Click(object sender, RoutedEventArgs e)
         {
-
+            bersih();
+            kodeotomatis();
         }
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
         {
+            if (txt_id.Text == "" || txt_deskripsi.Text == "")
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Lengkapi Dulu Data" }
+                };
+                DialogHost.Show(sampleMessageDialog, "MainDialog");
+            }
+            else
+            {
+                try
+                {
+                    k.sql = "insert into tb_katalog select '" + txt_id.Text + "','" + txt_deskripsi.Text + "'";
+                    k.setdt();
 
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Data Berhasil Tersimpan" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
+                    bersih();
+                    kodeotomatis();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data Gagal Didaftarkan " + ex);
+                }
+            }
         }
 
         private void btn_tambah_Click(object sender, RoutedEventArgs e)
