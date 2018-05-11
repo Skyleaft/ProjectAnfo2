@@ -139,12 +139,11 @@ namespace Anfo_Digital_Menu_Board.Dialog
 
                     k.perintah.ExecuteNonQuery();
                     k.close();
-
-                var sampleMessageDialog = new SampleMessageDialog
-                {
-                    Message = { Text = "Data Berhasil Tersimpan" }
-                };
-                DialogHost.Show(sampleMessageDialog, "MainDialog");
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Data Berhasil Tersimpan" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
             }
                 catch (Exception ex)
                 {
