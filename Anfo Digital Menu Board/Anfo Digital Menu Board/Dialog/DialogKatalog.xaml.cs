@@ -29,6 +29,9 @@ namespace Anfo_Digital_Menu_Board.Dialog
             InitializeComponent();
             DataContext = this;
 
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("id-ID");
+
             txt_diskon.Text = Convert.ToDecimal(0).ToString("c");
             
         }
@@ -121,18 +124,28 @@ namespace Anfo_Digital_Menu_Board.Dialog
             //}
             //else
             //{
-            
+
+            String kont = lb_diskon.Content.ToString();
+            int harga = int.Parse(lb_diskon.Content.ToString(), System.Globalization.NumberStyles.Currency);
+
             try
                 {
-                    k.sql = "insert into tb_detail_katalog select '" + txt_idprod.Text + "','" + txt_idprod.Text + "','" + txt_diskon.Text + "','" + lb_diskon.Content + "' ";
-                    k.setdt();
+                    k.sql = "insert into tb_detail_katalog values(@id_katalog,@id_produk,@diskon,@harga_diskon)";
+                    k.setparam();
+                    k.perintah.Parameters.AddWithValue("@id_katalog", txt_idprod.Text);
+                    k.perintah.Parameters.AddWithValue("@id_produk", txt_idprod.Text);
+                    k.perintah.Parameters.AddWithValue("@diskon", txt_diskon.Text);
+                    k.perintah.Parameters.AddWithValue("@harga_diskon", harga);
 
-                    var sampleMessageDialog = new SampleMessageDialog
-                    {
-                        Message = { Text = "Data Berhasil Tersimpan" }
-                    };
-                    DialogHost.Show(sampleMessageDialog, "MainDialog");
-                }
+                    k.perintah.ExecuteNonQuery();
+                    k.close();
+
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Data Berhasil Tersimpan" }
+                };
+                DialogHost.Show(sampleMessageDialog, "MainDialog");
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Data Gagal Didaftarkan " + ex);
