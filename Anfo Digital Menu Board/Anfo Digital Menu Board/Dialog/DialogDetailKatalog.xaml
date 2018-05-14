@@ -1,10 +1,10 @@
 ﻿<UserControl
-    x:Class="Anfo_Digital_Menu_Board.Dialog.DialogDetailKatalog"
+    x:Class="Anfo_Digital_Menu_Board.DialogPilihProduk.DialogDetailKatalog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.Dialog"
+    xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.DialogPilihProduk"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sysglb="clr-namespace:System.Globalization;assembly=mscorlib"
@@ -19,5 +19,230 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
-    <Grid />
+
+    <materialDesign:DialogHost Identifier="KatalogDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <materialDesign:DialogHost>
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        x:Name="Message"
+                        Grid.Row="0"
+                        Margin="0,6,0,0"
+                        FontSize="18">
+                        Yakin Hapus Data : ?
+                    </TextBlock>
+                    <Button
+                        x:Name="btn_yes"
+                        Grid.Row="1"
+                        Margin="16,16,16,0"
+                        HorizontalAlignment="Right"
+                        Click="btn_yes_Click"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Ya
+                    </Button>
+                    <Button
+                        Grid.Row="1"
+                        Margin="16,16,70,0"
+                        HorizontalAlignment="Right"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        IsDefault="True"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                        Tidak
+                    </Button>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid>
+                <StackPanel>
+                    <DockPanel>
+                        <StackPanel
+                            Margin="15,15,0,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_idprod}"
+                                Kind="Food" />
+                            <TextBox
+                                x:Name="txt_idprod"
+                                Width="200"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="ID Produk"
+                                FontSize="16"
+                                IsReadOnly="True"
+                                MaxLength="15" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="15,5,5,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Button
+                                x:Name="btn_pilih"
+                                Width="100"
+                                Content="Pilih"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                ToolTip="Pilih Produk" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="0,5,5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
+                            <Button
+                                x:Name="btn_batal"
+                                Height="Auto"
+                                HorizontalAlignment="Right"
+                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                Content="{iconPacks:Material Close,
+                                                             Height=24,
+                                                             Width=24}"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                ToolTip="Batal" />
+                        </StackPanel>
+
+                    </DockPanel>
+
+
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="25"
+                            Height="25"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                            Kind="Food" />
+                        <TextBox
+                            x:Name="txt_nama"
+                            Width="200"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Nama Produk"
+                            FontSize="16"
+                            MaxLength="50" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Margin="15,0,15,15"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <iconPacks:PackIconModern
+                            Width="25"
+                            Height="25"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=txt_harga}"
+                            Kind="Money" />
+                        <TextBox
+                            x:Name="txt_harga"
+                            MinWidth="50"
+                            Margin="5,0,0,0"
+                            materialDesign:HintAssist.Hint="Harga"
+                            FontSize="16"
+                            MaxLength="13" />
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel
+                            Margin="15,0,15,15"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <iconPacks:PackIconModern
+                                Width="25"
+                                Height="25"
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Stretch"
+                                Foreground="{Binding BorderBrush, ElementName=txt_diskon}"
+                                Kind="Money" />
+                            <TextBox
+                                x:Name="txt_diskon"
+                                MinWidth="50"
+                                Margin="5,0,0,0"
+                                materialDesign:HintAssist.Hint="Diskon"
+                                FontSize="16"
+                                MaxLength="3"
+                                PreviewTextInput="txt_diskon_PreviewTextInput"
+                                TextChanged="txt_diskon_TextChanged" />
+                        </StackPanel>
+                        <Label Margin="30,0,0,0" FontSize="16">Harga Diskon :</Label>
+                        <Label x:Name="lb_diskon" FontSize="36">Rp.0</Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                        <StackPanel
+                            Margin="0,10,10,10"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                x:Name="btn_hapus"
+                                Height="Auto"
+                                Margin="0,0,10,0"
+                                Click="btn_hapus_Click"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                ToolTip="Hapus Data">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial
+                                        Width="26"
+                                        Height="25"
+                                        Margin="-10,5,5,5"
+                                        Kind="Delete" />
+                                    <Label
+                                        Margin="0,0,-5,0"
+                                        Padding="5,5,5,0"
+                                        VerticalAlignment="Center"
+                                        VerticalContentAlignment="Bottom"
+                                        Foreground="{DynamicResource AccentSelectedColorBrush}">
+                                        Hapus
+                                    </Label>
+                                </StackPanel>
+
+                            </Button>
+                            <Button
+                                x:Name="btn_ubah"
+                                Height="Auto"
+                                Click="btn_ubah_Click"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                ToolTip="Ubah Data">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconModern
+                                        Width="26"
+                                        Height="25"
+                                        Margin="-10,5,5,5"
+                                        Kind="EditBox" />
+                                    <Label
+                                        Margin="0,0,-5,0"
+                                        Padding="5,5,5,0"
+                                        VerticalAlignment="Center"
+                                        VerticalContentAlignment="Bottom"
+                                        Foreground="{DynamicResource AccentSelectedColorBrush}">
+                                        Ubah
+                                    </Label>
+                                </StackPanel>
+
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:DialogHost>
 </UserControl>

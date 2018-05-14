@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board.Dialog
+namespace Anfo_Digital_Menu_Board.DialogPilihProduk
 {
     /// <summary>
     /// Interaction logic for DialogKatalog.xaml
@@ -80,7 +80,7 @@ namespace Anfo_Digital_Menu_Board.Dialog
                 txt_idprod.Text = baris[0].ToString();
                 txt_nama.Text = baris[1].ToString();
 
-                txt_harga.Text = Convert.ToDecimal(baris[3].ToString()).ToString("c");
+                txt_harga.Text = Convert.ToDecimal(baris[4].ToString()).ToString("c");
             }
         }
 

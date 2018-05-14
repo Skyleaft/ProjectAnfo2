@@ -1,4 +1,4 @@
-﻿using Anfo_Digital_Menu_Board.Dialog;
+﻿using Anfo_Digital_Menu_Board.DialogPilihProduk;
 using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
@@ -89,6 +89,7 @@ namespace Anfo_Digital_Menu_Board.Views
             txt_id.Text = "";
             txt_nama.Text = "";
             txt_harga.Text = "";
+            txt_detail.Text = "";
             txt_harga.Text = Convert.ToDecimal(0).ToString("c");
             rb_makanan.IsChecked = false;
             rb_minuman.IsChecked = false;
@@ -138,10 +139,11 @@ namespace Anfo_Digital_Menu_Board.Views
 
                     var img = ByteImageConverter.ConvertBitmapSourceToByteArray(img_foto.Source);
 
-                    k.sql = "insert into tb_produk values(@id,@nama,@jenis,@harga,@foto)";
+                    k.sql = "insert into tb_produk values(@id,@nama,@jenis,@detail,@harga,@foto)";
                     k.setparam();
                     k.perintah.Parameters.AddWithValue("@id",txt_id.Text);
                     k.perintah.Parameters.AddWithValue("@nama", txt_nama.Text);
+                    k.perintah.Parameters.AddWithValue("@detail", txt_detail.Text);
                     k.perintah.Parameters.AddWithValue("@jenis", jenis);
                     k.perintah.Parameters.AddWithValue("@harga", harga);
                     k.perintah.Parameters.AddWithValue("@foto", img);

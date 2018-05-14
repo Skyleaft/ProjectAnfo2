@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board.Dialog
+namespace Anfo_Digital_Menu_Board.DialogPilihProduk
 {
     /// <summary>
     /// Interaction logic for DialogMessage.xaml

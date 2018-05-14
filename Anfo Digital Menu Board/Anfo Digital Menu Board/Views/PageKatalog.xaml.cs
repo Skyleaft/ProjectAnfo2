@@ -1,4 +1,4 @@
-﻿using Anfo_Digital_Menu_Board.Dialog;
+﻿using Anfo_Digital_Menu_Board.DialogPilihProduk;
 using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -31,7 +31,9 @@ namespace Anfo_Digital_Menu_Board.Views
             InitializeComponent();
             kodeotomatis();
             showdataktlog();
-        }
+
+
+    }
 
         private void showdataprod()
         {
@@ -53,7 +55,8 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             txt_deskripsi.Text = "";
             txt_id.Text = "";
-            dg_produk.Items.Clear();
+            //dg_produk.Items.Clear();
+            dg_produk.ItemsSource = null;
         }
 
         private void kodeotomatis()
@@ -142,18 +145,48 @@ namespace Anfo_Digital_Menu_Board.Views
             if (dg_produk.SelectedIndex >= 0)
             {
                 DataRowView dataRow = (DataRowView)dg_produk.SelectedItem;
-                string index = dataRow.Row[0].ToString();
+                string index = dataRow.Row[5].ToString();
 
                 k.sql = "select * from tb_detail_katalog inner join tb_produk " +
                     "on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_produk.nama = '" + index + "'";
                 k.setdt();
 
-                String idprod = k.dt.Rows[0][5].ToString();
+                String iddetkatalog = k.dt.Rows[0][5].ToString();
 
-                var showdialog = new DialogDetailKatalog(idprod);
+                var showdialog = new DialogDetailKatalog(iddetkatalog);
                 DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
 
             }
+            ////if (dg_produk.SelectedIndex >= 0)
+            ////{
+            ////    k.sql = "select * from tb_detail_katalog inner join tb_produk " +
+            ////            "on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_detail_katalog.id_katalog = '" + txt_id.Text + "'";
+            ////    k.setdt();
+
+            ////    DataRowView dataRow = (DataRowView)dg_produk.SelectedItem;
+            ////    string index = dataRow.Row[1].ToString();
+
+            ////    try
+            ////    {
+            ////        k.sql = "delete from tb_detail_katalog where id_produk = '" + index + "'";
+            ////        k.setdt();
+            ////        showdataprod();
+
+            ////        var sampleMessageDialog = new SampleMessageDialog
+            ////        {
+            ////            Message = { Text = "Data Berhasil Diubah" }
+            ////        };
+            ////        DialogHost.Show(sampleMessageDialog, "MainDialog");
+            ////    }
+            ////    catch (Exception ex)
+            ////    {
+            ////        MessageBox.Show("error " + ex.ToString());
+
+            ////    }
+
+        //}
+                
+
         }
 
         private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)

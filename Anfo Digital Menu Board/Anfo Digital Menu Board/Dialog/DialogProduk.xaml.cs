@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Anfo_Digital_Menu_Board.Dialog
+namespace Anfo_Digital_Menu_Board.DialogPilihProduk
 {
     /// <summary>
     /// Interaction logic for DialogProduk.xaml
@@ -47,9 +47,10 @@ namespace Anfo_Digital_Menu_Board.Dialog
                 {
                     rb_minuman.IsChecked = true;
                 }
-                txt_harga.Text = Convert.ToDecimal(baris[3].ToString()).ToString("c");
+                txt_detail.Text = baris[3].ToString();
+                txt_harga.Text = Convert.ToDecimal(baris[4].ToString()).ToString("c");
 
-                tmpfoto = (Byte[])baris[4];
+                tmpfoto = (Byte[])baris[5];
                 img_foto.Source = ByteImageConverter.ByteToImage(tmpfoto);
             }
             
@@ -112,10 +113,11 @@ namespace Anfo_Digital_Menu_Board.Dialog
             {
                 
 
-                k.sql = "update tb_produk set nama=@nama,jenis=@jenis,harga=@harga,foto=@foto where id_produk = '"+txt_id.Text+"'";
+                k.sql = "update tb_produk set nama=@nama,jenis=@jenis,detail=@detail,harga=@harga,foto=@foto where id_produk = '"+txt_id.Text+"'";
                 k.setparam();
                 k.perintah.Parameters.AddWithValue("@nama", txt_nama.Text);
                 k.perintah.Parameters.AddWithValue("@jenis", jenis);
+                k.perintah.Parameters.AddWithValue("@detail", txt_detail.Text);
                 k.perintah.Parameters.AddWithValue("@harga", harga);
                 k.perintah.Parameters.AddWithValue("@foto", img);
 
