@@ -3,6 +3,7 @@ using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             InitializeComponent();
             kodeotomatis();
+            showdataktlog();
         }
 
         private void showdataprod()
@@ -137,7 +139,46 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void dg_produk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (dg_produk.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)dg_produk.SelectedItem;
+                string index = dataRow.Row[0].ToString();
 
+                k.sql = "select * from tb_detail_katalog inner join tb_produk " +
+                    "on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_produk.nama = '" + index + "'";
+                k.setdt();
+
+                String idprod = k.dt.Rows[0][5].ToString();
+
+                var showdialog = new DialogDetailKatalog(idprod);
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+
+            }
+        }
+
+        private void txt_cari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            k.sql = "select * from tb_katalog where deskripsi like'%" + txt_cari.Text + "%' or id_katalog like'%" + txt_cari.Text + "%' ";
+            k.setdt();
+            dg_katalog.ItemsSource = k.dt.DefaultView;
+        }
+
+        private void dg_katalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dg_katalog.SelectedIndex >= 0)
+            {
+                DataRowView dataRow = (DataRowView)dg_katalog.SelectedItem;
+                string index = dataRow.Row[0].ToString();
+
+                k.sql = "select *from tb_katalog  where id_katalog = '" + index + "'";
+                k.setdt();
+
+                txt_id.Text = k.dt.Rows[0][0].ToString();
+                txt_deskripsi.Text = k.dt.Rows[0][1].ToString();
+
+                showdataprod();
+
+            }
         }
     }
 }

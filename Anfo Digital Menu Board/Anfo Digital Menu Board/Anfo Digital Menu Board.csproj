@@ -84,6 +84,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ByteImageConverter.cs" />
+    <Compile Include="Dialog\DialogDetailKatalog.xaml.cs">
+      <DependentUpon>DialogDetailKatalog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DialogKatalog.xaml.cs">
       <DependentUpon>DialogKatalog.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
     <Compile Include="Views\PageProduk.xaml.cs">
       <DependentUpon>PageProduk.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialog\DialogDetailKatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialog\DialogKatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

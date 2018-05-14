@@ -102,6 +102,8 @@
 
             </StackPanel>
 
+
+
         </StackPanel>
 
         <DockPanel Grid.Column="1">
@@ -116,54 +118,93 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 ToolTip="Tambah Produk" />
             <DockPanel DockPanel.Dock="Top">
-                <DataGrid
-                    x:Name="dg_produk"
-                    MinHeight="310"
-                    Margin="0"
-                    materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                    materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserResizeRows="False"
-                    CanUserSortColumns="True"
-                    IsReadOnly="True"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    SelectionChanged="dg_produk_SelectionChanged">
-                    <DataGrid.Resources>
-                        <Style x:Key="dataGridStyle" TargetType="DataGrid">
-                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.Resources>
+                <StackPanel>
+                    <DataGrid
+                        x:Name="dg_produk"
+                        MinHeight="310"
+                        Margin="0"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserResizeRows="False"
+                        CanUserSortColumns="True"
+                        IsReadOnly="True"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        SelectionChanged="dg_produk_SelectionChanged">
+                        <DataGrid.Resources>
+                            <Style x:Key="dataGridStyle" TargetType="DataGrid">
+                                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
 
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn
-                            Width="150"
-                            Header="Foto"
-                            IsReadOnly="True">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding foto}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Binding="{Binding nama}" Header="Nama Produk" />
-                        <DataGridTextColumn Binding="{Binding harga}" Header="Harga normal" />
-                        <DataGridTextColumn Binding="{Binding harga_diskon}" Header="Harga Diskon" />
-                    </DataGrid.Columns>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn
+                                Width="150"
+                                Header="Foto"
+                                IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding foto}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding nama}" Header="Nama Produk" />
+                            <DataGridTextColumn Binding="{Binding harga}" Header="Harga normal" />
+                            <DataGridTextColumn Binding="{Binding harga_diskon}" Header="Harga Diskon" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
-                </DataGrid>
+
+                </StackPanel>
             </DockPanel>
 
 
         </DockPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <materialDesign:ColorZone
+                Margin="10,10,20,10"
+                Padding="8,4,8,4"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Panel.ZIndex="1"
+                materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                CornerRadius="2"
+                Mode="Standard">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                    </Button>
+                    <TextBox
+                        x:Name="txt_cari"
+                        Grid.Column="1"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Cari data"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                        BorderThickness="0"
+                        TextChanged="txt_cari_TextChanged" />
+                    <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon
+                            Margin="8,0,0,0"
+                            Kind="Microphone"
+                            Opacity=".56" />
+                    </Button>
+                </Grid>
+            </materialDesign:ColorZone>
+
             <DataGrid
                 x:Name="dg_katalog"
                 Margin="0"
@@ -173,7 +214,8 @@
                 CanUserAddRows="False"
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
-                IsReadOnly="True">
+                IsReadOnly="True"
+                SelectionChanged="dg_katalog_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="200"
