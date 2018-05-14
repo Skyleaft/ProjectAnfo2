@@ -66,7 +66,7 @@
         <DockPanel>
 
             <DataGrid
-                x:Name="dg_produk"
+                x:Name="dg_katalog"
                 Margin="0,70,0,0"
                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                 materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
@@ -75,8 +75,7 @@
                 CanUserResizeRows="False"
                 CanUserSortColumns="True"
                 IsReadOnly="True"
-                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                SelectionChanged="dg_produk_SelectionChanged">
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Resources>
                     <Style x:Key="dataGridStyle" TargetType="DataGrid">
                         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />

@@ -37,9 +37,9 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
                     <materialDesign:PackIcon
-                        Width="20"
-                        Height="20"
-                        Margin="2,0,8,0"
+                        Width="25"
+                        Height="25"
+                        Margin="4,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Foreground="{Binding BorderBrush, ElementName=txt_idktlog}"
@@ -47,15 +47,39 @@
                     <TextBox
                         x:Name="txt_idktlog"
                         Width="250"
+                        Margin="5,0,0,0"
                         materialDesign:HintAssist.Hint="ID Katalog"
                         FontSize="18"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <Button
                         x:Name="btn_cari"
                         Margin="10,0,0,0"
-                        Style="{StaticResource MaterialDesignFlatButton}" Click="btn_cari_Click">
+                        VerticalAlignment="Center"
+                        Click="btn_cari_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}">
                         Cari
                     </Button>
+
+                </StackPanel>
+                <StackPanel
+                    Margin="30,15,30,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="25"
+                        Height="25"
+                        Margin="4,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        Foreground="{Binding BorderBrush, ElementName=txt_deskripsi}"
+                        Kind="MessageText" />
+                    <TextBox
+                        x:Name="txt_deskripsi"
+                        Width="300"
+                        Margin="5,0,0,0"
+                        materialDesign:HintAssist.Hint="Deskripsi"
+                        FontSize="16"
+                        MaxLength="15" />
                 </StackPanel>
 
                 <Button
