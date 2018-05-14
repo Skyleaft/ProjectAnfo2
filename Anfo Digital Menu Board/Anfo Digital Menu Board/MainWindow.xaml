@@ -75,7 +75,7 @@
             <controls:HamburgerMenu
                 x:Name="HamburgerMenuControl"
                 DisplayMode="CompactInline"
-                IsPaneOpen="False"
+                IsPaneOpen="True"
                 ItemInvoked="HamburgerMenuControl_OnItemInvoked"
                 ItemTemplate="{StaticResource MenuItemTemplate}"
                 ItemsSource="{Binding Menu}"
