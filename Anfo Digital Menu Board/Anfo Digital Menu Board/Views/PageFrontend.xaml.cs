@@ -1,5 +1,6 @@
 ﻿using Anfo_Digital_Menu_Board.Dialog;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,6 +30,8 @@ namespace Anfo_Digital_Menu_Board.Views
         }
         koneksi k = new koneksi();
 
+        private String alamat_foto;
+
         private string _idktlog;
 
         private void btn_cari_Click(object sender, RoutedEventArgs e)
@@ -45,6 +48,32 @@ namespace Anfo_Digital_Menu_Board.Views
 
             txt_idktlog.Text = k.dt.Rows[0][0].ToString();
             txt_deskripsi.Text = k.dt.Rows[0][1].ToString();
+        }
+
+        private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
+        {
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource = new BitmapImage(new Uri(alamat_foto, UriKind.Absolute));
+
+            FrontEndWindow fw = new FrontEndWindow();
+            fw.Background = myBrush;
+
+            fw.Show();
+        }
+
+        private void btn_ambil_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Masukan Foto";
+            op.Filter = "Semua Gambar|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                alamat_foto = op.FileName;
+                img_foto.Source = new BitmapImage(new Uri(op.FileName));
+
+            }
         }
     }
 }

@@ -82,10 +82,42 @@
                         MaxLength="15" />
                 </StackPanel>
 
+                <StackPanel Margin="0,15,0,0">
+                    <materialDesign:Card
+                        Margin="0,10,0,5"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                        <Image
+                            x:Name="img_foto"
+                            Width="200"
+                            Height="150"
+                            Margin="0" />
+                    </materialDesign:Card>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Margin="0,8,0,8" Style="{StaticResource MaterialDesignSubheadingTextBlock}"><Run Text="Background" /></TextBlock>
+                        <Button
+                            x:Name="btn_ambil"
+                            Margin="5,0,0,0"
+                            Click="btn_ambil_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                            ToolTip="Ambil Foto">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Camera" />
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+
                 <Button
                     x:Name="btn_tampilkan"
                     Margin="30,30,30,0"
                     VerticalAlignment="Center"
+                    Click="btn_tampilkan_Click"
                     FontSize="16"
                     IsDefault="True"
                     Style="{StaticResource MaterialDesignRaisedButton}"
