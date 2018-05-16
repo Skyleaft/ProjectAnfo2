@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Anfo_Digital_Menu_Board.DialogPilihProduk
+
 {
     /// <summary>
     /// Interaction logic for DialogDetailKatalog.xaml
@@ -25,10 +26,10 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
     public partial class DialogDetailKatalog : UserControl
     {
         koneksi k = new koneksi();
-        string _idprod;
+        
         public string idktlog;
 
-
+        string _idprod;
         public DialogDetailKatalog(String iddetkatalog)
         {
             InitializeComponent();
@@ -54,21 +55,9 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
             }
         }
 
-        private void btn_pilih_Click(object sender, RoutedEventArgs e)
-        {
-            //////k.sql = "select *from tb_produk inner join tb_detail_katalog on tb_produk.id_produk=tb_detail_katalog.id_produk " +
-            //////    "where tb_produk.id_produk = '" + txt_idprod + "'";
-            //////k.setdt();
-
-            //////String idprod = k.dt.Rows[0][1].ToString();
-
-            var showdialog = new DialogPilihProduk();
-            DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
-        }
-
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            k.sql = "select *from tb_produk inner join tb_detail_katalog on tb_produk.id_produk=tb_detail_katalog.id_produk where tb_produk.id_produk = '" + _idprod + "'";
+            k.sql = "select *from tb_produk where id_produk = '" + _idprod + "'";
             k.setdt();
             foreach (DataRow baris in k.dt.Rows)
             {
@@ -76,8 +65,8 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
                 txt_nama.Text = baris[1].ToString();
 
                 txt_harga.Text = Convert.ToDecimal(baris[4].ToString()).ToString("c");
-                txt_diskon.Text = baris[8].ToString();
-                lb_diskon.Content = Convert.ToDecimal(baris[9].ToString()).ToString("c");
+                txt_diskon.Text = "";
+                lb_diskon.Content = txt_harga.Text;
             }
         }
 
@@ -186,16 +175,27 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
                 else
                 {
                     txt_diskon.Text = "";
-                    lb_diskon.Content = "Rp.0";
+                    lb_diskon.Content = txt_harga.Text;
                 }
 
 
             }
             else
             {
-                lb_diskon.Content = "Rp.0";
+                lb_diskon.Content = txt_harga.Text;
 
             }
+        }
+
+        
+        private void btn_pilih_Click_1(object sender, RoutedEventArgs e)
+        {
+            var showdialog = new DialogPilihProduk();
+            showdialog.Check += value => _idprod = value;
+            DialogHost.Show(showdialog, "KatalogDialog", ClosingEventHandler);
+
+            //var showdialog = new DialogPilihProduk();
+            //DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
         }
     }
 }

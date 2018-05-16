@@ -81,6 +81,7 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
                 txt_nama.Text = baris[1].ToString();
 
                 txt_harga.Text = Convert.ToDecimal(baris[4].ToString()).ToString("c");
+                lb_diskon.Content = txt_harga.Text ;
             }
         }
 
@@ -109,14 +110,14 @@ namespace Anfo_Digital_Menu_Board.DialogPilihProduk
                 else
                 {
                     txt_diskon.Text = "";
-                    lb_diskon.Content = "Rp.0";
+                    lb_diskon.Content = txt_harga.Text;//"Rp.0";
                 }
 
                 
             }
             else
             {
-                lb_diskon.Content = "Rp.0";
+                lb_diskon.Content = txt_harga.Text;//"Rp.0";
 
             }
         }

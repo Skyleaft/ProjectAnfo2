@@ -91,7 +91,7 @@
                                 Width="100"
                                 Content="Pilih"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                ToolTip="Pilih Produk" />
+                                ToolTip="Pilih Produk" Click="btn_pilih_Click_1" />
                         </StackPanel>
 
                         <StackPanel
