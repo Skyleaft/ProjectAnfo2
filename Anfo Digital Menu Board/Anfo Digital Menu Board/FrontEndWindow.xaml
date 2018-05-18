@@ -14,12 +14,12 @@
     Title="FrontEndWindow"
     Width="1280"
     Height="720"
-    Background="{x:Null}"
     BorderThickness="1"
     FontFamily="{DynamicResource MaterialDesignFont}"
     GlowBrush="{DynamicResource AccentColorBrush}"
     IgnoreTaskbarOnMaximize="True"
     Language="id-ID"
+    Loaded="MetroWindow_Loaded"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -28,64 +28,119 @@
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
     mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="dxg:GridCardHeaderControl">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <!--  Start Fade  -->
+        <Storyboard x:Key="FadeIn">
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity"
+                From="0"
+                To="1"
+                Duration="0:0:.25" />
+        </Storyboard>
+        <Storyboard x:Key="FadeOut">
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity"
+                To="0"
+                Duration="0:0:.5" />
+        </Storyboard>
+        <!--  End Fade  -->
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140*" />
+            <ColumnDefinition Width="170*" />
+        </Grid.ColumnDefinitions>
 
-        <dxg:GridControl x:Name="dg_ktlog">
-            <dxg:GridControl.View>
-                <dxg:CardView>
-                    <dxg:CardView.CardTemplate>
-                        <DataTemplate>
-                            <Grid Width="300" Height="300">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="69*" />
-                                    <RowDefinition Height="31*" />
-                                </Grid.RowDefinitions>
-                                <!--<dxe:ImageEdit
-                                    Grid.RowSpan="1"
-                                    Width="Auto"
-                                    Height="220"
-                                    Margin="44,0,56,-1.2"
-                                    EditValue="{Binding Row.foto}"
-                                    IsReadOnly="True"
-                                    Stretch="Uniform" />-->
-                                <Image
-                                    Width="Auto"
-                                    Height="Auto"
-                                    Margin="40,5,40,5.2"
-                                    Source="{Binding Row.foto}"
-                                    d:LayoutOverrides="LeftMargin, RightMargin" />
-                                <DockPanel
-                                    Grid.Row="1"
-                                    Grid.RowSpan="1"
-                                    Grid.Column="0"
-                                    Margin="0,-0.2,0,0"
-                                    d:LayoutOverrides="LeftMargin, RightMargin">
-                                    <TextBlock
-                                        DockPanel.Dock="Top"
-                                        FontSize="24"
-                                        Foreground="{DynamicResource AccentBaseColorBrush}"
-                                        Text="{Binding Row.nama}"
-                                        TextWrapping="Wrap" />
 
-                                    <StackPanel
-                                        VerticalAlignment="Bottom"
-                                        Background="{DynamicResource AccentBaseColorBrush}"
-                                        DockPanel.Dock="Bottom">
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            FontSize="29"
-                                            Foreground="{DynamicResource AccentSelectedColorBrush}"
-                                            Text="{Binding Row.harga, StringFormat='c'}" />
-                                    </StackPanel>
+        <Canvas x:Name="canvas1">
+            <Image
+                x:Name="myImage"
+                Width="{Binding Path=ActualWidth, ElementName=canvas1}"
+                Height="{Binding Path=ActualHeight, ElementName=canvas1}"
+                RenderTransformOrigin="0.5,0.5"
+                Stretch="UniformToFill">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image
+                x:Name="myImage2"
+                Width="{Binding Path=ActualWidth, ElementName=canvas1}"
+                Height="{Binding Path=ActualHeight, ElementName=canvas1}"
+                RenderTransformOrigin="0.5,0.5"
+                Stretch="UniformToFill">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock
+                x:Name="ErrorText"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                FontSize="20"
+                Text="The specified folder does not exist"
+                TextAlignment="Center"
+                TextWrapping="Wrap"
+                Visibility="Collapsed" />
+        </Canvas>
 
-                                </DockPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </dxg:CardView.CardTemplate>
+        <ListView
+            Name="lv_ktlog"
+            Grid.Column="1"
+            Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Width="220"
+                        Height="270"
+                        Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="3*" />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Width="auto"
+                            Height="auto"
+                            Source="{Binding foto}" />
+                        <DockPanel Grid.Row="1">
+                            <TextBlock
+                                DockPanel.Dock="Top"
+                                FontSize="24"
+                                Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
+                                Text="{Binding nama}"
+                                TextWrapping="Wrap" />
 
-                </dxg:CardView>
-            </dxg:GridControl.View>
+                            <StackPanel
+                                VerticalAlignment="Bottom"
+                                Background="{DynamicResource AccentBaseColorBrush}"
+                                DockPanel.Dock="Bottom">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontSize="29"
+                                    Foreground="{DynamicResource AccentSelectedColorBrush}"
+                                    Text="{Binding harga, StringFormat='c'}" />
+                            </StackPanel>
 
-        </dxg:GridControl>
+                        </DockPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+                        Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                        MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                        ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}"
+                        ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
     </Grid>
 </metro:MetroWindow>

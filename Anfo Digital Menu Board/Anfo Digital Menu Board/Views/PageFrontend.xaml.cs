@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace Anfo_Digital_Menu_Board.Views
 {
@@ -29,8 +31,8 @@ namespace Anfo_Digital_Menu_Board.Views
             InitializeComponent();
         }
         koneksi k = new koneksi();
+        string folder;
 
-        private String alamat_foto;
 
         private string _idktlog;
 
@@ -52,28 +54,24 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
         {
-            ImageBrush myBrush = new ImageBrush();
-            myBrush.ImageSource = new BitmapImage(new Uri(alamat_foto, UriKind.Absolute));
 
             FrontEndWindow fw = new FrontEndWindow();
-            fw.Background = myBrush;
-
+            fw.LoadImageFolder(folder);
             fw.Show();
         }
 
-        private void btn_ambil_Click(object sender, RoutedEventArgs e)
+        private void btn_ambillokasi_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Masukan Foto";
-            op.Filter = "Semua Gambar|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                alamat_foto = op.FileName;
-                img_foto.Source = new BitmapImage(new Uri(op.FileName));
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            //CommonFileDialogResult result = dialog.ShowDialog();
 
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folder = dialog.FileName;
+                txt_lokasifolder.Text = folder;
             }
+
         }
     }
 }
