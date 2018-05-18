@@ -91,10 +91,7 @@
                 Visibility="Collapsed" />
         </Canvas>
 
-        <ListView
-            Name="lv_ktlog"
-            Grid.Column="1"
-            Margin="10">
+        <ListView Name="lv_ktlog" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid
