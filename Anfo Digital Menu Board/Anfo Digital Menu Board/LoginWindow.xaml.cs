@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace Anfo_Digital_Menu_Board
     /// </summary>
     public partial class LoginWindow : MetroWindow
     {
+        koneksi k = new koneksi();
         public LoginWindow()
         {
             InitializeComponent();
@@ -32,7 +34,19 @@ namespace Anfo_Digital_Menu_Board
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
+            try {
+                k.sql = "select *from tb_user where username = '" + txt_username.Text + "' and password = '" + txt_password.Password + "'";
+                k.setdt();
 
+                var showdialog = new MainWindow();
+                DialogHost.Show(showdialog, "MainDialog");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Username atau Password salah " + ex);
+            }
+            
+            
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
