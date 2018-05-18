@@ -1,5 +1,6 @@
 ﻿using Anfo_Digital_Menu_Board.Dialog;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace Anfo_Digital_Menu_Board.Views
 {
@@ -28,6 +31,8 @@ namespace Anfo_Digital_Menu_Board.Views
             InitializeComponent();
         }
         koneksi k = new koneksi();
+        string folder;
+
 
         private string _idktlog;
 
@@ -45,6 +50,28 @@ namespace Anfo_Digital_Menu_Board.Views
 
             txt_idktlog.Text = k.dt.Rows[0][0].ToString();
             txt_deskripsi.Text = k.dt.Rows[0][1].ToString();
+        }
+
+        private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
+        {
+
+            FrontEndWindow fw = new FrontEndWindow();
+            fw.LoadImageFolder(folder);
+            fw.Show();
+        }
+
+        private void btn_ambillokasi_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            //CommonFileDialogResult result = dialog.ShowDialog();
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                folder = dialog.FileName;
+                txt_lokasifolder.Text = folder;
+            }
+
         }
     }
 }

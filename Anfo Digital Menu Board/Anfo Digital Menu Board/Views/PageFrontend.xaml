@@ -62,7 +62,7 @@
 
                 </StackPanel>
                 <StackPanel
-                    Margin="30,15,30,0"
+                    Margin="30,15"
                     VerticalAlignment="Top"
                     Orientation="Horizontal">
                     <materialDesign:PackIcon
@@ -82,10 +82,87 @@
                         MaxLength="15" />
                 </StackPanel>
 
+                <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+
+
+                    <RadioButton
+                        x:Name="rb_md1"
+                        Margin="0"
+                        VerticalContentAlignment="Center"
+                        Background="#FFF44336"
+                        FontSize="14"
+                        Style="{StaticResource MaterialDesignRadioButton}"
+                        Tag="True"
+                        UseLayoutRounding="True">
+                        <StackPanel Margin="0">
+                            <iconPacks:PackIconMaterial
+                                Width="80"
+                                Height="80"
+                                Kind="Grid" />
+                            <TextBlock>Mode 1</TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton
+                        x:Name="rb_md2"
+                        Margin="10,0,0,0"
+                        VerticalContentAlignment="Center"
+                        FontSize="14"
+                        Style="{StaticResource MaterialDesignRadioButton}"
+                        Tag="True">
+                        <StackPanel>
+                            <iconPacks:PackIconMaterial
+                                Width="80"
+                                Height="80"
+                                Kind="Table" />
+                            <TextBlock>Mode 2</TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+
+
+
+
+                </StackPanel>
+
+                <StackPanel
+                    Height="45"
+                    Margin="30,15,30,0"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="25"
+                        Height="25"
+                        Margin="4,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Foreground="{Binding BorderBrush, ElementName=txt_idktlog}"
+                        Kind="PlayBoxOutline" />
+                    <TextBox
+                        x:Name="txt_lokasifolder"
+                        Width="250"
+                        Margin="5,0,0,0"
+                        materialDesign:HintAssist.Hint="Lokasi Folder Slideshow"
+                        FontSize="18"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <Button
+                        x:Name="btn_ambillokasi"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignFlatButton}" Click="btn_ambillokasi_Click">
+                        <iconPacks:Material Kind="DotsHorizontal">
+                            
+                        </iconPacks:Material>
+                    </Button>
+
+                </StackPanel>
+                
+                
+
                 <Button
                     x:Name="btn_tampilkan"
                     Margin="30,30,30,0"
                     VerticalAlignment="Center"
+                    Click="btn_tampilkan_Click"
                     FontSize="16"
                     IsDefault="True"
                     Style="{StaticResource MaterialDesignRaisedButton}"
