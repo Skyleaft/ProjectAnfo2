@@ -56,14 +56,37 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             if (rb_md1.IsChecked == true)
             {
-
-                Tampilan1 tp1 = new Tampilan1(txt_idktlog.Text);
-                tp1.Show();
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan1 tp1 = new Tampilan1();
+                    tp1.tampilsemua();
+                    tp1.Show();
+                }
+                else
+                {
+                    Tampilan1 tp1 = new Tampilan1();
+                    tp1.showdata(txt_idktlog.Text);
+                    tp1.Show();
+                }
+                
 
             }
             else if (rb_md2.IsChecked == true)
             {
-
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan2 tp2 = new Tampilan2();
+                    tp2.tampilsemua();
+                    tp2.LoadImageFolder(folder);
+                    tp2.Show();
+                }
+                else
+                {
+                    Tampilan2 tp2 = new Tampilan2();
+                    tp2.showdata(txt_idktlog.Text);
+                    tp2.LoadImageFolder(folder);
+                    tp2.Show();
+                }
             }
             //FrontEndWindow fw = new FrontEndWindow();
             //fw.LoadImageFolder(folder);
@@ -82,6 +105,28 @@ namespace Anfo_Digital_Menu_Board.Views
                 txt_lokasifolder.Text = folder;
             }
 
+        }
+
+        private void cmb_data_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_data.SelectedIndex == 1)
+            {
+                pn_ktlog.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                pn_ktlog.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void rb_md2_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Visible;
+        }
+
+        private void rb_md1_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Hidden;
         }
     }
 }
