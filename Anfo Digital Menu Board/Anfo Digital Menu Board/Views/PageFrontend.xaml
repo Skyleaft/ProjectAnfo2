@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
 
         <!--  1st panel  -->
-        <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <StackPanel Background="{DynamicResource MaterialDesignPaper}">
             <StackPanel Margin="0,48,0,0">
 
                 <StackPanel
@@ -148,15 +148,14 @@
                         x:Name="btn_ambillokasi"
                         Margin="10,0,0,0"
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatButton}" Click="btn_ambillokasi_Click">
-                        <iconPacks:Material Kind="DotsHorizontal">
-                            
-                        </iconPacks:Material>
+                        Click="btn_ambillokasi_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}">
+                        <iconPacks:Material Kind="DotsHorizontal" />
                     </Button>
 
                 </StackPanel>
-                
-                
+
+
 
                 <Button
                     x:Name="btn_tampilkan"

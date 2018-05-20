@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
 
         <!--  1st panel  -->
-        <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <StackPanel Background="{DynamicResource MaterialDesignPaper}">
             <StackPanel Margin="30,45,30,0">
 
                 <StackPanel

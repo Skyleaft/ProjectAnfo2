@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.WindowsAPICodePack.Dialogs;
-
+using Anfo_Digital_Menu_Board.FrontEnd;
 
 namespace Anfo_Digital_Menu_Board.Views
 {
@@ -54,10 +54,20 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
         {
+            if (rb_md1.IsChecked == true)
+            {
 
-            FrontEndWindow fw = new FrontEndWindow();
-            fw.LoadImageFolder(folder);
-            fw.Show();
+                Tampilan1 tp1 = new Tampilan1(txt_idktlog.Text);
+                tp1.Show();
+
+            }
+            else if (rb_md2.IsChecked == true)
+            {
+
+            }
+            //FrontEndWindow fw = new FrontEndWindow();
+            //fw.LoadImageFolder(folder);
+            //fw.Show();
         }
 
         private void btn_ambillokasi_Click(object sender, RoutedEventArgs e)
