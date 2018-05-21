@@ -27,6 +27,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <ListBox
+            x:Name="testlv"
+            Grid.Column="1"
+            Height="200" />
+
         <!--  1st panel  -->
         <StackPanel Background="{DynamicResource MaterialDesignPaper}">
             <StackPanel Margin="0,48,0,0">
@@ -189,6 +194,32 @@
                 </StackPanel>
 
 
+                <StackPanel>
+                    <StackPanel
+                        Margin="30,10,30,0"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="25"
+                            Height="25"
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            Foreground="{Binding BorderBrush, ElementName=cmb_data}"
+                            Kind="FileDocumentBox" />
+                        <ComboBox
+                            x:Name="cmb_monitor"
+                            Width="auto"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Stretch"
+                            materialDesign:HintAssist.Hint="Pilih Monitor"
+                            IsEditable="False"
+                            SelectionChanged="cmb_data_SelectionChanged"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    </StackPanel>
+
+
+                </StackPanel>
 
                 <Button
                     x:Name="btn_tampilkan"

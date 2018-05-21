@@ -17,14 +17,13 @@
     GlowBrush="{DynamicResource AccentColorBrush}"
     IgnoreTaskbarOnMaximize="True"
     Language="id-ID"
+    Loaded="MetroWindow_Loaded"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
-    WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
-    mc:Ignorable="d" Loaded="MetroWindow_Loaded">
+    mc:Ignorable="d">
     <Window.Resources>
         <!--  Start Fade  -->
         <Storyboard x:Key="FadeIn">
