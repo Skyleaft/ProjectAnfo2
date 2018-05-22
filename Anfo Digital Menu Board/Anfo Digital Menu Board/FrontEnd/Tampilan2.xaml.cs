@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Anfo_Digital_Menu_Board.FrontEnd
@@ -41,6 +40,15 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
         public int IntervalTimer = 5;
         koneksi k = new koneksi();
 
+        public int lebar { get; set; }
+        public int tinggi { get; set; }
+
+        public void valhw(int _lebar, int _tinggi)
+        {
+            lebar = _lebar;
+            tinggi = _tinggi;
+        }
+
         public Tampilan2()
         {
             InitializeComponent();
@@ -58,7 +66,11 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
 
         }
 
-        public void showdata(string _idktlog)
+
+
+
+
+            public void showdata(string _idktlog)
         {
             k.sql = "select *from tb_katalog inner join tb_detail_katalog on tb_katalog.id_katalog = tb_detail_katalog.id_katalog inner join tb_produk on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_katalog.id_katalog = '" + _idktlog + "'";
             k.setdt();
@@ -72,6 +84,8 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             k.setdt();
             lv_ktlog.ItemsSource = k.dt.DefaultView;
         }
+
+        
 
         public void LoadImageFolder(string folder)
         {

@@ -84,12 +84,16 @@
                 Visibility="Collapsed" />
         </Canvas>
 
-        <ListView Name="lv_ktlog" Grid.Column="1">
+        <ListView
+            Name="lv_ktlog"
+            Grid.Column="1"
+            IsSynchronizedWithCurrentItem="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid
-                        Width="220"
-                        Height="270"
+                        x:Name="grid_list"
+                        Width="{Binding lebar, RelativeSource={RelativeSource FindAncestor, AncestorType=metro:MetroWindow}}"
+                        Height="{Binding tinggi, RelativeSource={RelativeSource FindAncestor, AncestorType=metro:MetroWindow}}"
                         Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*" />
@@ -102,7 +106,7 @@
                         <DockPanel Grid.Row="1">
                             <TextBlock
                                 DockPanel.Dock="Top"
-                                FontSize="24"
+                                FontSize="23"
                                 Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
                                 Text="{Binding nama}"
                                 TextWrapping="Wrap" />
@@ -113,7 +117,7 @@
                                 DockPanel.Dock="Bottom">
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="29"
+                                    FontSize="26"
                                     Foreground="{DynamicResource AccentSelectedColorBrush}"
                                     Text="{Binding harga, StringFormat='c'}" />
                             </StackPanel>

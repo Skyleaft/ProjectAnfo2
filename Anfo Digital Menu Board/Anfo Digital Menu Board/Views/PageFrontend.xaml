@@ -27,10 +27,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox
-            x:Name="testlv"
-            Grid.Column="1"
-            Height="200" />
 
         <!--  1st panel  -->
         <StackPanel Background="{DynamicResource MaterialDesignPaper}">
@@ -235,6 +231,73 @@
 
             </StackPanel>
         </StackPanel>
+
+
+        <DockPanel Grid.Column="1">
+
+            <StackPanel>
+                <GroupBox
+                    Margin="16"
+                    Header="Pengaturan Grid"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Grid" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Lebar Grid</TextBlock>
+                            <TextBox
+                                x:Name="txt_lebar"
+                                Margin="10,0,0,0"
+                                KeyDown="txt_lebar_KeyDown"
+                                Text="{Binding ElementName=sld_lebar, Path=Value}" />
+                        </StackPanel>
+                        <Slider
+                            x:Name="sld_lebar"
+                            Width="400"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            Maximum="400"
+                            Minimum="100"
+                            Style="{StaticResource MaterialDesignDiscreteSlider}"
+                            ToolTip="MaterialDesignDiscreteSlider"
+                            Value="220" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>tinggi Grid</TextBlock>
+                            <TextBox
+                                x:Name="txt_tinggi"
+                                Margin="10,0,0,0"
+                                KeyDown="txt_tinggi_KeyDown"
+                                Text="{Binding ElementName=sld_tinggi, Path=Value}" />
+                        </StackPanel>
+                        <Slider
+                            x:Name="sld_tinggi"
+                            Width="400"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            Maximum="400"
+                            Minimum="100"
+                            Style="{StaticResource MaterialDesignDiscreteSlider}"
+                            ToolTip="MaterialDesignDiscreteSlider"
+                            Value="270" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+        </DockPanel>
 
     </Grid>
 </Page>
