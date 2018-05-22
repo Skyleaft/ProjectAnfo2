@@ -17,7 +17,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.WindowsAPICodePack.Dialogs;
-
+using Anfo_Digital_Menu_Board.FrontEnd;
+using System.Management;
+using WpfScreenHelper;
+using MahApps.Metro.Controls;
 
 namespace Anfo_Digital_Menu_Board.Views
 {
@@ -26,12 +29,45 @@ namespace Anfo_Digital_Menu_Board.Views
     /// </summary>
     public partial class PageFrontend : Page
     {
+
         public PageFrontend()
         {
             InitializeComponent();
+
+            //testlv.ItemsSource = System.Windows.Forms.Screen.AllScreens.ToList();
+            int jmlmonitor = System.Windows.Forms.Screen.AllScreens.Count();
+            List<String> monitor = new List<string>();
+            for(int i = 1; i <= jmlmonitor; i++)
+            {
+                monitor.Add("Display\\\\" + i);
+            }
+
+            cmb_monitor.ItemsSource = monitor;
+
+
         }
+
+        private void ShowOnMonitor(int monitor, MetroWindow window)
+        {
+            Screen screens = Screen.AllScreens.ToList<Screen>()[monitor];
+
+            window.WindowStartupLocation = WindowStartupLocation.Manual;
+
+            window.Left = screens.Bounds.Left;
+            window.Top = screens.Bounds.Top;
+
+            window.SourceInitialized += (snd, arg) =>
+                window.WindowState = WindowState.Maximized;
+
+
+            window.Show();
+        }
+
+
+
         koneksi k = new koneksi();
         string folder;
+
 
 
         private string _idktlog;
@@ -54,10 +90,45 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
         {
+            int monitor = cmb_monitor.SelectedIndex;
+            if (rb_md1.IsChecked == true)
+            {
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan1 tp1 = new Tampilan1();
+                    tp1.tampilsemua();
+                    ShowOnMonitor(monitor, tp1);
+                }
+                else
+                {
+                    Tampilan1 tp1 = new Tampilan1();
+                    tp1.showdata(txt_idktlog.Text);
+                    ShowOnMonitor(monitor, tp1);
+                }
+                
 
-            FrontEndWindow fw = new FrontEndWindow();
-            fw.LoadImageFolder(folder);
-            fw.Show();
+            }
+            else if (rb_md2.IsChecked == true)
+            {
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan2 tp2 = new Tampilan2();
+                    tp2.tampilsemua();
+                    tp2.LoadImageFolder(folder);
+
+                    ShowOnMonitor(monitor, tp2);
+                }
+                else
+                {
+                    Tampilan2 tp2 = new Tampilan2();
+                    tp2.showdata(txt_idktlog.Text);
+                    tp2.LoadImageFolder(folder);
+                    ShowOnMonitor(monitor, tp2);
+                }
+            }
+            //FrontEndWindow fw = new FrontEndWindow();
+            //fw.LoadImageFolder(folder);
+            //fw.Show();
         }
 
         private void btn_ambillokasi_Click(object sender, RoutedEventArgs e)
@@ -72,6 +143,28 @@ namespace Anfo_Digital_Menu_Board.Views
                 txt_lokasifolder.Text = folder;
             }
 
+        }
+
+        private void cmb_data_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_data.SelectedIndex == 1)
+            {
+                pn_ktlog.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                pn_ktlog.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void rb_md2_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Visible;
+        }
+
+        private void rb_md1_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Hidden;
         }
     }
 }
