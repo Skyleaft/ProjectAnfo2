@@ -93,6 +93,7 @@ namespace Anfo_Digital_Menu_Board
                         Message = { Text = "Data Berhasil Tersimpan" }
                     };
                     DialogHost.Show(sampleMessageDialog, "MainDialog");
+
                     bersih();
                     kodeotomatis();
                 }
