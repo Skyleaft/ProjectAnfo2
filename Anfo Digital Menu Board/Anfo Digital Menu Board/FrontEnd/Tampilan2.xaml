@@ -16,6 +16,7 @@
     FontFamily="{DynamicResource MaterialDesignFont}"
     GlowBrush="{DynamicResource AccentColorBrush}"
     IgnoreTaskbarOnMaximize="True"
+    KeyDown="MetroWindow_KeyDown"
     Language="id-ID"
     Loaded="MetroWindow_Loaded"
     TextElement.FontSize="13"
@@ -24,6 +25,15 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button
+                x:Name="btn_setting"
+                Click="btn_setting_Click"
+                Content="settings" />
+
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
     <Window.Resources>
         <!--  Start Fade  -->
         <Storyboard x:Key="FadeIn">
@@ -41,6 +51,127 @@
         </Storyboard>
         <!--  End Fade  -->
     </Window.Resources>
+
+    <metro:MetroWindow.Flyouts>
+        <metro:FlyoutsControl>
+            <metro:Flyout
+                x:Name="fy_atas"
+                Height="300"
+                Header="Flyout"
+                Position="Top">
+                <!--  Your custom content here  -->
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox
+                        Margin="16"
+                        Header="Pengaturan Grid"
+                        Style="{DynamicResource MaterialDesignCardGroupBox}">
+                        <GroupBox.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        Width="32"
+                                        Height="32"
+                                        VerticalAlignment="Center"
+                                        Kind="Grid" />
+                                    <TextBlock
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                        Text="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupBox.HeaderTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Lebar Grid</TextBlock>
+                            </StackPanel>
+                            <Slider
+                                x:Name="sld_lebar"
+                                Width="400"
+                                Margin="0"
+                                HorizontalAlignment="Left"
+                                Maximum="400"
+                                Minimum="100"
+                                Style="{StaticResource MaterialDesignDiscreteSlider}"
+                                ToolTip="MaterialDesignDiscreteSlider"
+                                Value="220" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>tinggi Grid</TextBlock>
+                            </StackPanel>
+                            <Slider
+                                x:Name="sld_tinggi"
+                                Width="400"
+                                Margin="0"
+                                HorizontalAlignment="Left"
+                                Maximum="400"
+                                Minimum="100"
+                                Style="{StaticResource MaterialDesignDiscreteSlider}"
+                                ToolTip="MaterialDesignDiscreteSlider"
+                                Value="270" />
+
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox
+                        Margin="16"
+                        Header="Pengaturan font"
+                        Style="{DynamicResource MaterialDesignCardGroupBox}">
+                        <GroupBox.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        Width="32"
+                                        Height="32"
+                                        VerticalAlignment="Center"
+                                        Kind="Grid" />
+                                    <TextBlock
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                        Text="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupBox.HeaderTemplate>
+                        <StackPanel>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Ukuran Font Judul</TextBlock>
+                                    <ComboBox
+                                        x:Name="cmb_sizejudul"
+                                        Margin="10,0,0,0"
+                                        SelectedIndex="2">
+                                        <ComboBoxItem>20</ComboBoxItem>
+                                        <ComboBoxItem>22</ComboBoxItem>
+                                        <ComboBoxItem>23</ComboBoxItem>
+                                        <ComboBoxItem>24</ComboBoxItem>
+                                        <ComboBoxItem>26</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Ukuran Font Harga</TextBlock>
+                                    <ComboBox
+                                        x:Name="cmb_sizeharga"
+                                        Margin="10,0,0,0"
+                                        SelectedIndex="3">
+                                        <ComboBoxItem>20</ComboBoxItem>
+                                        <ComboBoxItem>22</ComboBoxItem>
+                                        <ComboBoxItem>23</ComboBoxItem>
+                                        <ComboBoxItem>24</ComboBoxItem>
+                                        <ComboBoxItem>26</ComboBoxItem>
+                                        <ComboBoxItem>28</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                            </StackPanel>
+
+
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </metro:Flyout>
+
+        </metro:FlyoutsControl>
+    </metro:MetroWindow.Flyouts>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140*" />
@@ -87,13 +218,17 @@
         <ListView
             Name="lv_ktlog"
             Grid.Column="1"
-            IsSynchronizedWithCurrentItem="True">
+            Margin="0,15,0,0"
+            Focusable="False"
+            IsHitTestVisible="False"
+            IsSynchronizedWithCurrentItem="True"
+            ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid
                         x:Name="grid_list"
-                        Width="{Binding lebar, RelativeSource={RelativeSource FindAncestor, AncestorType=metro:MetroWindow}}"
-                        Height="{Binding tinggi, RelativeSource={RelativeSource FindAncestor, AncestorType=metro:MetroWindow}}"
+                        Width="{Binding Value, Source={x:Reference sld_lebar}}"
+                        Height="{Binding Value, Source={x:Reference sld_tinggi}}"
                         Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5*" />
@@ -106,7 +241,7 @@
                         <DockPanel Grid.Row="1">
                             <TextBlock
                                 DockPanel.Dock="Top"
-                                FontSize="23"
+                                FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
                                 Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
                                 Text="{Binding nama}"
                                 TextWrapping="Wrap" />
@@ -117,7 +252,7 @@
                                 DockPanel.Dock="Bottom">
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontSize="26"
+                                    FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizeharga}}"
                                     Foreground="{DynamicResource AccentSelectedColorBrush}"
                                     Text="{Binding harga, StringFormat='c'}" />
                             </StackPanel>
@@ -135,6 +270,8 @@
                         ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+
         </ListView>
+
     </Grid>
 </metro:MetroWindow>

@@ -43,11 +43,11 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
         public int lebar { get; set; }
         public int tinggi { get; set; }
 
-        public void valhw(int _lebar, int _tinggi)
-        {
-            lebar = _lebar;
-            tinggi = _tinggi;
-        }
+        //public void valhw(int _lebar, int _tinggi)
+        //{
+        //    lebar = _lebar;
+        //    tinggi = _tinggi;
+        //}
 
         public Tampilan2()
         {
@@ -58,6 +58,9 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             ImageControls = new[] { myImage, myImage2 };
 
             LoadImageFolder(strImagePath);
+
+            lebar = 220;
+            tinggi = 270;
 
 
             timerImageChange = new DispatcherTimer();
@@ -108,6 +111,33 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             Images.AddRange(sources);
             sw.Stop();
             Console.WriteLine("Total time to load {0} images: {1}ms", Images.Count, sw.ElapsedMilliseconds);
+        }
+
+        private void btn_setting_Click(object sender, RoutedEventArgs e)
+        {
+            if (fy_atas.IsOpen == true)
+            {
+                fy_atas.IsOpen = false;
+            }
+            else
+            {
+                fy_atas.IsOpen = true;
+            }
+        }
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.SystemKey == Key.F10)
+            {
+                if(this.ShowTitleBar == true)
+                {
+                    this.ShowTitleBar = false;
+                }
+                else
+                {
+                    this.ShowTitleBar = true;
+                }
+            }
         }
 
         private ImageSource CreateImageSource(string file, bool forcePreLoad)

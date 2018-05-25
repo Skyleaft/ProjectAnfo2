@@ -115,7 +115,7 @@ namespace Anfo_Digital_Menu_Board.Views
                     Tampilan2 tp2 = new Tampilan2();
                     tp2.tampilsemua();
                     tp2.LoadImageFolder(folder);
-                    tp2.valhw(Convert.ToInt32(sld_lebar.Value), Convert.ToInt32(sld_tinggi.Value));
+                    //tp2.valhw(Convert.ToInt32(sld_lebar.Value), Convert.ToInt32(sld_tinggi.Value));
 
                     ShowOnMonitor(monitor, tp2);
                 }
@@ -156,7 +156,7 @@ namespace Anfo_Digital_Menu_Board.Views
             }
             else
             {
-                pn_ktlog.Visibility = Visibility.Hidden;
+                pn_ktlog.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -167,31 +167,9 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void rb_md1_Checked(object sender, RoutedEventArgs e)
         {
-            pn_slideshow.Visibility = Visibility.Hidden;
+            pn_slideshow.Visibility = Visibility.Collapsed;
         }
 
-        private void txt_lebar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                int lebar = int.Parse(txt_lebar.Text);
-                if (lebar <= 400 || lebar >= 100)
-                {
-                    sld_lebar.Value = lebar;
-                }
-            }
-        }
 
-        private void txt_tinggi_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                int tinggi = int.Parse(txt_tinggi.Text);
-                if (tinggi <= 400 || tinggi >= 100)
-                {
-                    sld_tinggi.Value = tinggi;
-                }
-            }
-        }
     }
 }
