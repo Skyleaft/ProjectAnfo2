@@ -194,7 +194,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20*" />
-                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="4*" />
                             </Grid.RowDefinitions>
                             <Image
                                 Width="auto"
@@ -209,14 +209,12 @@
                                     Margin="0,0,0,5"
                                     DockPanel.Dock="Top"
                                     FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
-                                    Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
                                     Text="{Binding nama}"
                                     TextWrapping="Wrap" />
 
                                 <TextBlock
                                     DockPanel.Dock="Top"
                                     FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizedesk}}"
-                                    Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
                                     Text="{Binding detail}"
                                     TextWrapping="Wrap" />
 

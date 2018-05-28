@@ -243,7 +243,6 @@
                                 <TextBlock
                                     DockPanel.Dock="Top"
                                     FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
-                                    Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
                                     Text="{Binding nama}"
                                     TextWrapping="Wrap" />
 

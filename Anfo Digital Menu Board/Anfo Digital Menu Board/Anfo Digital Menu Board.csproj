@@ -148,6 +148,9 @@
     <Compile Include="FrontEnd\Tampilan3.xaml.cs">
       <DependentUpon>Tampilan3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrontEnd\Tampilan4.xaml.cs">
+      <DependentUpon>Tampilan4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
@@ -175,6 +178,9 @@
     </Compile>
     <Compile Include="Views\PageProduk.xaml.cs">
       <DependentUpon>PageProduk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageSetting.xaml.cs">
+      <DependentUpon>PageSetting.xaml</DependentUpon>
     </Compile>
     <Page Include="Dialog\DialogDetailKatalog.xaml">
       <SubType>Designer</SubType>
@@ -240,6 +246,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrontEnd\Tampilan4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -292,9 +302,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\PageSetting.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

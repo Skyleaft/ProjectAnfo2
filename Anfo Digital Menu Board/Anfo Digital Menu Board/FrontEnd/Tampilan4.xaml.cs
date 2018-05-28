@@ -13,15 +13,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Anfo_Digital_Menu_Board.FrontEnd
 {
     /// <summary>
-    /// Interaction logic for Tampilan2.xaml
+    /// Interaction logic for Tampilan4.xaml
     /// </summary>
-    /// 
-    public partial class Tampilan2 : MetroWindow
+    public partial class Tampilan4 : MetroWindow
     {
         private DispatcherTimer timerImageChange;
         private Image[] ImageControls;
@@ -31,48 +31,27 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
         private string TransitionType, strImagePath = "";
         private int CurrentSourceIndex, CurrentCtrlIndex, EffectIndex = 0;
 
-        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            PlaySlideShow();
-            timerImageChange.IsEnabled = true;
-        }
-
         public int IntervalTimer = 5;
         koneksi k = new koneksi();
 
-        public int lebar { get; set; }
-        public int tinggi { get; set; }
-
-        //public void valhw(int _lebar, int _tinggi)
-        //{
-        //    lebar = _lebar;
-        //    tinggi = _tinggi;
-        //}
-
-        public Tampilan2()
+        public Tampilan4()
         {
             InitializeComponent();
-
-            //Initialize Image control, Image directory path and Image timer.
             strImagePath = ConfigurationManager.AppSettings["ImagePath"];
             ImageControls = new[] { myImage, myImage2 };
 
             LoadImageFolder(strImagePath);
 
-            lebar = 220;
-            tinggi = 270;
-
-
             timerImageChange = new DispatcherTimer();
             timerImageChange.Interval = new TimeSpan(0, 0, IntervalTimer);
             timerImageChange.Tick += new EventHandler(timerImageChange_Tick);
-
         }
 
-
-
-
-
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            PlaySlideShow();
+            timerImageChange.IsEnabled = true;
+        }
         public void showdata(string _idktlog)
         {
             k.sql = "select *from tb_katalog inner join tb_detail_katalog on tb_katalog.id_katalog = tb_detail_katalog.id_katalog inner join tb_produk on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_katalog.id_katalog = '" + _idktlog + "'";
@@ -88,7 +67,6 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             lv_ktlog.ItemsSource = k.dt.DefaultView;
         }
 
-        
 
         public void LoadImageFolder(string folder)
         {
@@ -127,9 +105,9 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.SystemKey == Key.F10)
+            if (e.SystemKey == Key.F10)
             {
-                if(this.ShowTitleBar == true)
+                if (this.ShowTitleBar == true)
                 {
                     this.ShowTitleBar = false;
                 }
@@ -190,5 +168,5 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             catch (Exception ex) { }
         }
     }
-
 }
+

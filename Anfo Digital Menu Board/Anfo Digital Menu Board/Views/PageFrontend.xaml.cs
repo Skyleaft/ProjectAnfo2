@@ -139,12 +139,28 @@ namespace Anfo_Digital_Menu_Board.Views
                 }
                 else
                 {
-                    //Tampilan2 tp3 = new Tampilan2();
-                    //tp3.showdata(txt_idktlog.Text);
-                    //tp3.LoadImageFolder(folder);
+                    Tampilan2 tp3 = new Tampilan2();
+                    tp3.showdata(txt_idktlog.Text);
+                    ShowOnMonitor(monitor, tp3);
+                }
+            }
+            else if (rb_md4.IsChecked == true)
+            {
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan4 tp4 = new Tampilan4();
+                    tp4.tampilsemua();
+                    tp4.LoadImageFolder(folder);
 
+                    ShowOnMonitor(monitor, tp4);
+                }
+                else
+                {
+                    Tampilan4 tp4 = new Tampilan4();
+                    tp4.showdata(txt_idktlog.Text);
+                    tp4.LoadImageFolder(folder);
 
-                    //ShowOnMonitor(monitor, tp2);
+                    ShowOnMonitor(monitor, tp4);
                 }
             }
 
@@ -188,7 +204,12 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void rb_md3_Checked(object sender, RoutedEventArgs e)
         {
+            pn_slideshow.Visibility = Visibility.Collapsed;
+        }
 
+        private void rb_md4_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Visible;
         }
     }
 }
