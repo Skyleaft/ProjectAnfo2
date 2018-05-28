@@ -155,6 +155,23 @@
                             <TextBlock>Mode 2</TextBlock>
                         </StackPanel>
                     </RadioButton>
+                    <RadioButton
+                        x:Name="rb_md3"
+                        Margin="10,0,0,0"
+                        VerticalContentAlignment="Center"
+                        Background="#FFF44336"
+                        FontSize="14"
+                        Style="{StaticResource MaterialDesignRadioButton}"
+                        Tag="True"
+                        UseLayoutRounding="True" Checked="rb_md3_Checked">
+                        <StackPanel Margin="0">
+                            <iconPacks:PackIconMaterial
+                                Width="80"
+                                Height="80"
+                                Kind="Grid" />
+                            <TextBlock>Mode 3</TextBlock>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
 
                 <StackPanel
@@ -203,7 +220,7 @@
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
-                            Foreground="{Binding BorderBrush, ElementName=cmb_data}"
+                            Foreground="{Binding BorderBrush, ElementName=cmb_monitor}"
                             Kind="FileDocumentBox" />
                         <ComboBox
                             x:Name="cmb_monitor"

@@ -25,14 +25,7 @@ namespace Anfo_Digital_Menu_Board
         {
             InitializeComponent();
 
-            showdata();
         }
 
-        private void showdata()
-        {
-            k.sql = "select * from tb_produk";
-            k.setdt();
-            lvtest.ItemsSource = k.dt.DefaultView;
-        }
     }
 }
