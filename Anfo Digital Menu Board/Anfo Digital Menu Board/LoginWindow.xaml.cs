@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -103,6 +104,33 @@ namespace Anfo_Digital_Menu_Board
                 Message = { Text = "Yakin Keluar Aplikasi?" }
             };
             DialogHost.Show(keluar, "LoginDialog");
+        }
+
+        private void btn_reg_Click(object sender, RoutedEventArgs e)
+        {
+            //pn_log.Visibility = Visibility.Collapsed;
+            //pn_reg.Visibility = Visibility.Visible;
+
+            Storyboard sb = this.FindResource("slide1") as Storyboard;
+            sb.Begin();
+
+            
+
+            rect_reg.Visibility = Visibility.Visible;
+            rect_log.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_log_Click(object sender, RoutedEventArgs e)
+        {
+            //pn_log.Visibility = Visibility.Visible;
+            //pn_reg.Visibility = Visibility.Collapsed;
+
+            Storyboard sb = this.FindResource("slide2") as Storyboard;
+            sb.Begin();
+
+
+            rect_reg.Visibility = Visibility.Hidden;
+            rect_log.Visibility = Visibility.Visible;
         }
     }
 }

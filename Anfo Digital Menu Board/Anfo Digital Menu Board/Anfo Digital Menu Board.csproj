@@ -348,5 +348,8 @@
   <ItemGroup>
     <Resource Include="Resource\Restaurant-1-12.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\baner.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
