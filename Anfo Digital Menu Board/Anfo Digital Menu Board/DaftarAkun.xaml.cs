@@ -36,6 +36,13 @@ namespace Anfo_Digital_Menu_Board
             txt_id.Text = "";
         }
 
+        private void dissapear()
+        {
+            this.Closing -= MetroWindow_Closing;
+            this.Closing += keluar;
+            Close();
+        }
+
         private void kodeotomatis()
         {
             k.sql = "select *from tb_user order by id_user asc";
@@ -96,6 +103,10 @@ namespace Anfo_Digital_Menu_Board
 
                     bersih();
                     kodeotomatis();
+
+                    MainWindow wm = new MainWindow();
+                    wm.Show();
+                    dissapear();
                 }
                 catch (Exception ex)
                 {
@@ -108,5 +119,21 @@ namespace Anfo_Digital_Menu_Board
         {
             bersih();
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            var keluar = new SampleMessageYesNo
+            {
+                Message = { Text = "Yakin Keluar Aplikasi?" }
+            };
+            DialogHost.Show(keluar, "LoginDialog");
+        }
+
+        private void keluar(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
     }
 }

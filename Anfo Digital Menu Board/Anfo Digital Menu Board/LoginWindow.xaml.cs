@@ -27,6 +27,7 @@ namespace Anfo_Digital_Menu_Board
         public LoginWindow()
         {
             InitializeComponent();
+            cek();
         }
 
         public void bersih() {
@@ -44,6 +45,38 @@ namespace Anfo_Digital_Menu_Board
             this.Closing -= MetroWindow_Closing;
             this.Closing += keluar;
             Close();
+        }
+
+        private void cek()
+        {
+            String pass = "";
+            String user = "";
+            k.sql = "select *from tb_user";
+            k.setdt();
+            int cekbaris = k.dt.Rows.Count;
+            foreach (DataRow baris in k.dt.Rows)
+            {
+                user = baris[1].ToString();
+                pass = baris[2].ToString();
+            }
+
+            if (cekbaris == 0)
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Anda Belum punya akun" }
+                };
+                DialogHost.Show(sampleMessageDialog, "AkunDialog");
+                txt_username.Text = "";
+                txt_password.Password = "";
+
+                DaftarAkun wm = new DaftarAkun();
+                wm.Show();
+                dissapear();
+            }
+            else {
+            }
+
         }
 
 
