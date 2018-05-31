@@ -89,9 +89,10 @@
                             <Button
                                 x:Name="btn_pilih"
                                 Width="100"
+                                Click="btn_pilih_Click_1"
                                 Content="Pilih"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                ToolTip="Pilih Produk" Click="btn_pilih_Click_1" />
+                                ToolTip="Pilih Produk" />
                         </StackPanel>
 
                         <StackPanel
@@ -131,7 +132,7 @@
                             Margin="5,0,0,0"
                             materialDesign:HintAssist.Hint="Nama Produk"
                             FontSize="16"
-                            MaxLength="50" />
+                            MaxLength="30" />
                     </StackPanel>
 
                     <StackPanel

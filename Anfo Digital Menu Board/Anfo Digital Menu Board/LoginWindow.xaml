@@ -55,9 +55,12 @@
                 <RowDefinition Height="356*" />
                 <RowDefinition Height="113*" />
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,0,0.2,2" Background="{DynamicResource AccentBaseColorBrush}" />
             <StackPanel
-                Margin="75,35"
+                Height="420"
+                Margin="0,0,0.2,2"
+                Background="{DynamicResource AccentBaseColorBrush}" />
+            <StackPanel
+                Margin="75,15"
                 Background="{DynamicResource MaterialDesignPaper}"
                 Opacity="0.8">
                 <StackPanel.Effect>
@@ -132,6 +135,7 @@
                                 Width="251"
                                 materialDesign:HintAssist.Hint="Username"
                                 FontSize="18"
+                                MaxLength="20"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </StackPanel>
 
@@ -153,6 +157,7 @@
                                 Width="251"
                                 materialDesign:HintAssist.Hint="Password"
                                 FontSize="18"
+                                MaxLength="14"
                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                         </StackPanel>
 
@@ -207,6 +212,29 @@
                                 Width="251"
                                 materialDesign:HintAssist.Hint="Username"
                                 FontSize="18"
+                                MaxLength="20"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Height="45"
+                            Margin="30,0"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Margin="2,0,8,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Foreground="{Binding BorderBrush, ElementName=txt_username}"
+                                Kind="Account" />
+                            <TextBox
+                                x:Name="txt_nama"
+                                Width="251"
+                                materialDesign:HintAssist.Hint="Nama"
+                                FontSize="18"
+                                MaxLength="100"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </StackPanel>
 
@@ -228,6 +256,7 @@
                                 Width="251"
                                 materialDesign:HintAssist.Hint="Password"
                                 FontSize="18"
+                                MaxLength="14"
                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                         </StackPanel>
 
@@ -244,7 +273,7 @@
                                 Click="btn_cancel_Click"
                                 FontSize="16"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                ToolTip="Batal Login">
+                                ToolTip="Batal Registrasi">
                                 Batal
                             </Button>
                             <Button
@@ -253,6 +282,7 @@
                                 Margin="0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
+                                Click="btn_register_Click"
                                 FontSize="16"
                                 IsDefault="True"
                                 Style="{StaticResource MaterialDesignRaisedButton}"

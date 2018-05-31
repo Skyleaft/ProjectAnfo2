@@ -313,7 +313,7 @@
                         Kind="FoodVariant" />
                     <ComboBox
                         x:Name="cmb_kategori"
-                        Width="200"
+                        Width="143"
                         HorizontalAlignment="Right"
                         materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding IsChecked, ElementName=DisplaySelectedItemCheckBox}"
                         materialDesign:HintAssist.Hint="Kategori"
