@@ -45,7 +45,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
                     Foreground="{Binding BorderBrush, ElementName=txt_id}"
-                    Kind="Food" />
+                    Kind="BookUnsecure" />
                 <TextBox
                     x:Name="txt_id"
                     Width="300"
@@ -66,8 +66,8 @@
                     Margin="4,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
-                    Foreground="{Binding BorderBrush, ElementName=txt_id}"
-                    Kind="Food" />
+                    Foreground="{Binding BorderBrush, ElementName=txt_deskripsi}"
+                    Kind="BookOpenVariant" />
                 <TextBox
                     x:Name="txt_deskripsi"
                     Width="300"

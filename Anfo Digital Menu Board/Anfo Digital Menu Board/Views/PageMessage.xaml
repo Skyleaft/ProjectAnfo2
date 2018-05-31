@@ -92,7 +92,7 @@
                         Margin="5,20,0,0"
                         materialDesign:HintAssist.Hint="Alert"
                         FontSize="16"
-                        MaxLength="15" />
+                        MaxLength="100" />
 
                 </StackPanel>
 

@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -33,6 +34,13 @@ namespace Anfo_Digital_Menu_Board
         public void bersih() {
             txt_username.Text = "";
             txt_password.Password = "";
+        }
+
+        public void bersihreg()
+        {
+            txt_username2.Text = "";
+            txt_nama.Text = "";
+            txt_password2.Password = "";
         }
 
         private void keluar(object sender, System.ComponentModel.CancelEventArgs e)
@@ -70,9 +78,9 @@ namespace Anfo_Digital_Menu_Board
                 txt_username.Text = "";
                 txt_password.Password = "";
 
-                DaftarAkun wm = new DaftarAkun();
-                wm.Show();
-                dissapear();
+                ////DaftarAkun wm = new DaftarAkun();
+                ////wm.Show();
+                ////dissapear();
             }
             else {
             }
@@ -125,7 +133,7 @@ namespace Anfo_Digital_Menu_Board
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            bersih();
+            bersihreg();
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -136,6 +144,88 @@ namespace Anfo_Digital_Menu_Board
                 Message = { Text = "Yakin Keluar Aplikasi?" }
             };
             DialogHost.Show(keluar, "LoginDialog");
+        }
+
+        private void btn_reg_Click(object sender, RoutedEventArgs e)
+        {
+            //pn_log.Visibility = Visibility.Collapsed;
+            //pn_reg.Visibility = Visibility.Visible;
+
+            Storyboard sb = this.FindResource("slide1") as Storyboard;
+            sb.Begin();
+
+            
+
+            rect_reg.Visibility = Visibility.Visible;
+            rect_log.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_log_Click(object sender, RoutedEventArgs e)
+        {
+            //pn_log.Visibility = Visibility.Visible;
+            //pn_reg.Visibility = Visibility.Collapsed;
+
+            Storyboard sb = this.FindResource("slide2") as Storyboard;
+            sb.Begin();
+
+
+            rect_reg.Visibility = Visibility.Hidden;
+            rect_log.Visibility = Visibility.Visible;
+        }
+
+        private void txt_username2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btn_register_Click(object sender, RoutedEventArgs e)
+        {
+            if (txt_username2.Text == "" || txt_nama.Text == "" || txt_password2.Password == "")
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Lengkapi Dulu Data" }
+                };
+                DialogHost.Show(sampleMessageDialog, "LoginDialog");
+            }
+            else if (txt_password2.Password.Length<8)
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Password minimal 8 karakter" }
+                };
+                DialogHost.Show(sampleMessageDialog, "LoginDialog");
+            }
+            else
+            {
+                try
+                {
+                    k.sql = "insert into tb_user values(@user,@nama,@pass)";
+                    k.setparam();
+                    k.perintah.Parameters.AddWithValue("@user", txt_username2.Text);
+                    k.perintah.Parameters.AddWithValue("@nama", txt_nama.Text);
+                    k.perintah.Parameters.AddWithValue("@pass", txt_password2.Password);
+                    k.perintah.ExecuteNonQuery();
+                    k.close();
+
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Data Berhasil Tersimpan" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "LoginDialog");
+                    bersih();
+
+                    Storyboard sb = this.FindResource("slide2") as Storyboard;
+                    sb.Begin();
+                    rect_reg.Visibility = Visibility.Hidden;
+                    rect_log.Visibility = Visibility.Visible;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data Gagal Didaftarkan " + ex);
+                }
+            }
         }
     }
 }

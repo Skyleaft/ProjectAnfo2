@@ -115,7 +115,6 @@ namespace Anfo_Digital_Menu_Board.Views
                     Tampilan2 tp2 = new Tampilan2();
                     tp2.tampilsemua();
                     tp2.LoadImageFolder(folder);
-                    //tp2.valhw(Convert.ToInt32(sld_lebar.Value), Convert.ToInt32(sld_tinggi.Value));
 
                     ShowOnMonitor(monitor, tp2);
                 }
@@ -129,9 +128,42 @@ namespace Anfo_Digital_Menu_Board.Views
                     ShowOnMonitor(monitor, tp2);
                 }
             }
-            //FrontEndWindow fw = new FrontEndWindow();
-            //fw.LoadImageFolder(folder);
-            //fw.Show();
+            else if (rb_md3.IsChecked == true)
+            {
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan3 tp3 = new Tampilan3();
+                    tp3.tampilsemua();
+
+                    ShowOnMonitor(monitor, tp3);
+                }
+                else
+                {
+                    Tampilan2 tp3 = new Tampilan2();
+                    tp3.showdata(txt_idktlog.Text);
+                    ShowOnMonitor(monitor, tp3);
+                }
+            }
+            else if (rb_md4.IsChecked == true)
+            {
+                if (cmb_data.SelectedIndex == 0)
+                {
+                    Tampilan4 tp4 = new Tampilan4();
+                    tp4.tampilsemua();
+                    tp4.LoadImageFolder(folder);
+
+                    ShowOnMonitor(monitor, tp4);
+                }
+                else
+                {
+                    Tampilan4 tp4 = new Tampilan4();
+                    tp4.showdata(txt_idktlog.Text);
+                    tp4.LoadImageFolder(folder);
+
+                    ShowOnMonitor(monitor, tp4);
+                }
+            }
+
         }
 
         private void btn_ambillokasi_Click(object sender, RoutedEventArgs e)
@@ -170,6 +202,14 @@ namespace Anfo_Digital_Menu_Board.Views
             pn_slideshow.Visibility = Visibility.Collapsed;
         }
 
+        private void rb_md3_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Collapsed;
+        }
 
+        private void rb_md4_Checked(object sender, RoutedEventArgs e)
+        {
+            pn_slideshow.Visibility = Visibility.Visible;
+        }
     }
 }

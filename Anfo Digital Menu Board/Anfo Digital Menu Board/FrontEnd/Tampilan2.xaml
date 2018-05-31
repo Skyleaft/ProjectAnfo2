@@ -225,40 +225,41 @@
             ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        x:Name="grid_list"
-                        Width="{Binding Value, Source={x:Reference sld_lebar}}"
-                        Height="{Binding Value, Source={x:Reference sld_tinggi}}"
-                        Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="3*" />
-                        </Grid.RowDefinitions>
-                        <Image
-                            Width="auto"
-                            Height="auto"
-                            Source="{Binding foto}" />
-                        <DockPanel Grid.Row="1">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
-                                Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
-                                Text="{Binding nama}"
-                                TextWrapping="Wrap" />
-
-                            <StackPanel
-                                VerticalAlignment="Bottom"
-                                Background="{DynamicResource AccentBaseColorBrush}"
-                                DockPanel.Dock="Bottom">
+                    <materialDesign:Card>
+                        <Grid
+                            x:Name="grid_list"
+                            Width="{Binding Value, Source={x:Reference sld_lebar}}"
+                            Height="{Binding Value, Source={x:Reference sld_tinggi}}"
+                            Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Width="auto"
+                                Height="auto"
+                                Source="{Binding foto}" />
+                            <DockPanel Grid.Row="1">
                                 <TextBlock
-                                    HorizontalAlignment="Center"
-                                    FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizeharga}}"
-                                    Foreground="{DynamicResource AccentSelectedColorBrush}"
-                                    Text="{Binding harga, StringFormat='c'}" />
-                            </StackPanel>
+                                    DockPanel.Dock="Top"
+                                    FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
+                                    Text="{Binding nama}"
+                                    TextWrapping="Wrap" />
 
-                        </DockPanel>
-                    </Grid>
+                                <StackPanel
+                                    VerticalAlignment="Bottom"
+                                    Background="{DynamicResource AccentBaseColorBrush}"
+                                    DockPanel.Dock="Bottom">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizeharga}}"
+                                        Foreground="{DynamicResource AccentSelectedColorBrush}"
+                                        Text="{Binding harga, StringFormat='c'}" />
+                                </StackPanel>
+
+                            </DockPanel>
+                        </Grid>
+                    </materialDesign:Card>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemsPanel>

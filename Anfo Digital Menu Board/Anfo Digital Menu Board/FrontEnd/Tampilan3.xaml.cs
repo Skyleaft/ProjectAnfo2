@@ -16,20 +16,19 @@ using System.Windows.Shapes;
 namespace Anfo_Digital_Menu_Board.FrontEnd
 {
     /// <summary>
-    /// Interaction logic for Tampilan1.xaml
+    /// Interaction logic for Tampilan3.xaml
     /// </summary>
-    public partial class Tampilan1 : MetroWindow
+    public partial class Tampilan3 : MetroWindow
     {
         koneksi k = new koneksi();
-        private string idktlog;
-        public Tampilan1()
+        public Tampilan3()
         {
             InitializeComponent();
         }
 
         public void showdata(string _idktlog)
         {
-            k.sql = "select *from tb_katalog inner join tb_detail_katalog on tb_katalog.id_katalog = tb_detail_katalog.id_katalog inner join tb_produk on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_katalog.id_katalog = '"+_idktlog+"'";
+            k.sql = "select *from tb_katalog inner join tb_detail_katalog on tb_katalog.id_katalog = tb_detail_katalog.id_katalog inner join tb_produk on tb_detail_katalog.id_produk = tb_produk.id_produk where tb_katalog.id_katalog = '" + _idktlog + "'";
             k.setdt();
             lv_ktlog.ItemsSource = k.dt.DefaultView;
 
