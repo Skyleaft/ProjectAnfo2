@@ -278,7 +278,7 @@
                             <StackPanel
                                 Grid.Row="1"
                                 Grid.ColumnSpan="2"
-                                Background="{DynamicResource AccentBaseColorBrush}"
+                                Background="{DynamicResource AccentColorBrush}"
                                 DockPanel.Dock="Bottom">
                                 <TextBlock
                                     HorizontalAlignment="Center"

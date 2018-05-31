@@ -190,7 +190,7 @@
 
                                 <StackPanel
                                     VerticalAlignment="Bottom"
-                                    Background="{DynamicResource AccentBaseColorBrush}"
+                                    Background="{DynamicResource AccentColorBrush}"
                                     DockPanel.Dock="Bottom">
                                     <TextBlock
                                         HorizontalAlignment="Center"

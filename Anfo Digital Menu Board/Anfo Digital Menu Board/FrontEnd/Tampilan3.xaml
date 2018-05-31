@@ -224,7 +224,7 @@
                                 Grid.Row="1"
                                 Grid.ColumnSpan="2"
                                 VerticalAlignment="Bottom"
-                                Background="{DynamicResource AccentBaseColorBrush}"
+                                Background="{DynamicResource AccentColorBrush}"
                                 DockPanel.Dock="Bottom">
                                 <TextBlock
                                     HorizontalAlignment="Center"
