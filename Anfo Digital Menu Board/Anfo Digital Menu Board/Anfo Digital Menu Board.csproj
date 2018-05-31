@@ -151,6 +151,7 @@
     <Compile Include="FrontEnd\Tampilan4.xaml.cs">
       <DependentUpon>Tampilan4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HardwareInfo.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
