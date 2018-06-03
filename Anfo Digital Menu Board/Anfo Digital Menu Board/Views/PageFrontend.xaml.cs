@@ -21,6 +21,7 @@ using Anfo_Digital_Menu_Board.FrontEnd;
 using System.Management;
 using WpfScreenHelper;
 using MahApps.Metro.Controls;
+using MaterialDesignColors.WpfExample.Domain;
 
 namespace Anfo_Digital_Menu_Board.Views
 {
@@ -69,6 +70,27 @@ namespace Anfo_Digital_Menu_Board.Views
         string folder;
 
 
+        private string _idmsg;
+
+        private void btn_carimsg_Click(object sender, RoutedEventArgs e)
+        {
+            var showdialog = new DialogPilihMessage();
+            showdialog.Check += value => _idmsg = value;
+            DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler2);
+        }
+
+        private void ClosingEventHandler2(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (_idmsg != null)
+            {
+                k.sql = "select *from tb_message where id_message = '" + _idmsg + "'";
+                k.setdt();
+
+                txt_idmsg.Text = k.dt.Rows[0][0].ToString();
+                txt_pesan.Text = k.dt.Rows[0][1].ToString();
+            }
+        }
+
 
         private string _idktlog;
 
@@ -81,28 +103,43 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            k.sql = "select *from tb_katalog where id_katalog = '" + _idktlog + "'";
-            k.setdt();
+            if (_idktlog != null)
+            {
+                k.sql = "select *from tb_katalog where id_katalog = '" + _idktlog + "'";
+                k.setdt();
 
-            txt_idktlog.Text = k.dt.Rows[0][0].ToString();
-            txt_deskripsi.Text = k.dt.Rows[0][1].ToString();
+                txt_idktlog.Text = k.dt.Rows[0][0].ToString();
+                txt_deskripsi.Text = k.dt.Rows[0][1].ToString();
+            }
         }
 
         private void btn_tampilkan_Click(object sender, RoutedEventArgs e)
         {
             int monitor = cmb_monitor.SelectedIndex;
+
+
+            string pesan = txt_pesan.Text;
+
+            if(pesan == null || pesan == "")
+            {
+                pesan = "Anfo Dgital Menu Board";
+            }
+
+
             if (rb_md1.IsChecked == true)
             {
                 if (cmb_data.SelectedIndex == 0)
                 {
                     Tampilan1 tp1 = new Tampilan1();
                     tp1.tampilsemua();
+                    tp1.txt_running.Text = pesan;
                     ShowOnMonitor(monitor, tp1);
                 }
                 else
                 {
                     Tampilan1 tp1 = new Tampilan1();
                     tp1.showdata(txt_idktlog.Text);
+                    tp1.txt_running.Text = pesan;
                     ShowOnMonitor(monitor, tp1);
                 }
                 
@@ -110,23 +147,38 @@ namespace Anfo_Digital_Menu_Board.Views
             }
             else if (rb_md2.IsChecked == true)
             {
-                if (cmb_data.SelectedIndex == 0)
+                if (folder == null)
                 {
-                    Tampilan2 tp2 = new Tampilan2();
-                    tp2.tampilsemua();
-                    tp2.LoadImageFolder(folder);
-
-                    ShowOnMonitor(monitor, tp2);
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Harap Masukan Lokasi Folder Slideshow" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
                 }
                 else
                 {
-                    Tampilan2 tp2 = new Tampilan2();
-                    tp2.showdata(txt_idktlog.Text);
-                    tp2.LoadImageFolder(folder);
-                    
-
-                    ShowOnMonitor(monitor, tp2);
+                    if (cmb_data.SelectedIndex == 0)
+                    {
+                        Tampilan2 tp2 = new Tampilan2();
+                        tp2.tampilsemua();
+                        tp2.LoadImageFolder(folder);
+                        tp2.getdrs(Convert.ToInt32(sld_durasi.Value));
+                        tp2.loadSlideshow();
+                        tp2.txt_running.Text = pesan;
+                        ShowOnMonitor(monitor, tp2);
+                    }
+                    else
+                    {
+                        Tampilan2 tp2 = new Tampilan2();
+                        tp2.showdata(txt_idktlog.Text);
+                        tp2.LoadImageFolder(folder);
+                        tp2.getdrs(Convert.ToInt32(sld_durasi.Value));
+                        tp2.loadSlideshow();
+                        tp2.txt_running.Text = pesan;
+                        ShowOnMonitor(monitor, tp2);
+                    }
                 }
+                
             }
             else if (rb_md3.IsChecked == true)
             {
@@ -134,33 +186,50 @@ namespace Anfo_Digital_Menu_Board.Views
                 {
                     Tampilan3 tp3 = new Tampilan3();
                     tp3.tampilsemua();
-
+                    tp3.txt_running.Text = pesan;
                     ShowOnMonitor(monitor, tp3);
                 }
                 else
                 {
-                    Tampilan2 tp3 = new Tampilan2();
+                    Tampilan3 tp3 = new Tampilan3();
                     tp3.showdata(txt_idktlog.Text);
+                    tp3.txt_running.Text = pesan;
                     ShowOnMonitor(monitor, tp3);
                 }
             }
             else if (rb_md4.IsChecked == true)
             {
-                if (cmb_data.SelectedIndex == 0)
+                if (folder == null)
                 {
-                    Tampilan4 tp4 = new Tampilan4();
-                    tp4.tampilsemua();
-                    tp4.LoadImageFolder(folder);
-
-                    ShowOnMonitor(monitor, tp4);
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Harap Masukan Lokasi Folder Slideshow" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
                 }
                 else
                 {
-                    Tampilan4 tp4 = new Tampilan4();
-                    tp4.showdata(txt_idktlog.Text);
-                    tp4.LoadImageFolder(folder);
+                    if (cmb_data.SelectedIndex == 0)
+                    {
+                        Tampilan4 tp4 = new Tampilan4();
+                        tp4.tampilsemua();
+                        tp4.getdrs(Convert.ToInt32(sld_durasi.Value));
+                        tp4.loadSlideshow();
+                        tp4.txt_running.Text = pesan;
+                        tp4.LoadImageFolder(folder);
 
-                    ShowOnMonitor(monitor, tp4);
+                        ShowOnMonitor(monitor, tp4);
+                    }
+                    else
+                    {
+                        Tampilan4 tp4 = new Tampilan4();
+                        tp4.showdata(txt_idktlog.Text);
+                        tp4.LoadImageFolder(folder);
+                        tp4.getdrs(Convert.ToInt32(sld_durasi.Value));
+                        tp4.loadSlideshow();
+                        tp4.txt_running.Text = pesan;
+                        ShowOnMonitor(monitor, tp4);
+                    }
                 }
             }
 
@@ -211,5 +280,7 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             pn_slideshow.Visibility = Visibility.Visible;
         }
+
+        
     }
 }

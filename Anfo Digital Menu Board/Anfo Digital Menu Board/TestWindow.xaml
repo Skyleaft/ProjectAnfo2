@@ -17,56 +17,5 @@
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     mc:Ignorable="d">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <materialDesign:Card>
-                <Grid
-                    x:Name="grid_list"
-                    Width="350"
-                    Height="200"
-                    Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="45*" />
-                        <ColumnDefinition Width="45*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20*" />
-                        <RowDefinition Height="3*" />
-                    </Grid.RowDefinitions>
-                    <Image
-                        Width="auto"
-                        Height="auto"
-                        Source="{Binding foto}" />
-                    <DockPanel Grid.Column="1" Margin="5,0,0,0">
-                        <TextBlock
-                            Margin="0,0,0,5"
-                            DockPanel.Dock="Top"
-                            FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizejudul}}"
-                            Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
-                            Text="{Binding nama}"
-                            TextWrapping="Wrap" />
-
-                        <TextBlock
-                            DockPanel.Dock="Top"
-                            FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizedesk}}"
-                            Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}"
-                            Text="{Binding detail}"
-                            TextWrapping="Wrap" />
-                    </DockPanel>
-                    <StackPanel
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        Background="{DynamicResource AccentBaseColorBrush}"
-                        DockPanel.Dock="Bottom">
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="{Binding SelectedItem.Content, Source={x:Reference cmb_sizeharga}}"
-                            Foreground="{DynamicResource AccentSelectedColorBrush}"
-                            Text="{Binding harga, StringFormat='c'}" />
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Card>
-
-        </StackPanel>
-    </Grid>
+    <Grid />
 </metro:MetroWindow>

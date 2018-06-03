@@ -37,11 +37,17 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             timerImageChange.IsEnabled = true;
         }
 
-        public int IntervalTimer = 5;
+        public int IntervalTimer = 7;
+
         koneksi k = new koneksi();
 
         public int lebar { get; set; }
         public int tinggi { get; set; }
+
+        public void getdrs( int _durasi)
+        {
+            IntervalTimer = _durasi;
+        }
 
         //public void valhw(int _lebar, int _tinggi)
         //{
@@ -63,10 +69,15 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             tinggi = 270;
 
 
+            
+
+        }
+
+        public void loadSlideshow()
+        {
             timerImageChange = new DispatcherTimer();
             timerImageChange.Interval = new TimeSpan(0, 0, IntervalTimer);
             timerImageChange.Tick += new EventHandler(timerImageChange_Tick);
-
         }
 
 
@@ -132,12 +143,19 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
                 if(this.ShowTitleBar == true)
                 {
                     this.ShowTitleBar = false;
+                    this.ShowCloseButton = false;
                 }
                 else
                 {
                     this.ShowTitleBar = true;
+                    this.ShowCloseButton = true;
                 }
             }
+        }
+
+        private void sld_durasi_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
         }
 
         private ImageSource CreateImageSource(string file, bool forcePreLoad)

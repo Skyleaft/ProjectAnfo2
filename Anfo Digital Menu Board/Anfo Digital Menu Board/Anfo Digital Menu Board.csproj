@@ -95,6 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ByteImageConverter.cs" />
+    <Compile Include="ByteToImageConverter.cs" />
     <Compile Include="Dialog\DialogDetailKatalog.xaml.cs">
       <DependentUpon>DialogDetailKatalog.xaml</DependentUpon>
     </Compile>
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="Dialog\DialogPilihKatalog.xaml.cs">
       <DependentUpon>DialogPilihKatalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DialogPilihMessage.xaml.cs">
+      <DependentUpon>DialogPilihMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialog\DialogPilihProduk.xaml.cs">
       <DependentUpon>DialogPilihProduk.xaml</DependentUpon>
@@ -155,6 +159,7 @@
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="NegatingConverter.cs" />
     <Compile Include="ScreenHandler.cs" />
     <Compile Include="TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
@@ -193,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialog\DialogPilihKatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\DialogPilihMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
