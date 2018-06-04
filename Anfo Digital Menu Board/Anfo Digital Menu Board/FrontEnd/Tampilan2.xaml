@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:Anfo_Digital_Menu_Board.FrontEnd"
+    xmlns:local1="clr-namespace:Anfo_Digital_Menu_Board"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
@@ -166,6 +167,7 @@
 
                         </StackPanel>
                     </GroupBox>
+
                 </StackPanel>
             </metro:Flyout>
 
@@ -177,9 +179,19 @@
             <ColumnDefinition Width="140*" />
             <ColumnDefinition Width="170*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
 
 
         <Canvas x:Name="canvas1">
+            <Canvas.CacheMode>
+                <BitmapCache
+                    EnableClearType="False"
+                    RenderAtScale="1"
+                    SnapsToDevicePixels="False" />
+            </Canvas.CacheMode>
             <Image
                 x:Name="myImage"
                 Width="{Binding Path=ActualWidth, ElementName=canvas1}"
@@ -235,10 +247,13 @@
                                 <RowDefinition Height="5*" />
                                 <RowDefinition Height="3*" />
                             </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <local1:ByteToImageConverter x:Key="ByteToImageConverter" />
+                            </Grid.Resources>
                             <Image
                                 Width="auto"
                                 Height="auto"
-                                Source="{Binding foto}" />
+                                Source="{Binding foto, Converter={StaticResource ByteToImageConverter}}" />
                             <DockPanel Grid.Row="1">
                                 <TextBlock
                                     DockPanel.Dock="Top"
@@ -248,7 +263,7 @@
 
                                 <StackPanel
                                     VerticalAlignment="Bottom"
-                                    Background="{DynamicResource AccentBaseColorBrush}"
+                                    Background="{DynamicResource AccentColorBrush}"
                                     DockPanel.Dock="Bottom">
                                     <TextBlock
                                         HorizontalAlignment="Center"
@@ -273,6 +288,51 @@
             </ListView.ItemsPanel>
 
         </ListView>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="0,2.6,0,0"
+            Background="{DynamicResource HighlightBrush}">
+            <StackPanel x:Name="stack" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <local1:NegatingConverter x:Key="NegatingConverter" />
+                    <Storyboard x:Key="slide">
+                        <DoubleAnimation
+                            RepeatBehavior="Forever"
+                            Storyboard.TargetName="transferCurreny"
+                            Storyboard.TargetProperty="X"
+                            From="0"
+                            To="{Binding Width, ElementName=canvas}"
+                            Duration="00:00:10" />
+                    </Storyboard>
+                </StackPanel.Resources>
+                <StackPanel.RenderTransform>
+                    <TranslateTransform x:Name="transferCurreny" X="0" />
+                </StackPanel.RenderTransform>
+                <StackPanel.Triggers>
+                    <EventTrigger RoutedEvent="StackPanel.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource slide}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="StackPanel.SizeChanged">
+                        <BeginStoryboard Storyboard="{StaticResource slide}" />
+                    </EventTrigger>
+                </StackPanel.Triggers>
+                <Canvas x:Name="canvas" Width="{Binding ActualWidth, ElementName=stack}">
+                    <TextBlock
+                        x:Name="txt_running"
+                        Canvas.Left="0"
+                        FontSize="25"
+                        Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
+                        Text="Anfo Digital Menu Board" />
+                    <TextBlock
+                        Canvas.Left="{Binding Width, ElementName=canvas, Converter={StaticResource NegatingConverter}}"
+                        FontSize="25"
+                        Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
+                        Text="{Binding Text, ElementName=txt_running}" />
+                </Canvas>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
 </metro:MetroWindow>

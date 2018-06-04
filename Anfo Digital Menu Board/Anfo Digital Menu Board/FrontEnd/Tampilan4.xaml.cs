@@ -31,8 +31,15 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
         private string TransitionType, strImagePath = "";
         private int CurrentSourceIndex, CurrentCtrlIndex, EffectIndex = 0;
 
+        
+
         public int IntervalTimer = 5;
         koneksi k = new koneksi();
+
+        public void getdrs(int _durasi)
+        {
+            IntervalTimer = _durasi;
+        }
 
         public Tampilan4()
         {
@@ -40,8 +47,14 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
             strImagePath = ConfigurationManager.AppSettings["ImagePath"];
             ImageControls = new[] { myImage, myImage2 };
 
+
             LoadImageFolder(strImagePath);
 
+            
+        }
+
+        public void loadSlideshow()
+        {
             timerImageChange = new DispatcherTimer();
             timerImageChange.Interval = new TimeSpan(0, 0, IntervalTimer);
             timerImageChange.Tick += new EventHandler(timerImageChange_Tick);
@@ -85,8 +98,10 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
                           where ValidImageExtensions.Contains(file.Extension, StringComparer.InvariantCultureIgnoreCase)
                           orderby r.Next()
                           select CreateImageSource(file.FullName, true);
+            
             Images.Clear();
             Images.AddRange(sources);
+            
             sw.Stop();
             Console.WriteLine("Total time to load {0} images: {1}ms", Images.Count, sw.ElapsedMilliseconds);
         }
@@ -110,12 +125,24 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
                 if (this.ShowTitleBar == true)
                 {
                     this.ShowTitleBar = false;
+                    this.ShowCloseButton = false;
                 }
                 else
                 {
                     this.ShowTitleBar = true;
+                    this.ShowCloseButton = true;
                 }
             }
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+        }
+
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+
         }
 
         private ImageSource CreateImageSource(string file, bool forcePreLoad)

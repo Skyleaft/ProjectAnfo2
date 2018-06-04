@@ -49,10 +49,12 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
                 if (this.ShowTitleBar == true)
                 {
                     this.ShowTitleBar = false;
+                    this.ShowCloseButton = false;
                 }
                 else
                 {
                     this.ShowTitleBar = true;
+                    this.ShowCloseButton = true;
                 }
             }
         }
@@ -68,5 +70,6 @@ namespace Anfo_Digital_Menu_Board.FrontEnd
                 fy_atas.IsOpen = true;
             }
         }
+
     }
 }
