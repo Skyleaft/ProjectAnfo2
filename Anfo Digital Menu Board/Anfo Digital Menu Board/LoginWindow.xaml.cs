@@ -28,7 +28,6 @@ namespace Anfo_Digital_Menu_Board
         public LoginWindow()
         {
             InitializeComponent();
-            cek();
         }
 
         public void bersih() {
@@ -54,39 +53,7 @@ namespace Anfo_Digital_Menu_Board
             this.Closing += keluar;
             Close();
         }
-
-        private void cek()
-        {
-            String pass = "";
-            String user = "";
-            k.sql = "select *from tb_user";
-            k.setdt();
-            int cekbaris = k.dt.Rows.Count;
-            foreach (DataRow baris in k.dt.Rows)
-            {
-                user = baris[1].ToString();
-                pass = baris[2].ToString();
-            }
-
-            if (cekbaris == 0)
-            {
-                var sampleMessageDialog = new SampleMessageDialog
-                {
-                    Message = { Text = "Anda Belum punya akun" }
-                };
-                DialogHost.Show(sampleMessageDialog, "AkunDialog");
-                txt_username.Text = "";
-                txt_password.Password = "";
-
-                ////DaftarAkun wm = new DaftarAkun();
-                ////wm.Show();
-                ////dissapear();
-            }
-            else {
-            }
-
-        }
-
+        
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
@@ -180,6 +147,15 @@ namespace Anfo_Digital_Menu_Board
 
         private void btn_register_Click(object sender, RoutedEventArgs e)
         {
+            String user = "";
+            k.sql = "select *from tb_user";
+            k.setdt();
+            int cekbaris = k.dt.Rows.Count;
+            foreach (DataRow baris in k.dt.Rows)
+            {
+                user = baris[0].ToString();
+            }
+
             if (txt_username2.Text == "" || txt_nama.Text == "" || txt_password2.Password == "")
             {
                 var sampleMessageDialog = new SampleMessageDialog
@@ -188,7 +164,21 @@ namespace Anfo_Digital_Menu_Board
                 };
                 DialogHost.Show(sampleMessageDialog, "LoginDialog");
             }
-            else if (txt_password2.Password.Length<8)
+            else if (txt_username2.Text.Equals(user))
+            {
+
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Username Sudah ada" }
+                };
+                DialogHost.Show(sampleMessageDialog, "LoginDialog");
+                txt_username2.Text = "";
+
+                ////DaftarAkun wm = new DaftarAkun();
+                ////wm.Show();
+                ////dissapear();
+            }
+            else if (txt_password2.Password.Length < 8)
             {
                 var sampleMessageDialog = new SampleMessageDialog
                 {
@@ -213,7 +203,7 @@ namespace Anfo_Digital_Menu_Board
                         Message = { Text = "Data Berhasil Tersimpan" }
                     };
                     DialogHost.Show(sampleMessageDialog, "LoginDialog");
-                    bersih();
+                    bersihreg();
 
                     Storyboard sb = this.FindResource("slide2") as Storyboard;
                     sb.Begin();

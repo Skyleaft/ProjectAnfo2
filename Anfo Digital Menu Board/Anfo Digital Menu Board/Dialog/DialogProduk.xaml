@@ -129,7 +129,7 @@
                             Margin="4,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Stretch"
-                            Foreground="{Binding BorderBrush, ElementName=txt_msg}"
+                            Foreground="{Binding BorderBrush, ElementName=txt_detail}"
                             Kind="Information" />
                         <TextBox
                             x:Name="txt_detail"
