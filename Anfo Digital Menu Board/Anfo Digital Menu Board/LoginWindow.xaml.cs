@@ -30,6 +30,7 @@ namespace Anfo_Digital_Menu_Board
             InitializeComponent();
         }
 
+
         public void bersih() {
             txt_username.Text = "";
             txt_password.Password = "";

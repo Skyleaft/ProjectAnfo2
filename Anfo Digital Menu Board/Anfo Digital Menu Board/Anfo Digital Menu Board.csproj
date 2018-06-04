@@ -36,6 +36,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon1_eXk_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
@@ -176,6 +179,9 @@
     <Compile Include="Views\PageKatalog.xaml.cs">
       <DependentUpon>PageKatalog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PageLogout.xaml.cs">
+      <DependentUpon>PageLogout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageMessage.xaml.cs">
       <DependentUpon>PageMessage.xaml</DependentUpon>
     </Compile>
@@ -297,6 +303,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PageLogout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PageMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -353,6 +363,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\baner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon1_eXk_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

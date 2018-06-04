@@ -25,7 +25,7 @@ namespace Anfo_Digital_Menu_Board.Views
     /// <summary>
     /// Interaction logic for PageMakanan.xaml
     /// </summary>
-    public partial class PageProduk : Page
+    public partial class PageProduk : UserControl
     {
 
         koneksi k = new koneksi();

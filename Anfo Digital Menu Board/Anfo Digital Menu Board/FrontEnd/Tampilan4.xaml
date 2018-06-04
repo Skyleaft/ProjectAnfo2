@@ -19,6 +19,8 @@
     FontFamily="{DynamicResource MaterialDesignFont}"
     GlowBrush="{DynamicResource AccentColorBrush}"
     IgnoreTaskbarOnMaximize="True"
+    IsMaxRestoreButtonEnabled="False"
+    IsMinButtonEnabled="False"
     KeyDown="MetroWindow_KeyDown"
     Language="id-ID"
     Loaded="MetroWindow_Loaded"
@@ -301,7 +303,7 @@
                             <StackPanel
                                 Grid.Row="1"
                                 Grid.ColumnSpan="2"
-                                Background="{DynamicResource AccentColorBrush}"
+                                Background="{DynamicResource PrimaryHueMidBrush}"
                                 DockPanel.Dock="Bottom">
                                 <TextBlock
                                     HorizontalAlignment="Center"

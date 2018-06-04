@@ -20,7 +20,7 @@ namespace Anfo_Digital_Menu_Board.Views
     /// <summary>
     /// Interaction logic for PageSetting.xaml
     /// </summary>
-    public partial class PageSetting : Page
+    public partial class PageSetting : UserControl
     {
         public PageSetting()
         {
@@ -46,6 +46,7 @@ namespace Anfo_Digital_Menu_Board.Views
         private void warna_biru_Click(object sender, RoutedEventArgs e)
         {
             new PaletteHelper().ReplacePrimaryColor("blue");
+            
         }
 
         private void warna_merah_Click(object sender, RoutedEventArgs e)

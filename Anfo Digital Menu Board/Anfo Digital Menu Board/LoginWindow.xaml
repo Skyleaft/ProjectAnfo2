@@ -58,7 +58,7 @@
             <StackPanel
                 Height="420"
                 Margin="0,0,0.2,2"
-                Background="{DynamicResource AccentBaseColorBrush}" />
+                Background="{DynamicResource PrimaryHueMidBrush}" />
             <StackPanel
                 Margin="75,15"
                 Background="{DynamicResource MaterialDesignPaper}"
@@ -93,7 +93,7 @@
                         <Rectangle
                             x:Name="rect_log"
                             Height="3"
-                            Fill="{DynamicResource AccentBaseColorBrush}" />
+                            Fill="{DynamicResource PrimaryHueMidBrush}" />
                     </StackPanel>
 
                     <StackPanel>

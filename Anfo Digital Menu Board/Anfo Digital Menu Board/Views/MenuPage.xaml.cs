@@ -19,7 +19,7 @@ namespace Anfo_Digital_Menu_Board.Views
     /// <summary>
     /// Interaction logic for MenuPage.xaml
     /// </summary>
-    public partial class MenuPage : Page
+    public partial class MenuPage : UserControl
     {
 
         koneksi k = new koneksi();

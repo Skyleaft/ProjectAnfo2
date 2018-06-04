@@ -1,4 +1,4 @@
-﻿<Page
+﻿<UserControl
     x:Class="Anfo_Digital_Menu_Board.Views.PageProduk"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,7 +9,6 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
-    Title="PageMakanan"
     d:DesignHeight="720"
     d:DesignWidth="1100"
     Background="{DynamicResource MaterialDesignPaper}"
@@ -21,7 +20,7 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
-    <Page.Resources>
+    <UserControl.Resources>
         <Storyboard x:Key="sliding">
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                 <EasingThicknessKeyFrame KeyTime="0" Value="0" />
@@ -34,13 +33,13 @@
                 <EasingThicknessKeyFrame KeyTime="0:0:0.6" Value="0" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
-    </Page.Resources>
-    <Page.Triggers>
+    </UserControl.Resources>
+    <UserControl.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource sliding}" />
             <BeginStoryboard Storyboard="{StaticResource slideback}" />
         </EventTrigger>
-    </Page.Triggers>
+    </UserControl.Triggers>
 
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
@@ -372,4 +371,4 @@
         </StackPanel>
 
     </Grid>
-</Page>
+</UserControl>

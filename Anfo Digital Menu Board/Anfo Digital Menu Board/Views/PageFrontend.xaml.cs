@@ -28,7 +28,7 @@ namespace Anfo_Digital_Menu_Board.Views
     /// <summary>
     /// Interaction logic for PageFrontend.xaml
     /// </summary>
-    public partial class PageFrontend : Page
+    public partial class PageFrontend : UserControl
     {
 
         public PageFrontend()

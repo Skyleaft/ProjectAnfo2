@@ -22,7 +22,7 @@ namespace Anfo_Digital_Menu_Board.Views
     /// <summary>
     /// Interaction logic for PageKatalog.xaml
     /// </summary>
-    public partial class PageKatalog : Page
+    public partial class PageKatalog : UserControl
     {
         koneksi k = new koneksi();
 

@@ -28,35 +28,26 @@ namespace Anfo_Digital_Menu_Board
         {
             InitializeComponent();
 
-            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 30 });
-
-            Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
-            Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
-
-            // Navigate to the home page.
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/MenuPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
+
+        private void HamburgerMenuControl_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
         {
-            this.HamburgerMenuControl.Content = e.Content;
-            this.HamburgerMenuControl.SelectedItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetItem(e.Uri);
-            this.HamburgerMenuControl.SelectedOptionsItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetOptionsItem(e.Uri);
-            GoBackButton.Visibility = Navigation.Navigation.Frame.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
+            HamburgerMenuControl.Content = e.InvokedItem;
         }
 
-        private void GoBack_OnClick(object sender, RoutedEventArgs e)
+        private async void HamburgerMenu_OnOptionsItemClick(object sender, ItemClickEventArgs e)
         {
-            Navigation.Navigation.GoBack();
-        }
-
-        private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
-        {
-            var menuItem = e.InvokedItem as MenuItem;
-            if (menuItem != null && menuItem.IsNavigation)
+            var menuItem = e.ClickedItem as HamburgerMenuItem;
+            if(menuItem.Label == "Logout")
             {
-                Navigation.Navigation.Navigate(menuItem.NavigationDestination, menuItem);
+                var login = new LoginWindow();
+                this.Close();
+                
+                login.Show();
             }
         }
     }
+
+
 }
