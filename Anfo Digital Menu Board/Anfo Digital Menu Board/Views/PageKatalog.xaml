@@ -128,12 +128,12 @@
                             ToolTip="Ubah Data">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconMaterial
-                                    Width="26"
-                                    Height="25"
+                                    Width="23"
+                                    Height="23"
                                     Margin="-10,5,5,5"
                                     Kind="Sync" />
                                 <Label
-                                    Margin="0,0,-5,0"
+                                    Margin="0,0,-5,3"
                                     Padding="5,5,5,0"
                                     VerticalAlignment="Center"
                                     VerticalContentAlignment="Bottom"
@@ -152,12 +152,12 @@
                             ToolTip="Simpan">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconEntypo
-                                    Width="26"
-                                    Height="25"
+                                    Width="23"
+                                    Height="23"
                                     Margin="-10,5,5,5"
                                     Kind="save" />
                                 <Label
-                                    Margin="0,0,-5,0"
+                                    Margin="0,0,-5,3"
                                     Padding="5,5,5,0"
                                     VerticalAlignment="Center"
                                     VerticalContentAlignment="Bottom"
@@ -177,7 +177,7 @@
                             ToolTip="Ubah Data">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconModern
-                                    Width="26"
+                                    Width="25"
                                     Height="25"
                                     Margin="-10,5,5,5"
                                     Kind="EditBox" />
@@ -202,7 +202,7 @@
                             ToolTip="Ubah Data">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconMaterial
-                                    Width="26"
+                                    Width="25"
                                     Height="25"
                                     Margin="-10,5,5,5"
                                     Kind="delete" />
@@ -287,7 +287,7 @@
 
             </DockPanel>
 
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
                 <materialDesign:ColorZone
                     Margin="10,10,20,10"
                     Padding="8,4,8,4"
@@ -296,6 +296,7 @@
                     Panel.ZIndex="1"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1"
                     CornerRadius="2"
+                    DockPanel.Dock="Top"
                     Mode="Standard">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -315,40 +316,37 @@
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                             BorderThickness="0"
                             TextChanged="txt_cari_TextChanged" />
-                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
-                            <materialDesign:PackIcon
-                                Margin="8,0,0,0"
-                                Kind="Microphone"
-                                Opacity=".56" />
-                        </Button>
                     </Grid>
                 </materialDesign:ColorZone>
 
-                <DataGrid
-                    x:Name="dg_katalog"
-                    Margin="0"
-                    materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                    materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserResizeRows="False"
-                    CanUserSortColumns="True"
-                    IsReadOnly="True"
-                    SelectionChanged="dg_katalog_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="200"
-                            Binding="{Binding id_katalog}"
-                            Header="ID Katalog" />
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding deskripsi}"
-                            Header="Deskripsi" />
-                    </DataGrid.Columns>
+                <DockPanel DockPanel.Dock="Top">
+                    <DataGrid
+                        x:Name="dg_katalog"
+                        Margin="0"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserResizeRows="False"
+                        CanUserSortColumns="True"
+                        IsReadOnly="True"
+                        SelectionChanged="dg_katalog_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="200"
+                                Binding="{Binding id_katalog}"
+                                Header="ID Katalog" />
+                            <DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding deskripsi}"
+                                Header="Deskripsi" />
+                        </DataGrid.Columns>
 
-                </DataGrid>
+                    </DataGrid>
+                </DockPanel>
 
-            </StackPanel>
+
+            </DockPanel>
         </Grid>
     </materialDesign:DialogHost>
 </UserControl>
