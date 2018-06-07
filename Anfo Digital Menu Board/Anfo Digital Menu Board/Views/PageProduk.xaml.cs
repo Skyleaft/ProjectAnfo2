@@ -246,19 +246,5 @@ namespace Anfo_Digital_Menu_Board.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            if (grid.Margin.Left == 0)
-            {
-                Storyboard sb = this.FindResource("sliding") as Storyboard;
-                sb.Begin();
-            }
-            else
-            {
-                Storyboard sb = this.FindResource("slideback") as Storyboard;
-                sb.Begin();
-            }
-        }
     }
 }

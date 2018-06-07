@@ -20,26 +20,6 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
-    <UserControl.Resources>
-        <Storyboard x:Key="sliding">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="0" Value="0" />
-                <EasingThicknessKeyFrame KeyTime="0:0:0.8" Value="-360,0,0,0" />
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="slideback">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
-                <EasingThicknessKeyFrame KeyTime="0" Value="-360,0,0,0" />
-                <EasingThicknessKeyFrame KeyTime="0:0:0.6" Value="0" />
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
-    </UserControl.Resources>
-    <UserControl.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource sliding}" />
-            <BeginStoryboard Storyboard="{StaticResource slideback}" />
-        </EventTrigger>
-    </UserControl.Triggers>
 
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
@@ -49,17 +29,8 @@
 
         <!--  Panel kiri  -->
         <StackPanel x:Name="pn_kiri">
-            <materialDesign:ColorZone
-                Height="{Binding Path=ActualHeight, ElementName=pn_kiri}"
-                Margin="0,0,15,0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <materialDesign:ColorZone Height="{Binding Path=ActualHeight, ElementName=pn_kiri}" Margin="0,0,15,0">
                 <DockPanel>
-                    <Button
-                        HorizontalAlignment="Right"
-                        Click="Button_Click"
-                        DockPanel.Dock="Top">
-                        <iconPacks:Material Kind="ArrowLeft" />
-                    </Button>
                     <!--  Content  -->
                     <StackPanel Margin="30,30,30,0">
                         <StackPanel Margin="0,0,0,15">

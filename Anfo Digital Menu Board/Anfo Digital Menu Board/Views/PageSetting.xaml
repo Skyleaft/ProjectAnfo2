@@ -19,7 +19,6 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
-
     <Grid>
 
         <GroupBox
@@ -69,9 +68,22 @@
                         HorizontalAlignment="Left">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="4" />
+                                <UniformGrid Columns="5" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
+                        <Button
+                            x:Name="warna_biruindigo"
+                            Margin="5"
+                            Background="#3F51B5"
+                            BorderBrush="#3F51B5"
+                            Click="warna_biruindigo_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Indigo">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
                         <Button
                             x:Name="warna_biru"
                             Margin="5"
@@ -86,6 +98,30 @@
                                 Kind="Palette" />
                         </Button>
                         <Button
+                            x:Name="warna_cyan"
+                            Background="#00BCD4"
+                            BorderBrush="#00BCD4"
+                            Click="warna_cyan_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Cyan">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_teal"
+                            Background="#FF009688"
+                            BorderBrush="#FF009688"
+                            Click="warna_teal_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Teal">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
                             x:Name="warna_merah"
                             Margin="0"
                             Background="#FFF44336"
@@ -93,43 +129,6 @@
                             Click="warna_merah_Click"
                             Style="{StaticResource MaterialDesignFloatingActionButton}"
                             ToolTip="Merah">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_ijo"
-                            Margin="0"
-                            Background="#FF4CAF50"
-                            BorderBrush="#FF4CAF50"
-                            Click="warna_ijo_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Hijau">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_purple"
-                            Background="#FF673AB7"
-                            BorderBrush="#FF673AB7"
-                            Click="warna_purple_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Ungu">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_kuning"
-                            Background="#FFFFEB3B"
-                            BorderBrush="#FFFFEB3B"
-                            Click="warna_kuning_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Kuning">
                             <materialDesign:PackIcon
                                 Width="24"
                                 Height="24"
@@ -160,12 +159,101 @@
                                 Kind="Palette" />
                         </Button>
                         <Button
-                            x:Name="warna_teal"
-                            Background="#FF009688"
-                            BorderBrush="#FF009688"
-                            Click="warna_teal_Click"
+                            x:Name="warna_purple"
+                            Background="#FF673AB7"
+                            BorderBrush="#FF673AB7"
+                            Click="warna_purple_Click"
                             Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Teal">
+                            ToolTip="Ungu">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_ijo"
+                            Margin="0"
+                            Background="#FF4CAF50"
+                            BorderBrush="#FF4CAF50"
+                            Click="warna_ijo_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Hijau">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_lightgreen"
+                            Margin="0"
+                            Background="#8BC34A"
+                            BorderBrush="#8BC34A"
+                            Click="warna_lightgreen_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Hijau Terang">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_lime"
+                            Margin="0"
+                            Background="#CDDC39"
+                            BorderBrush="#CDDC39"
+                            Click="warna_lime_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Lime">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+
+                        <Button
+                            x:Name="warna_kuning"
+                            Background="#FFFFEB3B"
+                            BorderBrush="#FFFFEB3B"
+                            Click="warna_kuning_Click"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Kuning">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_amber"
+                            Background="#FFC107"
+                            BorderBrush="#FFC107"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Amber" Click="warna_amber_Click">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+
+
+
+
+                        <Button
+                            x:Name="warna_blgrey"
+                            Background="#607D8B"
+                            BorderBrush="#607D8B"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Abu" Click="warna_blgrey_Click">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="Palette" />
+                        </Button>
+                        <Button
+                            x:Name="warna_brown"
+                            Background="#795548"
+                            BorderBrush="#795548"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Coklat" Click="warna_brown_Click">
                             <materialDesign:PackIcon
                                 Width="24"
                                 Height="24"
@@ -177,6 +265,7 @@
             </StackPanel>
 
         </GroupBox>
+
 
 
 
