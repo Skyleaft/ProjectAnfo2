@@ -367,5 +367,8 @@
   <ItemGroup>
     <Resource Include="icon1_eXk_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\ti10_400x400.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

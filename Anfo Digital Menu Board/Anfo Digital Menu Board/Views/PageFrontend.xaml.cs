@@ -281,6 +281,17 @@ namespace Anfo_Digital_Menu_Board.Views
             pn_slideshow.Visibility = Visibility.Visible;
         }
 
-        
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            cmb_monitor.Items.Refresh();
+            foreach(RadioButton rb in pn_rb.Children)
+            {
+                rb.IsChecked = false;
+            }
+            txt_idktlog.Text = "";
+            txt_deskripsi.Text = "";
+            txt_idmsg.Text = "";
+            txt_pesan.Text = "";
+        }
     }
 }

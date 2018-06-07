@@ -242,6 +242,7 @@
 
                 <DockPanel Margin="0,0,0,10">
                     <WrapPanel
+                        x:Name="pn_rb"
                         Margin="10"
                         DockPanel.Dock="Top"
                         Orientation="Horizontal">
@@ -375,10 +376,19 @@
         </StackPanel>
 
 
-        <StackPanel
-            Grid.Column="2"
-            Margin="3.2,0,0,0"
-            d:LayoutOverrides="TopMargin, BottomMargin">
+        <StackPanel Grid.Column="2" Margin="3.2,0,0,0">
+
+            <Button
+                x:Name="btn_refresh"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                Click="btn_refresh_Click"
+                DockPanel.Dock="Right"
+                Style="{StaticResource MaterialDesignFlatButton}">
+                <iconPacks:Material Kind="Refresh" />
+
+            </Button>
+
             <StackPanel Margin="0,15,0,0" DockPanel.Dock="Top">
                 <StackPanel
                     Margin="30,10,30,0"
@@ -391,7 +401,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Stretch"
                         Foreground="{Binding BorderBrush, ElementName=cmb_monitor}"
-                        Kind="FileDocumentBox" />
+                        Kind="Monitor" />
                     <ComboBox
                         x:Name="cmb_monitor"
                         Width="auto"

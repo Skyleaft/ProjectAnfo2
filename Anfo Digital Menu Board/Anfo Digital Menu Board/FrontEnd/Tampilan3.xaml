@@ -21,6 +21,8 @@
     IsMinButtonEnabled="False"
     KeyDown="MetroWindow_KeyDown"
     Language="id-ID"
+    ShowMaxRestoreButton="False"
+    ShowMinButton="False"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"

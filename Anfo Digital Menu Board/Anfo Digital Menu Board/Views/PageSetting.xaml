@@ -21,250 +21,488 @@
     mc:Ignorable="d">
     <Grid>
 
-        <GroupBox
-            Width="400"
-            Height="350"
-            Margin="20,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Header="Pengaturan Tema"
-            Style="{DynamicResource MaterialDesignCardGroupBox}">
-            <GroupBox.HeaderTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon
-                            Width="32"
-                            Height="32"
-                            VerticalAlignment="Center"
-                            Kind="Palette" />
-                        <TextBlock
-                            Margin="8,0,0,0"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="{Binding}" />
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <GroupBox
+                    Width="400"
+                    Height="350"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Pengaturan Tema"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Palette" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,10,0">Latar Belakang Gelap</TextBlock>
+                            <ToggleButton
+                                x:Name="toggleDark"
+                                VerticalAlignment="Center"
+                                Click="toggleDark_Click"
+                                Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                ToolTip="Dark Mode" />
+                        </StackPanel>
+
+                        <DockPanel
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Margin="0,10,0,0">
+                            <TextBlock Margin="10,10,0,0" DockPanel.Dock="Top">Warna Aplikasi</TextBlock>
+                            <ItemsControl
+                                x:Name="itemsControl"
+                                Margin="20,10,10,10"
+                                HorizontalAlignment="Left">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="5" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <Button
+                                    x:Name="warna_biruindigo"
+                                    Margin="5"
+                                    Background="#3F51B5"
+                                    BorderBrush="#3F51B5"
+                                    Click="warna_biruindigo_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Indigo">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_biru"
+                                    Margin="5"
+                                    Background="#FF2196F3"
+                                    BorderBrush="#FF2196F3"
+                                    Click="warna_biru_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Biru">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_cyan"
+                                    Background="#00BCD4"
+                                    BorderBrush="#00BCD4"
+                                    Click="warna_cyan_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Cyan">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_teal"
+                                    Background="#FF009688"
+                                    BorderBrush="#FF009688"
+                                    Click="warna_teal_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Teal">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_merah"
+                                    Margin="0"
+                                    Background="#FFF44336"
+                                    BorderBrush="#FFF44336"
+                                    Click="warna_merah_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Merah">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_oren"
+                                    Background="#FFFF5722"
+                                    BorderBrush="#FFFF5722"
+                                    Click="warna_oren_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Oranye">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_pink"
+                                    Background="#FFE91E63"
+                                    BorderBrush="#FFE91E63"
+                                    Click="warna_pink_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Pink">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_purple"
+                                    Background="#FF673AB7"
+                                    BorderBrush="#FF673AB7"
+                                    Click="warna_purple_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Ungu">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_ijo"
+                                    Margin="0"
+                                    Background="#FF4CAF50"
+                                    BorderBrush="#FF4CAF50"
+                                    Click="warna_ijo_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Hijau">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_lightgreen"
+                                    Margin="0"
+                                    Background="#8BC34A"
+                                    BorderBrush="#8BC34A"
+                                    Click="warna_lightgreen_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Hijau Terang">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_lime"
+                                    Margin="0"
+                                    Background="#CDDC39"
+                                    BorderBrush="#CDDC39"
+                                    Click="warna_lime_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Lime">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+
+                                <Button
+                                    x:Name="warna_kuning"
+                                    Background="#FFFFEB3B"
+                                    BorderBrush="#FFFFEB3B"
+                                    Click="warna_kuning_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Kuning">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_amber"
+                                    Background="#FFC107"
+                                    BorderBrush="#FFC107"
+                                    Click="warna_amber_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Amber">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+
+
+
+
+                                <Button
+                                    x:Name="warna_blgrey"
+                                    Background="#607D8B"
+                                    BorderBrush="#607D8B"
+                                    Click="warna_blgrey_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Abu">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                                <Button
+                                    x:Name="warna_brown"
+                                    Background="#795548"
+                                    BorderBrush="#795548"
+                                    Click="warna_brown_Click"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    ToolTip="Coklat">
+                                    <materialDesign:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Kind="Palette" />
+                                </Button>
+                            </ItemsControl>
+                        </DockPanel>
+
                     </StackPanel>
-                </DataTemplate>
-            </GroupBox.HeaderTemplate>
 
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,10,0">Latar Belakang Gelap</TextBlock>
-                    <ToggleButton
-                        x:Name="toggleDark"
-                        VerticalAlignment="Center"
-                        Click="toggleDark_Click"
-                        Style="{StaticResource MaterialDesignSwitchToggleButton}"
-                        ToolTip="Dark Mode" />
-                </StackPanel>
+                </GroupBox>
 
-                <DockPanel
-                    Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Margin="0,10,0,0">
-                    <TextBlock Margin="10,10,0,0" DockPanel.Dock="Top">Warna Aplikasi</TextBlock>
-                    <ItemsControl
-                        x:Name="itemsControl"
-                        Margin="20,10,10,10"
-                        HorizontalAlignment="Left">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="5" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <Button
-                            x:Name="warna_biruindigo"
-                            Margin="5"
-                            Background="#3F51B5"
-                            BorderBrush="#3F51B5"
-                            Click="warna_biruindigo_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Indigo">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_biru"
-                            Margin="5"
-                            Background="#FF2196F3"
-                            BorderBrush="#FF2196F3"
-                            Click="warna_biru_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Biru">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_cyan"
-                            Background="#00BCD4"
-                            BorderBrush="#00BCD4"
-                            Click="warna_cyan_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Cyan">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_teal"
-                            Background="#FF009688"
-                            BorderBrush="#FF009688"
-                            Click="warna_teal_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Teal">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_merah"
+                <GroupBox
+                    Width="500"
+                    Height="350"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Header="Tentang Aplikasi"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="Information" />
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top">
+                            <TextBlock Margin="0,0,0,5" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Anfo Digital Menu Board</TextBlock>
+
+                            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" TextWrapping="Wrap">Anfo Digital Menu Board adalah sebuah aplikasi untuk menampilkan daftar menu dari produk dari sebuah restaurant.</TextBlock>
+                            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" TextWrapping="Wrap">Aplikasi ini dibuat oleh 2 siswa PKL dari SMK Ti Pembangunan Cimahi</TextBlock>
+
+                            <StackPanel Margin="0,10,0,30" Orientation="Horizontal">
+                                <TextBlock Margin="0,0,30,0" Style="{StaticResource MaterialDesignTitleTextBlock}">Milzan Malik</TextBlock>
+                                <TextBlock Margin="0" Style="{StaticResource MaterialDesignTitleTextBlock}">Ridho Subhan</TextBlock>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                        <StackPanel
                             Margin="0"
-                            Background="#FFF44336"
-                            BorderBrush="#FFF44336"
-                            Click="warna_merah_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Merah">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_oren"
-                            Background="#FFFF5722"
-                            BorderBrush="#FFFF5722"
-                            Click="warna_oren_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Oranye">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_pink"
-                            Background="#FFE91E63"
-                            BorderBrush="#FFE91E63"
-                            Click="warna_pink_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Pink">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_purple"
-                            Background="#FF673AB7"
-                            BorderBrush="#FF673AB7"
-                            Click="warna_purple_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Ungu">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_ijo"
-                            Margin="0"
-                            Background="#FF4CAF50"
-                            BorderBrush="#FF4CAF50"
-                            Click="warna_ijo_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Hijau">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_lightgreen"
-                            Margin="0"
-                            Background="#8BC34A"
-                            BorderBrush="#8BC34A"
-                            Click="warna_lightgreen_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Hijau Terang">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_lime"
-                            Margin="0"
-                            Background="#CDDC39"
-                            BorderBrush="#CDDC39"
-                            Click="warna_lime_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Lime">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-
-                        <Button
-                            x:Name="warna_kuning"
-                            Background="#FFFFEB3B"
-                            BorderBrush="#FFFFEB3B"
-                            Click="warna_kuning_Click"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Kuning">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_amber"
-                            Background="#FFC107"
-                            BorderBrush="#FFC107"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Amber" Click="warna_amber_Click">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
+                            DockPanel.Dock="Bottom"
+                            Orientation="Horizontal">
+                            <Image
+                                Width="300"
+                                Height="118"
+                                Source="/Anfo Digital Menu Board;component/Resource/baner.png" />
+                            <Image
+                                Width="131"
+                                Height="131"
+                                Source="/Anfo Digital Menu Board;component/Resource/ti10_400x400.png" />
+                        </StackPanel>
+                    </DockPanel>
 
 
 
-
-                        <Button
-                            x:Name="warna_blgrey"
-                            Background="#607D8B"
-                            BorderBrush="#607D8B"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Abu" Click="warna_blgrey_Click">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                        <Button
-                            x:Name="warna_brown"
-                            Background="#795548"
-                            BorderBrush="#795548"
-                            Style="{StaticResource MaterialDesignFloatingActionButton}"
-                            ToolTip="Coklat" Click="warna_brown_Click">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="24"
-                                Kind="Palette" />
-                        </Button>
-                    </ItemsControl>
-                </DockPanel>
-
+                </GroupBox>
             </StackPanel>
 
-        </GroupBox>
+            <GroupBox
+                Width="470"
+                Height="200"
+                Margin="20,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Header="Contact Us"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="Information" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card
+                            Width="220"
+                            Margin="0,0,5,0"
+                            Padding="0"
+                            Background="{DynamicResource AccentColorBrush}"
+                            Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Margin="16,16,16,4"
+                                    Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+                                    Milzan Malik
+                                </TextBlock>
+                                <Separator
+                                    Grid.Row="1"
+                                    Height="16"
+                                    MinHeight="2"
+                                    Margin="8,0"
+                                    Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <Button
+                                        Width="30"
+                                        Padding="2,0,2,0"
+                                        HorizontalAlignment="Right"
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            Kind="Phone" />
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                                        081221407520
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                    <Button
+                                        Width="30"
+                                        Padding="2,0,2,0"
+                                        HorizontalAlignment="Right"
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            Kind="Email" />
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                                        milzan_malik@yahoo.co.id
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card
+                            Width="220"
+                            Margin="0"
+                            Padding="0"
+                            Background="{DynamicResource AccentColorBrush}"
+                            Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Margin="16,16,16,4"
+                                    Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+                                    Ridho Subhan
+                                </TextBlock>
+                                <Separator
+                                    Grid.Row="1"
+                                    Height="16"
+                                    MinHeight="2"
+                                    Margin="8,0"
+                                    Style="{StaticResource MaterialDesignLightSeparator}" />
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <Button
+                                        Width="30"
+                                        Padding="2,0,2,0"
+                                        HorizontalAlignment="Right"
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            Kind="Phone" />
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                                        082317657262
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                    <Button
+                                        Width="30"
+                                        Padding="2,0,2,0"
+                                        HorizontalAlignment="Right"
+                                        materialDesign:RippleAssist.IsCentered="True"
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            Kind="Email" />
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                                        ridhosubhan03@gmail.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:Card>
+                    </StackPanel>
+
+
+
+                </DockPanel>
+
+
+
+            </GroupBox>
+        </DockPanel>
+
+
+
+
 
 
 
