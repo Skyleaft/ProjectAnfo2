@@ -212,6 +212,7 @@
                                 Width="251"
                                 materialDesign:HintAssist.Hint="Username"
                                 FontSize="18"
+                                KeyUp="txt_username2_KeyUp"
                                 MaxLength="20"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </StackPanel>

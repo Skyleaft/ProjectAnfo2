@@ -31,9 +31,8 @@ namespace Anfo_Digital_Menu_Board.Views
             InitializeComponent();
             kodeotomatis();
             showdataktlog();
-
-
-    }
+            
+        }
 
         private void showdataprod()
         {
@@ -93,6 +92,10 @@ namespace Anfo_Digital_Menu_Board.Views
         {
             bersih();
             kodeotomatis();
+            showdataktlog();
+            btn_ubah.IsEnabled = false;
+            btn_hapus.IsEnabled = false;
+            btn_simpan.IsEnabled = true;
         }
 
         private void btn_simpan_Click(object sender, RoutedEventArgs e)
@@ -131,8 +134,23 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void btn_tambah_Click(object sender, RoutedEventArgs e)
         {
-            var showdialog = new DialogKatalog(txt_id.Text);
-            DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+            k.sql = "select *from tb_katalog where id_katalog = '" + txt_id.Text + "'";
+            k.setdt();
+            float user = k.dt.Rows.Count;
+            if (user > 0)
+            {
+                var showdialog = new DialogKatalog(txt_id.Text);
+                DialogHost.Show(showdialog, "MainDialog", ClosingEventHandler);
+            }
+            else {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Data Katalog belum terdaftar" }
+                };
+                DialogHost.Show(sampleMessageDialog, "MainDialog");
+            }
+
+            
         }
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
@@ -198,6 +216,9 @@ namespace Anfo_Digital_Menu_Board.Views
 
         private void dg_katalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btn_ubah.IsEnabled = true;
+            btn_hapus.IsEnabled = true;
+            btn_simpan.IsEnabled = false;
             if (dg_katalog.SelectedIndex >= 0)
             {
                 DataRowView dataRow = (DataRowView)dg_katalog.SelectedItem;
@@ -212,6 +233,80 @@ namespace Anfo_Digital_Menu_Board.Views
                 showdataprod();
 
             }
+        }
+
+        private void btn_ubah_Click(object sender, RoutedEventArgs e)
+        {
+            if (txt_id.Text == "" || txt_deskripsi.Text == "")
+            {
+                var sampleMessageDialog = new SampleMessageDialog
+                {
+                    Message = { Text = "Lengkapi dulu data" }
+                };
+                DialogHost.Show(sampleMessageDialog, "MainDialog");
+            }
+            else {
+                try
+                {
+
+
+                    k.sql = "update tb_katalog set deskripsi=@desk where id_katalog = '" + txt_id.Text + "'";
+                    k.setparam();
+                    k.perintah.Parameters.AddWithValue("@desk", txt_deskripsi.Text);
+                    
+                    k.perintah.ExecuteNonQuery();
+                    k.close();
+
+                    DialogHost.CloseDialogCommand.Execute(null, this);
+
+                    var sampleMessageDialog = new SampleMessageDialog
+                    {
+                        Message = { Text = "Data Berhasil Diubah" }
+                    };
+                    DialogHost.Show(sampleMessageDialog, "MainDialog");
+
+                    bersih();
+                    kodeotomatis();
+                    showdataktlog();
+                    btn_ubah.IsEnabled = false;
+                    btn_hapus.IsEnabled = false;
+                    btn_simpan.IsEnabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error " + ex.ToString());
+                }
+            }
+        }
+
+        private void btn_hapus_Click(object sender, RoutedEventArgs e)
+        {
+            Message.Text = "Yakin Hapus Katalog : " + txt_id.Text;
+        }
+
+        public void aawaw() {
+            k.sql = "delete from tb_detail_katalog where id_katalog = '" + txt_id.Text + "'";
+            k.setdt();
+        }
+        private void btn_yes_Click(object sender, RoutedEventArgs e)
+        {
+            k.sql = "delete from tb_katalog where id_katalog = '" + txt_id.Text + "'";
+            k.setdt();
+            aawaw();
+            var sampleMessageDialog = new SampleMessageDialog
+            {
+                Message = { Text = "Data Berhasil Di Hapus" }
+            };
+            DialogHost.CloseDialogCommand.Execute(null, this);
+
+            DialogHost.Show(sampleMessageDialog, "MainDialog");
+
+            bersih();
+            kodeotomatis();
+            showdataktlog();
+            btn_ubah.IsEnabled = false;
+            btn_hapus.IsEnabled = false;
+            btn_simpan.IsEnabled = true;
         }
     }
 }

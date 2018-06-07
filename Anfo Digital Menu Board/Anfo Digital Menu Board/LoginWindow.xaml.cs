@@ -31,7 +31,8 @@ namespace Anfo_Digital_Menu_Board
         }
 
 
-        public void bersih() {
+        public void bersih()
+        {
             txt_username.Text = "";
             txt_password.Password = "";
         }
@@ -54,7 +55,7 @@ namespace Anfo_Digital_Menu_Board
             this.Closing += keluar;
             Close();
         }
-        
+
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +90,8 @@ namespace Anfo_Digital_Menu_Board
                 txt_username.Text = "";
                 txt_password.Password = "";
             }
-            else {
+            else
+            {
                 MainWindow wm = new MainWindow();
                 wm.Show();
                 dissapear();
@@ -122,7 +124,7 @@ namespace Anfo_Digital_Menu_Board
             Storyboard sb = this.FindResource("slide1") as Storyboard;
             sb.Begin();
 
-            
+
 
             rect_reg.Visibility = Visibility.Visible;
             rect_log.Visibility = Visibility.Hidden;
@@ -141,15 +143,11 @@ namespace Anfo_Digital_Menu_Board
             rect_log.Visibility = Visibility.Visible;
         }
 
-        private void txt_username2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void btn_register_Click(object sender, RoutedEventArgs e)
         {
+
             String user = "";
-            k.sql = "select *from tb_user";
+            k.sql = "select *from tb_user where username = '" + txt_username2.Text + "'";
             k.setdt();
             int cekbaris = k.dt.Rows.Count;
             foreach (DataRow baris in k.dt.Rows)
@@ -165,19 +163,14 @@ namespace Anfo_Digital_Menu_Board
                 };
                 DialogHost.Show(sampleMessageDialog, "LoginDialog");
             }
-            else if (txt_username2.Text.Equals(user))
+            else if (cekbaris >= 1)
             {
-
                 var sampleMessageDialog = new SampleMessageDialog
                 {
                     Message = { Text = "Username Sudah ada" }
                 };
                 DialogHost.Show(sampleMessageDialog, "LoginDialog");
-                txt_username2.Text = "";
-
-                ////DaftarAkun wm = new DaftarAkun();
-                ////wm.Show();
-                ////dissapear();
+                //txt_username2.Text = "";
             }
             else if (txt_password2.Password.Length < 8)
             {
@@ -217,6 +210,29 @@ namespace Anfo_Digital_Menu_Board
                     MessageBox.Show("Data Gagal Didaftarkan " + ex);
                 }
             }
+        }
+
+        private void txt_username2_KeyUp(object sender, KeyEventArgs e)
+        {
+            //    String user = "";
+            //    k.sql = "select *from tb_user where username = '"+txt_username2.Text+"'";
+            //    k.setdt();
+            //    int cekbaris = k.dt.Rows.Count;
+            //    foreach (DataRow baris in k.dt.Rows)
+            //    {
+            //        user = baris[0].ToString();
+            //    }
+
+            //    if (cekbaris >= 1)
+            //    {
+            //        var sampleMessageDialog = new SampleMessageDialog
+            //        {
+            //            Message = { Text = "Username Sudah ada" }
+            //        };
+            //        DialogHost.Show(sampleMessageDialog, "LoginDialog");
+            //        txt_username2.Text = "";
+            //    }
+            //}
         }
     }
 }
