@@ -271,7 +271,7 @@ begin
 
 end;
 
-procedure pencarian_kode;
+procedure hapus_nama;
 var
    cari:string;
    i,x:integer;
@@ -279,6 +279,7 @@ var
 begin
      writeln('Masukan Kode Produk');readln(cari);
      i:=1;
+     //cari dulu data yang mau dihapus
      while (data[i].kd_barang <> cari) and (i<bd) do
            i:=i+1;
      if data[i].kd_barang = cari then
@@ -293,6 +294,27 @@ begin
            temp:=data[i+x+1];
         end;
         bd:=bd-1;
+        //note bd=banyakdata
+     end
+     else
+        writeln(cari,' tidak ditemukan');
+     readln;
+end;
+
+procedure pencarian_kode;
+var
+   cari:string;
+   i,x:integer;
+   temp:TPenjualan;
+begin
+     writeln('Masukan Kode Produk');readln(cari);
+     i:=1;
+     while (data[i].kd_barang <> cari) and (i<bd) do
+           i:=i+1;
+     if data[i].kd_barang = cari then
+     begin
+        writeln(cari,' ditemukan di indeks ke-',i);
+        writeln('nama barang : ',data[i].nama);
 
      end
      else
